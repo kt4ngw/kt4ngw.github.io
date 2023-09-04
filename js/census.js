@@ -3,11 +3,12 @@ var date = new Date();
 var end_date = '' + date.getFullYear() + (date.getMonth() > 8 ? (date.getMonth() + 1) : ("0" + (date.getMonth() + 1))) + (date.getDate() > 9 ? date.getDate() : ("0" + date.getDate())); // 结束日期
 var access_token = '121.01a28d4fa558e638e8252700a53b37dd.Y7_8C-RyT7WTE84wiDB2R6JN4O5E2qtZCljkuOw.E_j7gw' // accessToken
 var site_id = '19593490' // 网址 id
-var dataUrl = 'https://baidu-tongji-api.vercel.app/api?access_token=' + access_token + '&site_id=' + site_id
+var dataUrl = 'https://openapi.baidu.com/rest/2.0/tongji/report/getData?access_token=' + access_token + '&site_id=' + site_id
 var metrics = 'pv_count' // 统计访问次数 PV 填写 'pv_count'，统计访客数 UV 填写 'visitor_count'，二选一
 var metricsName = (metrics === 'pv_count' ? '访问次数' : (metrics === 'visitor_count' ? '访客数' : ''))
 // 这里为了统一颜色选取的是“明暗模式”下的两种字体颜色，也可以自己定义
 var color = document.documentElement.getAttribute('data-theme') === 'light' ? '#4c4948' : 'rgba(255,255,255,0.7)'
+
 
 // 访问地图
 function mapChart () {
