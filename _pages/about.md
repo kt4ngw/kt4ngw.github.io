@@ -24,6 +24,7 @@ Any form of collaboration is welcome, so if you are interested in my research, *
 - 10/2023: Our paper about client sampling for federated learning has been submitted to the **IEEE ICC** for review.
 - 09/2023: I obtain a **class A** scholarship for postgraduate of Chongqing University.
 - 01/2023: We achieve the **second prize** of national undergraduate mathematical contest in modeling of China.
+
 # Research Interest
 
 My current research interests focus on efficient federated learning on mobile clients or devices in mobile edge computing networks or wireless networks, including but not limited to the following
