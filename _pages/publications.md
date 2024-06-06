@@ -12,19 +12,15 @@ author_profile: true
 
 {% include base_path %}
 ## *Jurnal*
-{% assign journal_counter = 1 %}
 {% for post in site.publications reversed %}
   {% if post.typology != "Conference" %}
-    {% include archive-single.html counter=journal_counter %}
-    {% assign journal_counter = journal_counter | plus: 1 %}
+    {% include archive-single.html %}
   {% endif %}
 {% endfor %}
 ## *Conference*
-{% assign conference_counter = 1 %}
 {% for post in site.publications reversed %}
   {% if post.typology == "Conference" %}
-    {% include archive-single.html counter=conference_counter %}
-    {% assign conference_counter = conference_counter | plus: 1 %}
+    {% include archive-single.html %}
   {% endif %}
 {% endfor %}
 
