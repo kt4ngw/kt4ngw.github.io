@@ -19,6 +19,7 @@ Any form of collaboration is welcome, so if you are interested in my research, *
 
 # Recent News
 
+- 07/2024: Our paper about cache allocation has been submitted to the **EAI 6GN** for review.
 - 05/2024: Our paper about client selection and bandwidth allocation for federated learning has been submitted to the **IEEE TMC** for review.
 - 01/2024: Our paper about client sampling for federated learning is accepted by **IEEE ICC** 2024.
 - 10/2023: Our paper about client sampling for federated learning has been submitted to the **IEEE ICC** for review.
