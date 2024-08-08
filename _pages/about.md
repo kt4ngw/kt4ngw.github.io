@@ -30,7 +30,8 @@ Any form of collaboration is welcome, so if you are interested in my research, *
 
 My current research interests focus on efficient federated learning on mobile clients or devices in mobile edge computing networks or wireless networks, including but not limited to the following
 
-- Federated Learning (FL) / LLM, Generative Model in FL
+- Federated Learning (FL) , Generative Model in FL
+- Large language models (LLM) in Mobile Edge Computing Networks
 - Edge Intelligence / Cloud-Edge Collaboration
 - Machine Learning / Deep Learning
 
@@ -38,7 +39,7 @@ My current research interests focus on efficient federated learning on mobile cl
  (* denotes equal contribution, # denotes corresponding authors)
 
 ## *Journal*
-[1] **Jian Tang**, Xiuhua Li, Hui Li, Min Xiong, Xiaofei Wang, and Victor C. M. Leung, “Joint Class-Balanced Client Selection and Bandwidth  Allocation for Cost-Efficient Federated Learning in Mobile  Edge Computing Networks”, IEEE Trans. Mob. Comput., 2024. (**CCF-A, Under-review**)
+[1] **Jian Tang**, Xiuhua Li, Hui Li, Min Xiong, Xiaofei Wang, and Victor C. M. Leung, “Joint Class-Balanced Client Selection and Bandwidth  Allocation for Cost-Efficient Federated Learning in Mobile  Edge Computing Networks”, IEEE Trans. Mob. Comput., 2024. (**CCF-A, Under Review**)
 <!-- ![](./images/500x300.png) -->
 
 ## *Conference*
