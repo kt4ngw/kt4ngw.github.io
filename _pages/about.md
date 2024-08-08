@@ -26,11 +26,11 @@ Any form of collaboration is welcome, so if you are interested in my research, *
 - 09/2023: I obtain a **class A** scholarship for postgraduate of Chongqing University.
 - 01/2023: We achieve the **second prize** of national undergraduate mathematical contest in modeling of China.
 
-# Research Interest
+# Current Research Interest
 
 My current research interests focus on efficient federated learning on mobile clients or devices in mobile edge computing networks or wireless networks, including but not limited to the following
 
-- Federated Learning(IEEE ICC-2024, IEEE TMC-under review)
+- Federated Learning (FL) / LLM, Generative Model in FL
 - Edge Intelligence / Cloud-Edge Collaboration
 - Machine Learning / Deep Learning
 
