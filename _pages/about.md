@@ -42,4 +42,3 @@ My current research interests focus on efficient federated learning on mobile cl
 
 ## *Conference*
 [1] **Jian Tang**, Xiuhua Li, Hui Li, Min Xiong, Xiaofei Wang, and Victor C. M. Leung, “Energy-Efficient Client Sampling for Federated Learning in Heterogeneous Mobile Edge Computing Networks”, Proc. IEEE ICC, 2024, Jul. (**CCF-C**)
-
