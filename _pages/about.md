@@ -20,7 +20,6 @@ Any form of collaboration is welcome, so if you are interested in my research, *
 # Recent News
 
 - 07/2024: I was honored to be asked to be a reviewer for IEEE Transactions on Cognitive Communications and Networking **(IEEE TCCN)**.
-
 - 07/2024: Our paper about cache allocation has been submitted to the **EAI 6GN** for review.
 - 05/2024: Our paper about client selection and bandwidth allocation for federated learning has been submitted to the **IEEE TMC** for review.
 - 01/2024: Our paper about client sampling for federated learning is accepted by **IEEE ICC** 2024.
