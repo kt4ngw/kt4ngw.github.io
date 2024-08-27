@@ -36,6 +36,14 @@ My current research interests focus on efficient federated learning on mobile cl
 - Edge Intelligence / Cloud-Edge Collaboration
 - Machine Learning / Deep Learning
 
+
+# Academic Services
+
+- Report
+  - Report (Online) in IEEE ICC 2024, Denver, CO, USA.
+- Service
+  - Reviewer for IEEE TCCN.
+
 # Selected Publications
  (* denotes equal contribution, # denotes corresponding authors)
 
