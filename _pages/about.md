@@ -48,8 +48,12 @@ My current research interests focus on efficient federated learning on mobile cl
  (* denotes equal contribution, # denotes corresponding authors)
 
 ## *Journal*
-[1] **Jian Tang**, Xiuhua Li, Hui Li,  Penghua Li, Xiaofei Wang, and Victor C. M. Leung, “Joint Class-Balanced Client Selection and Bandwidth  Allocation for Cost-Efficient Federated Learning in Mobile  Edge Computing Networks”, IEEE Trans. Mob. Comput., 2024. (**CCF-A, Under Review**)
-<!-- ![](./images/500x300.png) -->
+[1] **Jian Tang**, Xiuhua Li, Hui Li,  Penghua Li, Xiaofei Wang, and Victor C. M. Leung, “Joint Class-Balanced Client Selection and Bandwidth  Allocation for Cost-Efficient Federated Learning in Mobile  Edge Computing Networks”, IEEE Trans. Mob. Comput., 2024. (**CCF-A, Major Revision**)
+
+[1] **Jian Tang**, Xiuhua Li, Hui Li,  Penghua Li, Xiaofei Wang, and Victor C. M. Leung, “Group-based Federated
+Learning with Cost-efficient Sampling Mechanism in Mobile Edge Computing Networks”, IEEE Trans. Serv. Comput., 2024. (**CCF-A, Under Review**)
 
 ## *Conference*
 [1] **Jian Tang**, Xiuhua Li, Hui Li, Min Xiong, Xiaofei Wang, and Victor C. M. Leung, “Energy-Efficient Client Sampling for Federated Learning in Heterogeneous Mobile Edge Computing Networks”, Proc. IEEE ICC, 2024, Jul. (**CCF-C**)
+
+[2] Gang Wang, Guozeng Xu, **Jian Tang**, Jinlong Hao, Xiuhua Li, Penghua Li, “Deep Reinforcement Learning for Cache Allocation of Multi-Cloud Content Providers in Mobile Edge-Cloud Computing Networks”, Proc. EAI 6GN, 2024, Aug.
