@@ -56,4 +56,4 @@ Learning with Cost-efficient Sampling Mechanism in Mobile Edge Computing Network
 ## *Conference*
 [1] **Jian Tang**, Xiuhua Li, Hui Li, Min Xiong, Xiaofei Wang, and Victor C. M. Leung, “Energy-Efficient Client Sampling for Federated Learning in Heterogeneous Mobile Edge Computing Networks”, Proc. IEEE ICC, 2024, Jul. (**CCF-C**)
 
-[2] Gang Wang, Guozeng Xu, **Jian Tang**, Jinlong Hao, Xiuhua Li, Penghua Li, “Deep Reinforcement Learning for Cache Allocation of Multi-Cloud Content Providers in Mobile Edge-Cloud Computing Networks”, Proc. EAI 6GN, 2024, Aug.
+[2] Gang Wang, Jinlong Hao, Guozeng Xu, **Jian Tang**, Xiuhua Li, Penghua Li, “Deep Reinforcement Learning for Cache Allocation of Multi-Cloud Content Providers in Mobile Edge-Cloud Computing Networks”, Proc. EAI 6GN, 2024, Aug.
