@@ -19,6 +19,8 @@ Any form of collaboration is welcome, so if you are interested in my research, *
 
 # Recent News
 
+- 01/2025: Our paper about client selection and bandwidth allocation for federated learning has been accepted by **IEEE TMC**.
+- 10/2024: I obtain a **class A** scholarship for postgraduate of Chongqing University.
 - 08/2024: I was honored to be asked to be a reviewer for IEEE Transactions on Cognitive Communications and Networking **(IEEE TCCN)**.
 - 07/2024: Our paper about cache allocation has been submitted to the **EAI 6GN** for review.
 - 05/2024: Our paper about client selection and bandwidth allocation for federated learning has been submitted to the **IEEE TMC** for review.
@@ -48,10 +50,10 @@ My current research interests focus on efficient federated learning on mobile cl
  (* denotes equal contribution, # denotes corresponding authors)
 
 ## *Journal*
-[1] **Jian Tang**, Xiuhua Li, Hui Li,  Penghua Li, Xiaofei Wang, and Victor C. M. Leung, “Joint Class-Balanced Client Selection and Bandwidth  Allocation for Cost-Efficient Federated Learning in Mobile  Edge Computing Networks”, IEEE Trans. Mob. Comput., 2024. (**CCF-A, Major Revision**)
+[1] **Jian Tang**, Xiuhua Li, Hui Li,  Penghua Li, Xiaofei Wang, and Victor C. M. Leung, “Joint Class-Balanced Client Selection and Bandwidth  Allocation for Cost-Efficient Federated Learning in Mobile  Edge Computing Networks”, IEEE Trans. Mob. Comput., 2024. (**CCF-A, Accepted**)
 
 [1] **Jian Tang**, Xiuhua Li, Hui Li,  Penghua Li, Xiaofei Wang, and Victor C. M. Leung, “Group-based Federated
-Learning with Cost-efficient Sampling Mechanism in Mobile Edge Computing Networks”, IEEE Trans. Serv. Comput., 2024. (**CCF-A, Under Review**)
+Learning with Cost-efficient Sampling Mechanism in Mobile Edge Computing Networks”, IEEE Trans. Serv. Comput., 2025. (**CCF-A, Under Review**)
 
 ## *Conference*
 [1] **Jian Tang**, Xiuhua Li, Hui Li, Min Xiong, Xiaofei Wang, and Victor C. M. Leung, “Energy-Efficient Client Sampling for Federated Learning in Heterogeneous Mobile Edge Computing Networks”, Proc. IEEE ICC, 2024, Jul. (**CCF-C**)
