@@ -18,7 +18,7 @@ Prior to Chongqing University, I received my B. S. degree in engineering in June
 Any form of collaboration is welcome, so if you are interested in my research, **please email me**.
 
 # Recent News
-
+- 06/2025: I got my master's degree!!! I'm so delighted!
 - 02/2025: I was honored to be asked to be a reviewer for International ACM SIGIR Conference on Research and Development in Information Retrieval **(SIGIR)**.
 - 02/2025: Our paper about client sampling for federated learning has been submitted to the **IEEE TMC** for review.
 - 01/2025: Our paper about client selection and bandwidth allocation for federated learning has been accepted by **IEEE TMC**.
