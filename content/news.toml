@@ -22,6 +22,3 @@ content = "I was honored to be asked to be a reviewer for IEEE Transactions on C
 date = "2024-01"
 content = "Our paper about client sampling for federated learning is accepted by IEEE ICC 2024."
 
-[[news]]
-date = "2023-10"
-content = "Our paper about client sampling for federated learning has been submitted to the IEEE ICC for review."
