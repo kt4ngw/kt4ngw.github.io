@@ -24,7 +24,7 @@ export default function News({ items, title = 'News' }: NewsProps) {
             {items
             .slice()
             .sort((a, b) => b.date.localeCompare(a.date)) // 2025-09 会排最前
-            .slice(0, 5)                                  // 取最新 5 条
+            .slice(0, 10)                                  // 取最新 5 条
             .map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
                         <span className="text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">{item.date}</span>
