@@ -1,0 +1,43 @@
+[site]
+title = "Jian Tang"
+description = "PhD student at the University of Example."
+favicon = "/favicon.svg"
+last_updated = "November 18, 2025"
+
+[author]
+name = "Jian Tang"
+title = "Master Student"
+institution = "Chongqing University"
+avatar = "/bio.jpg"
+
+[social]
+# Contact information (leave blank or delete to hide)
+
+email = "kt4ngw@gmail.com"
+location = "Chongqing, China"
+location_url = "https://maps.google.com"
+location_details = [
+  "Chongqing University, Chongqing, China"
+]
+google_scholar = "https://scholar.google.com/citations?user=9eH0NZgAAAAJ&hl=en"
+github = "https://github.com/kt4ngw"
+
+
+[features]
+# Show a like button on the about page
+enable_likes = true
+
+# Display all subpages on a single page
+enable_one_page_mode = false
+
+[[navigation]]
+title = "About"
+type = "page"
+target = "about"
+href = "/"
+
+[[navigation]]
+title = "Publications"
+type = "page"
+target = "publications"
+href = "/publications"
