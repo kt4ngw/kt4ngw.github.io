@@ -21,7 +21,11 @@ export default function News({ items, title = 'News' }: NewsProps) {
         >
             <h2 className="text-2xl font-serif font-bold text-primary mb-4">{title}</h2>
             <div className="space-y-3">
-                {items.slice(-5).map((item, index) => (
+            {items
+            .slice()
+            .sort((a, b) => b.date.localeCompare(a.date)) // 2025-09 会排最前
+            .slice(0, 5)                                  // 取最新 5 条
+            .map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
                         <span className="text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">{item.date}</span>
                         <p className="text-sm text-neutral-700">{item.content}</p>
