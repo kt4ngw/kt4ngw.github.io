@@ -28,7 +28,7 @@ github = "https://github.com/kt4ngw"
 enable_likes = true
 
 # Display all subpages on a single page
-enable_one_page_mode = true 
+enable_one_page_mode = false
 
 [[navigation]]
 title = "About"
