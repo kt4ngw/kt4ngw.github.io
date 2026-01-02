@@ -1,5 +1,5 @@
 [site]
-title = "Jian Tang"
+title = "Jian Tang's HomePage"
 description = "PhD student at the University of Example."
 favicon = "/favicon.svg"
 last_updated = "November 18, 2025"
@@ -28,7 +28,7 @@ github = "https://github.com/kt4ngw"
 enable_likes = true
 
 # Display all subpages on a single page
-enable_one_page_mode = false
+enable_one_page_mode = true 
 
 [[navigation]]
 title = "About"
