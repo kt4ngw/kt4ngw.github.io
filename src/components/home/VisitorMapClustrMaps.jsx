@@ -16,7 +16,7 @@ export default function VisitorMapClustrMaps() {
 
     // 关键：把这里换成你拿到的“完整 src”
     // 建议用 https 开头（GitHub Pages 是 https）
-    s.src = "//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=n&d=uf-j7wo6aXXZgccQAiYJfeOetHKxAO62aa3n2ehO2nU&cmn=ff9600";
+    s.src = "//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=uf-j7wo6aXXZgccQAiYJfeOetHKxAO62aa3n2ehO2nU&cmn=ff7700";
 
     s.onload = () => console.log("[clustrmaps] loaded");
     s.onerror = () => console.error("[clustrmaps] failed to load:", s.src);
