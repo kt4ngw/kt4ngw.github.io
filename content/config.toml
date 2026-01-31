@@ -6,18 +6,18 @@ last_updated = "November 18, 2025"
 
 [author]
 name = "Jian Tang"
-title = "Master Student"
-institution = "Chongqing University"
+title = "Incoming Ph.D. student"
+institution = "RMIT University"
 avatar = "/bio.jpg"
 
 [social]
 # Contact information (leave blank or delete to hide)
 
 email = "kt4ngw@gmail.com"
-location = "Chongqing, China"
+location = "Melbourne, Australia"
 location_url = "https://maps.google.com"
 location_details = [
-  "Chongqing University, Chongqing, China"
+  "City campus, 124 La Trobe St, Melbourne VIC, Australia"
 ]
 google_scholar = "https://scholar.google.com/citations?user=9eH0NZgAAAAJ&hl=en"
 github = "https://github.com/kt4ngw"
