@@ -7,21 +7,17 @@ export default function CVPage() {
             <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-200/30 blur-2xl" />
             <div className="absolute -bottom-12 -left-10 h-36 w-36 rounded-full bg-slate-200/40 blur-2xl" />
 
-            <div className="relative flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-              <div className="max-w-2xl">
-                <span className="inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
-                  Academic Profile
-                </span>
+              <div className="relative flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                <div className="md:max-w-[36%] lg:max-w-[34%]">
+                  <h1 className="mt-1 text-[22px] font-semibold tracking-tight text-slate-900 sm:text-[26px] lg:text-[32px]">
+                    Curriculum Vitae
+                  </h1>
 
-                <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-                  Curriculum Vitae
-                </h1>
-
-                <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
-                  A complete record of education, research, publications,
-                  honors, teaching, and professional service.
-                </p>
-              </div>
+                  <p className="mt-2 text-[12px] leading-5 text-slate-600 sm:text-[13px]">
+                    A complete record of education, research, publications, honors,
+                    teaching, and professional service.
+                  </p>
+                </div>
 
               <div className="flex flex-wrap gap-3">
                 <a
