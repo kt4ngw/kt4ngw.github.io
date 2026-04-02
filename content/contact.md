@@ -1,2 +1,2 @@
 - [Email](mailto:kt4ngw@gmail.com). Email responses may experience slight delays at this time. To ensure your email is delivered successfully, please use your institutional email address. 
-- WeChat, etc. For better record-keeping, academic communications should be conducted via email; other social platforms are generally not considered formal channels.
+- WeChat, etc. We could potentially build a friendship, but please reach out via email first. Note: For better record-keeping, academic communications should be conducted via email; other social platforms are generally not considered formal channels.
