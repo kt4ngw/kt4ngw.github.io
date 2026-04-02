@@ -26,15 +26,3 @@ type = "publications"
 title = "Selected Publications"
 filter = "selected"
 limit = 3
-
-[[sections]]
-id = "services"
-type = "markdown"
-title = "Services"
-source = "services.md"
-
-[[sections]]
-id = "contact"
-type = "markdown"
-title = "Contact"
-source = "contact.md"
