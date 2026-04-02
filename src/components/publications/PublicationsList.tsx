@@ -56,6 +56,22 @@ export default function PublicationsList({ config, publications, embedded = fals
         });
     }, [publications, searchQuery, selectedYear, selectedType]);
 
+    // // --- 新增：处理 BibTeX 的函数 ---
+    // const getCleanBibtex = (bibtexString: string | undefined) => {
+    //     if (!bibtexString) return '';
+        
+    //     return bibtexString
+    //         // 使用正则删除以 code, url, doi, selected, preview 开头的行
+    //         // ^\s* 匹配行首空格
+    //         // (code|url|doi|selected|preview) 匹配你要删除的字段名
+    //         // .* 匹配该行剩余内容
+    //         .replace(/^\s*(code|url|doi|selected|preview)\s*=.*$/gm, '')
+    //         // 删除处理后产生的空行 (可选，为了排版更紧凑)
+    //         .replace(/^ \s*[\r\n]/gm, '');
+    // };
+    // // --------------------------------
+
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -1,7 +1,7 @@
 [site]
 title = "Jian Tang's HomePage"
 description = "PhD student at the University of Example."
-favicon = "/favicon.svg"
+favicon = "/icon_rmit.png"
 last_updated = "November 18, 2025"
 
 [author]
