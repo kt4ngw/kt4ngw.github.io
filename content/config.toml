@@ -1,8 +1,8 @@
 [site]
 title = "Jian Tang's HomePage"
 description = "PhD student at the University of Example."
-favicon = "/icon_rmit.png"
-last_updated = "November 18, 2025"
+favicon = "/icon_rmit.svg"
+last_updated = "April 3, 2026"
 
 [author]
 name = "Jian Tang"
@@ -44,16 +44,16 @@ href = "/publications"
 
 
 [[navigation]]
-title = "Awards"
-type = "page"
-target = "awards"
-href = "/awards"
-
-[[navigation]]
 title = "Services"
 type = "page"
 target = "services"
 href = "/services"
+
+[[navigation]]
+title = "Awards"
+type = "page"
+target = "awards"
+href = "/awards"
 
 [[navigation]]
 title = "CV"
