@@ -133,7 +133,7 @@ export default function Profile({ author, social, features, researchInterests }:
                     {author.institution}
                 </p>
                 <p className="text-neutral-600 mb-2">
-                    {author.email.replace('@', ' (at) ')}
+                    {author.email}
                 </p>
             </div>
 
@@ -270,7 +270,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                                         </div>
                                                     )}
                                                 </div>
-                                                <p className="break-words">{social.email?.replace('@', ' (at) ')}</p>
+                                                {/* <p className="break-words">{social.email?.replace('@', ' (at) ')}</p> */}
                                                 <div className="mt-2">
                                                     <a
                                                         href={link.href}
