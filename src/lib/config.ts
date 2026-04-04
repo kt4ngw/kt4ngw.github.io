@@ -14,9 +14,10 @@ export interface SiteConfig {
         title: string;
         institution: string;
         avatar: string;
+        email: string;
     };
     social: {
-        email?: string;
+        // email?: string;
         location?: string;
         location_url?: string;
         location_details?: string[];

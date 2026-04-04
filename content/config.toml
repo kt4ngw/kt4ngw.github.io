@@ -7,21 +7,20 @@ last_updated = "April 3, 2026"
 [author]
 name = "Jian Tang"
 title = "Ph.D. student"
-institution = "RMIT University"
+institution = "RMIT University, Melbourne, Australia"
+email = "kt4ngw@gmail.com"
 avatar = "/bio.jpg"
 
 [social]
 # Contact information (leave blank or delete to hide)
 
-email = "kt4ngw@gmail.com"
-location = "Melbourne, Australia"
-location_url = "https://maps.google.com"
-location_details = [
-  "City campus, 124 La Trobe St, Melbourne VIC, Australia"
-]
+# email = "kt4ngw@gmail.com"
+# location = "Melbourne, Australia"
+# location_url = "https://maps.google.com"
+# location_details = ["City campus, 124 La Trobe St, Melbourne VIC, Australia"]
 google_scholar = "https://scholar.google.com/citations?user=9eH0NZgAAAAJ&hl=en"
 github = "https://github.com/kt4ngw"
-
+linkedin = "https://www.linkedin.com/in/kt4ngw/"
 
 [features]
 # Show a like button on the about page
