@@ -133,7 +133,7 @@ export default function Profile({ author, social, features, researchInterests }:
                     {author.institution}
                 </p>
                 <p className="text-neutral-600 mb-2">
-                    {author.email.replace('@', ' (at) ')}
+                    {author.email.replace('@', '[at]')}
                 </p>
             </div>
 
