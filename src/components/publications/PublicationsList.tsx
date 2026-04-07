@@ -21,6 +21,7 @@ interface PublicationsListProps {
     embedded?: boolean;
 }
 
+
 export default function PublicationsList({ config, publications, embedded = false }: PublicationsListProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedYear, setSelectedYear] = useState<number | 'all'>('all');
@@ -28,6 +29,10 @@ export default function PublicationsList({ config, publications, embedded = fals
     const [showFilters, setShowFilters] = useState(false);
     const [expandedBibtexId, setExpandedBibtexId] = useState<string | null>(null);
     const [expandedAbstractId, setExpandedAbstractId] = useState<string | null>(null);
+
+
+    // 2026 04 07
+    const [expandedLinkId, setExpandedLinkId] = useState<string | null>(null);
 
     // Extract unique years and types for filters
     const years = useMemo(() => {
@@ -233,7 +238,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                     <h3 className={`${embedded ? "text-lg" : "text-xl"} font-semibold text-primary mb-2 leading-tight`}>
                                     {pub.url ? (
                                         <a
-                                        href={pub.url}
+                                        // href={pub.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="hover:text-accent hover:underline underline-offset-4 transition-colors"
@@ -244,7 +249,6 @@ export default function PublicationsList({ config, publications, embedded = fals
                                         pub.title
                                     )}
                                     </h3>
-
                                     <p className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-400 mb-2`}>
                                         {pub.authors.map((author, idx) => (
                                             <span key={idx}>
@@ -278,6 +282,19 @@ export default function PublicationsList({ config, publications, embedded = fals
                                             >
                                                 DOI
                                             </a>
+                                        )}
+                                        {pub.url && (
+                                            <button
+                                                onClick={() => setExpandedLinkId(expandedLinkId === pub.id ? null : pub.id)}
+                                                className={cn(
+                                                    "inline-flex items-center px-3 py-1 rounded-md text-xs font-medium transition-colors",
+                                                    expandedLinkId === pub.id
+                                                        ? "bg-accent text-white"
+                                                        : "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white"
+                                                )}
+                                            >
+                                                Paper Link
+                                            </button>
                                         )}
                                         {pub.code && (
                                             <a
@@ -357,6 +374,27 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                     >
                                                         <ClipboardDocumentIcon className="h-4 w-4" />
                                                     </button>
+                                                </div>
+                                            </motion.div>
+                                        ) : null}
+
+                                        {expandedLinkId === pub.id && pub.url ? (
+                                            <motion.div
+                                                key="paper-link"
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                className="overflow-hidden mt-4"
+                                            >
+                                                <div className="inline-flex items-center w-fit bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
+                                                    <a
+                                                        href={pub.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-accent text-white hover:opacity-90 transition-opacity"
+                                                    >
+                                                        Link
+                                                    </a>
                                                 </div>
                                             </motion.div>
                                         ) : null}
