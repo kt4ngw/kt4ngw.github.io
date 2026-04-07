@@ -284,17 +284,14 @@ export default function PublicationsList({ config, publications, embedded = fals
                                             </a>
                                         )}
                                         {pub.url && (
-                                            <button
-                                                onClick={() => setExpandedLinkId(expandedLinkId === pub.id ? null : pub.id)}
-                                                className={cn(
-                                                    "inline-flex items-center px-3 py-1 rounded-md text-xs font-medium transition-colors",
-                                                    expandedLinkId === pub.id
-                                                        ? "bg-accent text-white"
-                                                        : "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white"
-                                                )}
+                                            <a
+                                                href={pub.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
                                             >
                                                 Paper Link
-                                            </button>
+                                            </a>
                                         )}
                                         {pub.code && (
                                             <a
@@ -303,7 +300,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
                                             >
-                                                Code
+                                                Code Link
                                             </a>
                                         )}
                                         {pub.abstract && (
@@ -374,27 +371,6 @@ export default function PublicationsList({ config, publications, embedded = fals
                                                     >
                                                         <ClipboardDocumentIcon className="h-4 w-4" />
                                                     </button>
-                                                </div>
-                                            </motion.div>
-                                        ) : null}
-
-                                        {expandedLinkId === pub.id && pub.url ? (
-                                            <motion.div
-                                                key="paper-link"
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                className="overflow-hidden mt-4"
-                                            >
-                                                <div className="inline-flex items-center w-fit bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-                                                    <a
-                                                        href={pub.url}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-accent text-white hover:opacity-90 transition-opacity"
-                                                    >
-                                                        Link
-                                                    </a>
                                                 </div>
                                             </motion.div>
                                         ) : null}
