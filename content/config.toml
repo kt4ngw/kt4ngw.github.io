@@ -56,7 +56,7 @@ href = "/awards"
 
 [[navigation]]
 title = "CV"
-type = "page"
+type = "cv"
 target = "cv"
 href = "/cv"
 
