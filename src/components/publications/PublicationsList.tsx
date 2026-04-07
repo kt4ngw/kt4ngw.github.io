@@ -31,8 +31,6 @@ export default function PublicationsList({ config, publications, embedded = fals
     const [expandedAbstractId, setExpandedAbstractId] = useState<string | null>(null);
 
 
-    // 2026 04 07
-    const [expandedLinkId, setExpandedLinkId] = useState<string | null>(null);
 
     // Extract unique years and types for filters
     const years = useMemo(() => {
