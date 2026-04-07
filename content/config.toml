@@ -59,9 +59,3 @@ title = "CV"
 type = "cv"
 target = "cv"
 href = "/cv"
-
-[[navigation]]
-title = "Contact"
-type = "page"
-target = "contact"
-href = "/contact"

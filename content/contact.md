@@ -1,2 +1,3 @@
-- [Email](mailto:kt4ngw@gmail.com). Email responses may experience slight delays at this time. To ensure your email is delivered successfully, please use your institutional email address. 
-- WeChat, etc. We could potentially build a friendship, but please reach out via email first. Note: For better record-keeping, academic communications should be conducted via email; other social platforms are generally not considered formal channels.
+- [Email](mailto:kt4ngw@gmail.com). Please feel free to reach out by email. Responses may be slightly delayed at times. To help ensure your message is received and processed smoothly, I would appreciate it if you could use your institutional email address when appropriate.
+- Other platforms. WeChat and other social platforms may be suitable for informal communication. However, contact me by email first. For better record-keeping, academic communications should be conducted via email; other social platforms are generally not considered formal channels.
+- Beyond research. Outside academia, I enjoy photography, making my own coffee, and occasionally hiking. I am always happy to connect over research or shared interests.
