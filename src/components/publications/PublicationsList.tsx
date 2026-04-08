@@ -10,8 +10,6 @@ import {
     BookOpenIcon,
     ClipboardDocumentIcon,
     DocumentTextIcon,
-    AcademicCapIcon, // 20250408: Add AcademicCapIcon import
-    ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline';
 import { Publication } from '@/types/publication';
 import { PublicationPageConfig } from '@/types/page';
