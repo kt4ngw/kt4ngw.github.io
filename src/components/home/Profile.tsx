@@ -53,19 +53,19 @@ export default function Profile({ author, social, features, researchInterests }:
         }
     }, [features.enable_likes]);
 
-    const handleLike = () => {
-        const newLikedState = !hasLiked;
-        setHasLiked(newLikedState);
+    // const handleLike = () => {
+    //     const newLikedState = !hasLiked;
+    //     setHasLiked(newLikedState);
 
-        if (newLikedState) {
-            localStorage.setItem('jiale-website-user-liked', 'true');
-            setShowThanks(true);
-            setTimeout(() => setShowThanks(false), 2000);
-        } else {
-            localStorage.removeItem('jiale-website-user-liked');
-            setShowThanks(false);
-        }
-    };
+    //     if (newLikedState) {
+    //         localStorage.setItem('jiale-website-user-liked', 'true');
+    //         setShowThanks(true);
+    //         setTimeout(() => setShowThanks(false), 2000);
+    //     } else {
+    //         localStorage.removeItem('jiale-website-user-liked');
+    //         setShowThanks(false);
+    //     }
+    // };
 
     const socialLinks = [
         ...(social.email ? [{
