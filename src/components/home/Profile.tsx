@@ -332,7 +332,7 @@ export default function Profile({ author, social, features, researchInterests }:
                 <div className="flex justify-center">
                     <div className="relative">
                         <motion.button
-                            onClick={handleLike}
+                            // onClick={handleLike}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${hasLiked

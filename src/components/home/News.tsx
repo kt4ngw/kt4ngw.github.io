@@ -21,7 +21,7 @@ export default function News({ items, title = 'News' }: NewsProps) {
         >
             <h2 className="text-2xl font-serif font-bold text-primary mb-4">{title}</h2>
 
-            <div className="max-overflow-y-auto rounded-lg border border-neutral-200 p-4 pr-2 space-y-3">
+            <div className="max-h-60 overflow-y-auto rounded-lg border border-neutral-200 p-4 pr-2 space-y-3">
                 {items
                     .slice()
                     .sort((a, b) => b.date.localeCompare(a.date))
