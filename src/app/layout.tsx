@@ -4,6 +4,8 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { getConfig } from "@/lib/config";
+import { getLastUpdated } from "@/lib/lastUpdated"; // 20250408: Add last updated import
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = getConfig();
@@ -36,7 +38,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const config = getConfig();
-
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
@@ -107,7 +108,7 @@ export default function RootLayout({
           <main className="min-h-screen pt-16 lg:pt-20">
             {children}
           </main>
-          <Footer lastUpdated={config.site.last_updated} />
+          <Footer lastUpdated={getLastUpdated()} />
         </ThemeProvider>
       </body>
     </html>
