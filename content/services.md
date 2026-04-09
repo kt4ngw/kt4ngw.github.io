@@ -1,5 +1,5 @@
 **Journal Reviewers**
-- IEEE Transactions on Mobile Computing (TMC)
-- IEEE Transactions on Dependable and Secure Computing (TDSC)
+- IEEE Transactions on Mobile Computing (TMC), 2026
+- IEEE Transactions on Dependable and Secure Computing (TDSC), 2026
 
 **Conference Reviewers**
