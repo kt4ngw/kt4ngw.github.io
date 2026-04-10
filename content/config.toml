@@ -1,10 +1,10 @@
 [site]
-title = "Jian (Julian) Tang's HomePage"
+title = "Jian Tang's HomePage"
 description = "PhD student at the University of Example."
 favicon = "/rmit.svg"
 
 [author]
-name = "Jian (Julian) Tang"
+name = "Jian Tang"
 title = "Ph.D. student"
 institution = "RMIT University, Melbourne, Australia"
 email = "kt4ngw@gmail.com"
