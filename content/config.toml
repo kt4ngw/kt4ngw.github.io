@@ -1,10 +1,10 @@
 [site]
-title = "Jian Tang's HomePage"
+title = "Jian (Julian) Tang's HomePage"
 description = "PhD student at the University of Example."
 favicon = "/rmit.svg"
 
 [author]
-name = "Jian Tang"
+name = "Jian (Julian) Tang"
 title = "Ph.D. student"
 institution = "RMIT University, Melbourne, Australia"
 email = "kt4ngw@gmail.com"
@@ -53,8 +53,3 @@ type = "page"
 target = "awards"
 href = "/awards"
 
-[[navigation]]
-title = "CV"
-type = "cv"
-target = "cv"
-href = "/cv"
