@@ -20,7 +20,7 @@ interface PublicationsListProps {
     publications: Publication[];
     embedded?: boolean;
 }
-
+import Link from 'next/link';
 import { venueMap } from '@/lib/venueMap';
 
 export default function PublicationsList({ config, publications, embedded = false }: PublicationsListProps) {
@@ -83,13 +83,13 @@ export default function PublicationsList({ config, publications, embedded = fals
                 </div>
 
                 <div className="flex flex-wrap gap-3 self-start">
-                <a
-                    href="/publications/simple"
-                    className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
-                    aria-label="Open compact publications page"
+                <Link
+                href="/publications/simple"
+                className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
+                aria-label="Open compact publications page"
                 >
-                    Compact View
-                </a>
+                Compact View
+                </Link>
 
                 {config.scholarUrl && (
                     <a
