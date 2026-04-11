@@ -1,0 +1,4 @@
+type = "text"
+title = "Curriculum Vitae"
+description = "You can access the latest version of my curriculum vitae using the link below."
+source = "cv.md"

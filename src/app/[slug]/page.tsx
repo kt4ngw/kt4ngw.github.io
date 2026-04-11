@@ -17,7 +17,7 @@ import { Metadata } from 'next';
 export function generateStaticParams() {
     const config = getConfig();
     return config.navigation
-        .filter(nav => nav.type === 'page' && nav.target !== 'about' && nav.target !== 'cv') // 'about' is handled by root page
+        .filter(nav => nav.type === 'page' && nav.target !== 'about') // 'about' is handled by root page  // && nav.target !== 'cv'
         .map(nav => ({
             slug: nav.target,
         }));
