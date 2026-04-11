@@ -10,6 +10,7 @@ import {
     BookOpenIcon,
     ClipboardDocumentIcon,
     DocumentTextIcon,
+    AcademicCapIcon,
 } from '@heroicons/react/24/outline';
 import { Publication } from '@/types/publication';
 import { PublicationPageConfig } from '@/types/page';
@@ -22,6 +23,7 @@ interface PublicationsListProps {
 }
 import Link from 'next/link';
 import { venueMap } from '@/lib/venueMap';
+
 
 export default function PublicationsList({ config, publications, embedded = false }: PublicationsListProps) {
     const [searchQuery, setSearchQuery] = useState('');
@@ -78,30 +80,32 @@ export default function PublicationsList({ config, publications, embedded = fals
                     )}
 
                     <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-2">
-                        † These authors contributed equally to this work. * Corresponding author(s).
+                        † Equal contribution. * Corresponding author(s).
                     </p>
                 </div>
 
-                <div className="flex flex-wrap gap-3 self-start">
-                <Link
-                href="/publications/simple"
-                className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
-                aria-label="Open compact publications page"
-                >
-                Compact View
-                </Link>
-
-                {config.scholarUrl && (
-                    <a
-                    href={config.scholarUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
-                    aria-label="Open Google Scholar profile"
+                <div className="flex items-center gap-4 self-start whitespace-nowrap">
+                    <Link
+                        href="/publications/simple"
+                        className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
+                        aria-label="Open compact publications page"
                     >
-                    Google Scholar
-                    </a>
-                )}
+                        <DocumentTextIcon className="h-5 w-5 mr-2" />
+                        Compact-View
+                    </Link>
+
+                    {config.scholarUrl && (
+                        <a
+                            href={config.scholarUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
+                            aria-label="Open Google Scholar profile"
+                        >
+                            <AcademicCapIcon className="h-5 w-5 mr-2" />
+                            Google Scholar
+                        </a>
+                    )}
                 </div>
             </div>
 

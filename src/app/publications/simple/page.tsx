@@ -2,6 +2,15 @@ import Link from 'next/link';
 import { getBibtexContent } from '@/lib/content';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import { venueMap } from '@/lib/venueMap';
+import {
+    MagnifyingGlassIcon,
+    FunnelIcon,
+    CalendarIcon,
+    BookOpenIcon,
+    ClipboardDocumentIcon,
+    DocumentTextIcon,
+    AcademicCapIcon,
+} from '@heroicons/react/24/outline';
 
 function renderAuthors(
   authors: Array<{
@@ -95,7 +104,8 @@ export default function SimplePublicationsPage() {
             href="/publications"
             className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
           >
-            Full View
+            <DocumentTextIcon className="h-5 w-5" />
+            Full-View
           </Link>
         </div>
       </div>
@@ -111,7 +121,7 @@ export default function SimplePublicationsPage() {
               key={pub.id}
               className="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300"
             >
-              <span className="font-medium text-primary">[{index + 1}] </span>
+              <span className="font-medium text-primary">[{journalPubs.length - index}] </span>
               {renderAuthors(pub.authors)}
               <span>, &quot;{pub.title},&quot; </span>
               <span className="italic">{formatJournalVenue(pub)}</span>
@@ -132,7 +142,7 @@ export default function SimplePublicationsPage() {
               key={pub.id}
               className="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300"
             >
-              <span className="font-medium text-primary">[{index + 1}] </span>
+              <span className="font-medium text-primary">[{journalPubs.length - index}] </span>
               {renderAuthors(pub.authors)}
               <span>, &quot;{pub.title},&quot; </span>
               <span className="italic">{formatConferenceVenue(pub)}</span>

@@ -1,10 +1,7 @@
-type = "card"
+type = "text"
 title = "Awards"
 description = "Honors and awards I have received."
+source = "awards.md"
 
-[[items]]
-title = "RMIT Research Stipend Scholarship (RRSS)"
-subtitle = "RMIT University"
-date = "2025"
-content = "Full scholarship"
+
 

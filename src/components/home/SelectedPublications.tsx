@@ -19,7 +19,7 @@ export default function SelectedPublications({ publications, title = 'Selected P
             transition={{ duration: 0.6, delay: 0.4 }}
         >
             <div className="flex items-center justify-between mb-3">
-                <h2 className="text-xl font-serif font-bold text-primary">{title}</h2>
+                <h2 className="text-2xl font-serif font-bold text-primary">{title}</h2>
                 <Link
                     href={enableOnePageMode ? "/#publications" : "/publications"}
                     prefetch={true}
@@ -40,13 +40,13 @@ export default function SelectedPublications({ publications, title = 'Selected P
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 * index }}
-                            className="bg-neutral-50 dark:bg-neutral-800 p-3 rounded-lg shadow-sm border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] hover:shadow-lg transition-all duration-200 hover:scale-[1.01]"
+                            className="bg-neutral-50 dark:bg-neutral-800 px-3 py-2 rounded-lg shadow-sm border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] transition-all duration-200"
                         >
                             <h3 className="text-sm font-medium text-primary mb-1 leading-snug">
                                 {pub.title}
                             </h3>
 
-                            <p className="text-xs text-neutral-600 dark:text-neutral-500 mb-1 leading-relaxed">
+                            <p className="text-xs text-neutral-600 dark:text-neutral-500 mb-0.5 leading-relaxed">
                                 {pub.authors.map((author, idx) => (
                                     <span key={idx}>
                                         <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
@@ -63,12 +63,12 @@ export default function SelectedPublications({ publications, title = 'Selected P
                                 ))}
                             </p>
 
-                            <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-2">
+                            <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-1">
                                 <span className="italic">{displayVenue}</span> · {pub.year}
                             </p>
 
                             {pub.description && (
-                                <p className="text-xs text-neutral-500 dark:text-neutral-500 line-clamp-2 leading-relaxed">
+                                <p className="text-xs text-neutral-500 dark:text-neutral-500 line-clamp-1 leading-relaxed">
                                     {pub.description}
                                 </p>
                             )}
