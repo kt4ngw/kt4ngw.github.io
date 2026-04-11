@@ -3,13 +3,7 @@ import { getBibtexContent } from '@/lib/content';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import { venueMap } from '@/lib/venueMap';
 import {
-    MagnifyingGlassIcon,
-    FunnelIcon,
-    CalendarIcon,
-    BookOpenIcon,
-    ClipboardDocumentIcon,
     DocumentTextIcon,
-    AcademicCapIcon,
 } from '@heroicons/react/24/outline';
 
 function renderAuthors(
