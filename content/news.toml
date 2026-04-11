@@ -1,24 +1,23 @@
 
 [[news]]
 date = "2026-04"
-content = "I have been invited to serve as a reviewer for IEEE TMC. I would like to thank the Associate Editor. I greatly admire this journal."
+content = "Honored to be invited to serve as a reviewer for <span class='text-red-600 dark:text-red-400 font-semibold'>IEEE TMC</span>. I like this journal very much and am excited to contribute to the community."
 
 [[news]]
 date = "2025-11"
-content = "I have received an offer of admission to the PhD program and RMIT Research Stipend Scholarship from RMIT University. Many thanks to Dr. Xia."
+content = "Thrilled to receive an offer of admission to the PhD program and the RMIT Research Stipend Scholarship from RMIT University. Many thanks to <span class='text-primary font-medium'>Dr. Xia</span> for the support."
 
 [[news]]
 date = "2025-09"
-content = "Our paper about client sampling for federated learning has been accepted by IEEE TMC."
-
+content = "Our paper about client sampling for federated learning has been accepted by <span class='text-red-600 dark:text-red-400 font-semibold'>IEEE TMC</span>."
 [[news]]
 date = "2025-06"
-content = "I received my master’s degree from Chongqing University."
+content = "Happy to have received my master’s degree from Chongqing University."
 
 [[news]]
 date = "2025-01"
-content = "Our paper about client selection and bandwidth allocation for federated learning has been accepted by IEEE TMC."
+content = "Our paper about client selection and bandwidth allocation for federated learning has been accepted by <span class='text-red-600 dark:text-red-400 font-semibold'>IEEE TMC</span>."
 
 [[news]]
 date = "2024-01"
-content = "Our paper about client sampling for federated learning is accepted by IEEE ICC 2024."
+content = "Our paper about client sampling for federated learning is accepted by <span class='text-red-600 dark:text-red-400 font-semibold'>IEEE ICC 2024</span>."
