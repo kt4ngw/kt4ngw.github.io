@@ -1,3 +1,3 @@
-- [Email](mailto:kt4ngw@gmail.com). Please feel free to contact me by email. Replies may occasionally take a little longer, and I sincerely appreciate your patience. When appropriate, I would be grateful if you could use your institutional email address, as this helps ensure that your message is received and handled smoothly.
-- Other platforms. I would be very happy if we could become friends over time. For initial contact, however, I would greatly appreciate it if you could reach out by email first. This helps ensure that your message is received properly and makes it easier for me to keep track of our communication.
+- [Email](mailto:kt4ngw@gmail.com). Please feel free to contact me by email.
+- Other platforms. I would be very happy if we could become friends over time. For initial contact, however, I would greatly appreciate it if you could reach out by email first.
 - Beyond research. Outside academia, I enjoy photography, making coffee, and occasionally hiking. I am always happy to connect over research or shared interests.
