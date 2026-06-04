@@ -50,7 +50,7 @@ href = "/services"
 [[navigation]]
 title = "Awards"
 type = "page"
-target = "awards"
+target = "awards"   
 href = "/awards"
 
 [[navigation]]
