@@ -16,7 +16,7 @@ export default function VisitorMapClustrMaps() {
 
     // 关键：把这里换成你拿到的“完整 src”
     // 建议用 https 开头（GitHub Pages 是 https）
-    s.src = "https://mapmyvisitors.com/map.js?cl=ffffff&w=300&t=t&d=o0PzVxa4-2wBm3x-Oo59AOvJDjnWGQxdsZVOiehj52w&co=2d78ad&ct=ffffff&cmo=3acc3a&cmn=ff5353";
+    s.src = "https://mapmyvisitors.com/map.js?cl=ffffff&w=300&t=tt&d=o0PzVxa4-2wBm3x-Oo59AOvJDjnWGQxdsZVOiehj52w";
 
     s.onload = () => console.log("[mapmyvisitors] loaded");
     s.onerror = () => console.error("[mapmyvisitors] failed to load:", s.src);
