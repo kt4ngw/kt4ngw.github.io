@@ -322,7 +322,7 @@ export default function Profile({ author, social, features, researchInterests }:
                 <p className="text-xs text-neutral-600 dark:text-neutral-500 mb-3 text-center">
                     Thanks for visiting! 🌍
                 </p>
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center w-full overflow-hidden">
                 <VisitorMapClustrMaps />
                 </div>
             </div>

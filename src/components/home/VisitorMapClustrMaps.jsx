@@ -29,15 +29,15 @@ export default function VisitorMapClustrMaps() {
   }, []);
 
   return (
-      <div 
-        ref={ref} 
-        /* 关键点：添加 pointer-events-none 禁止点击 */
-        className="w-[320px] max-w-full min-h-[180px] pointer-events-none select-none" 
-        /* 如果你没用 Tailwind，可以用下面这一行 style */
-        // style={{ pointerEvents: 'none', userSelect: 'none' }}
+    <div className="w-full max-w-full overflow-hidden pointer-events-none select-none">
+      <div
+        ref={ref}
+        className="w-full max-w-full min-h-[160px] overflow-hidden [&_*]:max-w-full"
       />
-    );
+    </div>
+  );
 }
+
 
 
 // export default function VisitorMapClustrMaps() {
