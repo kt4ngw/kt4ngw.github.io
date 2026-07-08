@@ -136,7 +136,7 @@ export default function SimplePublicationsPage() {
               key={pub.id}
               className="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300"
             >
-              <span className="font-medium text-primary">[{journalPubs.length - index}] </span>
+              <span className="font-medium text-primary">[{conferencePubs.length - index}] </span>
               {renderAuthors(pub.authors)}
               <span>, &quot;{pub.title},&quot; </span>
               <span className="italic">{formatConferenceVenue(pub)}</span>
