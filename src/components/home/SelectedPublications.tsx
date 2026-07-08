@@ -19,7 +19,7 @@ export default function SelectedPublications({ publications, title = 'Selected P
             transition={{ duration: 0.6, delay: 0.4 }}
         >
             <div className="flex items-center justify-between mb-3">
-                <h2 className="text-2xl font-serif font-bold text-primary">{title}</h2>
+                <h2 className="text-xl font-serif font-bold text-primary">{title}</h2>
                 <Link
                     href={enableOnePageMode ? "/#publications" : "/publications"}
                     prefetch={true}
