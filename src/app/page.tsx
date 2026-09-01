@@ -137,7 +137,6 @@ export default function Home() {
           <Profile
             author={config.author}
             social={config.social}
-            features={config.features}
             researchInterests={researchInterests}
           />
         </div>
@@ -204,4 +203,3 @@ export default function Home() {
     </div>
   );
 }
-
