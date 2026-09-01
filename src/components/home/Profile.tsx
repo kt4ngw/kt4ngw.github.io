@@ -78,8 +78,9 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="sticky top-8"
+            className="contents lg:sticky lg:top-8 lg:col-span-1 lg:block lg:self-start"
         >
+            <div className="order-1 lg:order-none">
             {/* Profile Image */}
             <div className="w-64 h-64 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
                 <Image
@@ -274,7 +275,9 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
                     );
                 })}
             </div>
+            </div>
 
+            <div className="order-3 lg:order-none">
             {/* Research Interests */}
             {researchInterests && researchInterests.length > 0 && (
                 <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
@@ -291,6 +294,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
                 <h3 className="font-semibold text-primary mb-3">Visitors</h3>
                 <VisitorMap />
+            </div>
             </div>
 
         </motion.div>

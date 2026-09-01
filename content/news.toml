@@ -4,7 +4,7 @@ content = "Our paper about federated learning under client dropout has been acce
 
 [[news]]
 date = "2026-07"
-content = "I have been funded by AWS RMAS program."
+content = "I received funding from the AWS RMAS Program."
 
 [[news]]
 date = "2026-04"
@@ -27,4 +27,4 @@ content = "Our paper about client selection and bandwidth allocation for federat
 
 [[news]]
 date = "2024-01"
-content = "Our paper about client sampling for federated learning is accepted by <span class='text-accent font-medium'>IEEE ICC 2024</span>."
+content = "Our paper about client sampling for federated learning was accepted at <span class='text-accent font-medium'>IEEE ICC 2024</span>."

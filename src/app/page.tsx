@@ -132,17 +132,15 @@ export default function Home() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
-        {/* Left Column - Profile */}
-        <div className="lg:col-span-1">
-          <Profile
-            author={config.author}
-            social={config.social}
-            researchInterests={researchInterests}
-          />
-        </div>
+        {/* Profile becomes two ordered grid items on mobile and one sticky column on desktop. */}
+        <Profile
+          author={config.author}
+          social={config.social}
+          researchInterests={researchInterests}
+        />
 
         {/* Right Column - Content */}
-        <div className="lg:col-span-2 space-y-8">
+        <div className="order-2 space-y-8 lg:order-none lg:col-span-2">
           {pagesToShow.map((page) => (
             <section key={page.id} id={page.id} className="scroll-mt-24 space-y-8">
               {page.type === 'about' && page.sections.map((section: SectionConfig) => {
