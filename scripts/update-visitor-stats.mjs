@@ -14,7 +14,7 @@ const credentials = JSON.parse(credentialsValue);
 const property = propertyValue.startsWith('properties/')
   ? propertyValue
   : `properties/${propertyValue}`;
-const startDate = process.env.GA_START_DATE || '365daysAgo';
+const startDate = process.env.GA_START_DATE || '2020-10-14';
 const endDate = process.env.GA_END_DATE || 'today';
 const client = new BetaAnalyticsDataClient({ credentials });
 

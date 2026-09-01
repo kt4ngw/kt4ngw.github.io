@@ -10,10 +10,11 @@ Configure these GitHub repository secrets:
 - `GA_CREDENTIALS`: the complete JSON key for a Google service account that has
   Viewer access to the GA4 property.
 
-The scheduled workflow updates the public aggregate once a day. To change the
-reporting window, create the repository variable `GA_START_DATE`. It accepts a
-GA4 relative value such as `30daysAgo` or an absolute date such as `2026-01-01`.
-If it is omitted, the map shows the past 365 days.
+The scheduled workflow updates the public aggregate once a day. By default it
+queries from GA4's launch date (`2020-10-14`), so the map is cumulative for the
+full lifetime of this GA4 property. To change the reporting window, create the
+repository variable `GA_START_DATE`. It accepts a GA4 relative value such as
+`30daysAgo` or an absolute date such as `2026-01-01`.
 
 After adding the secrets, run **Actions → Update visitor map → Run workflow**
 once. Historical traffic is available only from the date the GA4 property began

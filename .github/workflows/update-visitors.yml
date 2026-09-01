@@ -54,7 +54,7 @@ jobs:
         env:
           GA_CREDENTIALS: ${{ secrets.GA_CREDENTIALS }}
           GA_PROPERTY_ID: ${{ secrets.GA_PROPERTY_ID }}
-          GA_START_DATE: ${{ vars.GA_START_DATE || '365daysAgo' }}
+          GA_START_DATE: ${{ vars.GA_START_DATE || '2020-10-14' }}
           GA_END_DATE: today
 
       - name: Commit refreshed statistics

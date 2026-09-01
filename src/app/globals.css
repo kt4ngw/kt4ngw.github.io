@@ -251,7 +251,7 @@ body {
 
 .visitor-map-summary {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 0.75rem;
   margin-bottom: 0.45rem;
   color: var(--neutral-600);

@@ -318,10 +318,7 @@ export default function Profile({ author, social, features, researchInterests }:
 
             {/* Visitor map */}
             <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
-                <h3 className="font-semibold text-primary mb-1">Visitors</h3>
-                <p className="text-xs text-neutral-600 dark:text-neutral-500 mb-3">
-                    Where this site&apos;s visitors come from.
-                </p>
+                <h3 className="font-semibold text-primary mb-3">Visitors</h3>
                 <VisitorMap />
             </div>
 

@@ -51,16 +51,6 @@ function flagEmoji(code?: string) {
     .join('');
 }
 
-function describeRange(stats: VisitorStats) {
-  if (stats.startDate === '365daysAgo' && stats.endDate === 'today') {
-    return 'Past 365 days';
-  }
-  if (stats.startDate && stats.endDate) {
-    return `${stats.startDate} – ${stats.endDate}`;
-  }
-  return 'Visitor locations';
-}
-
 export default function VisitorMap() {
   const [map, setMap] = useState<VisitorMapData | null>(null);
   const [stats, setStats] = useState<VisitorStats | null>(null);
@@ -130,7 +120,6 @@ export default function VisitorMap() {
   return (
     <div className="visitor-map-shell">
       <div className="visitor-map-summary">
-        <span>{describeRange(stats)}</span>
         <strong>{stats.visitors.toLocaleString()} visitors</strong>
       </div>
 
@@ -167,7 +156,7 @@ export default function VisitorMap() {
         })}
       </svg>
 
-      {countries.length > 0 ? (
+      {countries.length > 0 && (
         <ol className="visitor-map-ranking" aria-label="Top visitor countries">
           {countries.slice(0, 10).map((country) => {
             const active = activeCountry === country.name;
@@ -194,10 +183,6 @@ export default function VisitorMap() {
             );
           })}
         </ol>
-      ) : (
-        <p className="visitor-map-note">
-          The map is ready. Visitor bubbles will appear after GA4 is connected.
-        </p>
       )}
     </div>
   );
