@@ -27,26 +27,6 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: '/',
     },
-    openGraph: {
-      type: "website",
-      locale: "en_US",
-      url: '/',
-      title: `${config.author.name} | Federated Learning & Edge Intelligence`,
-      description: config.site.description,
-      siteName: `${config.author.name}'s Academic Website`,
-      images: [{
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: `${config.author.name}'s academic website`,
-      }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${config.author.name} | Federated Learning & Edge Intelligence`,
-      description: config.site.description,
-      images: ['/og-image.png'],
-    },
   };
 }
 
