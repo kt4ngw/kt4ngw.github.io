@@ -62,6 +62,7 @@ export function ThemeToggle() {
           'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
           'text-neutral-600 hover:text-primary dark:text-neutral-400 dark:hover:text-white'
         )}
+        aria-label={`Current theme: ${currentTheme.label}. Click to cycle theme.`}
         title={`Current theme: ${currentTheme.label}. Click to cycle theme.`}
       >
         <motion.div
@@ -117,6 +118,7 @@ export function ThemeToggleDropdown() {
           'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
           'text-neutral-600 hover:text-primary dark:text-neutral-400 dark:hover:text-white'
         )}
+        aria-label={`Current theme: ${currentTheme.label}. Open theme menu.`}
         title={`Current theme: ${currentTheme.label}`}
       >
         <motion.div

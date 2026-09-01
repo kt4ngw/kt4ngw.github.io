@@ -5,6 +5,7 @@ import { parseBibTeX } from '@/lib/bibtexParser';
 import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
 import CardPage from '@/components/pages/CardPage';
+import CVPageContent from '@/components/pages/CVPageContent';
 import {
     BasePageConfig,
     PublicationPageConfig,
@@ -34,6 +35,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
         title: pageConfig.title,
         description: pageConfig.description,
+        alternates: {
+            canonical: `/${slug}/`,
+        },
+        openGraph: {
+            type: 'website',
+            url: `/${slug}/`,
+            title: pageConfig.title,
+            description: pageConfig.description,
+            images: [{
+                url: '/og-image.png',
+                width: 1200,
+                height: 630,
+                alt: `${pageConfig.title} — Jian Tang`,
+            }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: pageConfig.title,
+            description: pageConfig.description,
+            images: ['/og-image.png'],
+        },
     };
 }
 
@@ -43,6 +65,10 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
 
     if (!pageConfig) {
         notFound();
+    }
+
+    if (slug === 'cv') {
+        return <CVPageContent />;
     }
 
     return (

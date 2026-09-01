@@ -72,7 +72,7 @@ title = "PhD Student / Researcher"
 # ...
 
 [features]
-enable_likes = true
+enable_one_page_mode = false
 ```
 
 ### 2. Homepage (`content/about.toml`)

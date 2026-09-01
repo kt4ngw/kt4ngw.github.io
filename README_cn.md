@@ -75,7 +75,7 @@ title = "博士生 / 研究员"
 # ... 其他信息
 
 [features]
-enable_likes = true # 是否开启点赞功能
+enable_one_page_mode = false # 是否启用单页模式
 ```
 
 ### 2. 首页内容 (`content/about.toml`)

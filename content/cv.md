@@ -1,1 +1,1 @@
-You can access my full curriculum vitae [here](/cv_path).
+You can [open or download my full curriculum vitae](/cv.pdf).

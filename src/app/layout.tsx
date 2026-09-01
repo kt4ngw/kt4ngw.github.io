@@ -11,9 +11,10 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 export async function generateMetadata(): Promise<Metadata> {
   const config = getConfig();
   return {
+    metadataBase: new URL(config.site.url),
     title: {
-      default: config.site.title,
-      template: `%s | ${config.site.title}`
+      default: `${config.author.name} | Federated Learning & Edge Intelligence`,
+      template: `%s | ${config.author.name}`
     },
     description: config.site.description,
     keywords: [config.author.name, "PhD", "Research", config.author.institution],
@@ -23,12 +24,28 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: config.site.favicon,
     },
+    alternates: {
+      canonical: '/',
+    },
     openGraph: {
       type: "website",
       locale: "en_US",
-      title: config.site.title,
+      url: '/',
+      title: `${config.author.name} | Federated Learning & Edge Intelligence`,
       description: config.site.description,
       siteName: `${config.author.name}'s Academic Website`,
+      images: [{
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: `${config.author.name}'s academic website`,
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${config.author.name} | Federated Learning & Edge Intelligence`,
+      description: config.site.description,
+      images: ['/og-image.png'],
     },
   };
 }
@@ -39,45 +56,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const config = getConfig();
+  const sameAs = [
+    config.social.google_scholar,
+    config.social.github,
+    config.social.linkedin,
+    config.social.orcid,
+  ].filter((url): url is string => typeof url === 'string');
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: config.author.name,
+    url: config.site.url,
+    image: `${config.site.url}${config.author.avatar}`,
+    jobTitle: config.author.title,
+    affiliation: {
+      '@type': 'CollegeOrUniversity',
+      name: 'RMIT University',
+      url: 'https://www.rmit.edu.au/',
+    },
+    sameAs,
+    knowsAbout: [
+      'Federated Learning',
+      'Edge Intelligence',
+      'Privacy Protection',
+      'Network and System Security',
+    ],
+  };
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href={config.site.favicon} type="image/svg+xml" />
-        {/* Speed up font connections */}
-        <link rel="dns-prefetch" href="https://google-fonts.jialeliu.com" />
-        <link rel="preconnect" href="https://google-fonts.jialeliu.com" crossOrigin="" />
-        {/* Non-blocking Google Fonts: preload + print media swap to avoid render-blocking */}
-        <link
-          rel="preload"
-          as="style"
-          href="https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          id="gfonts-css"
-          href="https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
-          media="print"
-        />
         <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                var l = document.getElementById('gfonts-css');
-                if (!l) return;
-                if (l.media !== 'all') {
-                  l.addEventListener('load', function(){ try { l.media = 'all'; } catch(e){} });
-                }
-              })();
-            `,
+            __html: JSON.stringify(personSchema).replace(/</g, '\\u003c'),
           }}
         />
-        <noscript>
-          {/* Fallback for no-JS environments */}
-          <link
-            rel="stylesheet"
-            href="https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
-          />
-        </noscript>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -100,13 +114,19 @@ export default function RootLayout({
         />
       </head>
       <body className={`font-sans antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-primary focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider>
           <Navigation
             items={config.navigation}
             siteTitle={config.site.title}
             enableOnePageMode={config.features.enable_one_page_mode}
           />
-          <main className="min-h-screen pt-16 lg:pt-20">
+          <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
             {children}
           </main>
           <Footer lastUpdated={getLastUpdated()} />
