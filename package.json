@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:visitor-map": "node scripts/build-visitor-map.mjs",
+    "update:visitors": "node scripts/update-visitor-stats.mjs",
     "start": "next start",
     "lint": "next lint"
   },
@@ -26,16 +28,21 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@google-analytics/data": "^7.0.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "d3-geo": "^3.1.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
     "lightningcss": "^1",
     "svg2ico": "^1.0.35",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "topojson-client": "^3.1.0",
+    "typescript": "^5",
+    "world-atlas": "^2.0.2",
+    "world-countries": "^5.1.0"
   },
   "optionalDependencies": {
     "lightningcss-linux-x64-gnu": "^1"

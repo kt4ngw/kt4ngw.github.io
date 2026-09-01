@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { getConfig } from "@/lib/config";
 import { getLastUpdated } from "@/lib/lastUpdated"; // 20250408: Add last updated import
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -110,6 +111,7 @@ export default function RootLayout({
           </main>
           <Footer lastUpdated={getLastUpdated()} />
         </ThemeProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );
