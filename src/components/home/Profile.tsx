@@ -277,10 +277,9 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             </div>
             </div>
 
-            <div className="order-3 lg:order-none">
             {/* Research Interests */}
             {researchInterests && researchInterests.length > 0 && (
-                <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
+                <div className="order-2 rounded-lg bg-neutral-100 p-4 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg dark:bg-neutral-800 lg:order-none lg:mb-6">
                     <h3 className="font-semibold text-primary mb-3">Research Interests</h3>
                     <div className="space-y-2 text-sm text-neutral-700 dark:text-neutral-500">
                         {researchInterests.map((interest, index) => (
@@ -291,10 +290,9 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             )}
 
             {/* Visitor map */}
-            <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
+            <div className="order-4 rounded-lg bg-neutral-100 p-4 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg dark:bg-neutral-800 lg:order-none lg:mb-6">
                 <h3 className="font-semibold text-primary mb-3">Visitors</h3>
                 <VisitorMap />
-            </div>
             </div>
 
         </motion.div>

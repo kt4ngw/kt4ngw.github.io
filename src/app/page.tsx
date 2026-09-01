@@ -140,7 +140,7 @@ export default function Home() {
         />
 
         {/* Right Column - Content */}
-        <div className="order-2 space-y-8 lg:order-none lg:col-span-2">
+        <div className="order-3 space-y-8 lg:order-none lg:col-span-2">
           {pagesToShow.map((page) => (
             <section key={page.id} id={page.id} className="scroll-mt-24 space-y-8">
               {page.type === 'about' && page.sections.map((section: SectionConfig) => {
