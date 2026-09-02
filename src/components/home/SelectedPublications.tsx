@@ -72,6 +72,34 @@ export default function SelectedPublications({ publications, title = 'Selected P
                                     {pub.description}
                                 </p>
                             )}
+
+                            {(pub.url || pub.code) && (
+                                <div className="mt-1.5 flex items-center gap-2 text-xs font-medium">
+                                    {pub.url && (
+                                        <a
+                                            href={pub.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-accent hover:text-accent-dark hover:underline underline-offset-2 transition-colors"
+                                        >
+                                            Paper
+                                        </a>
+                                    )}
+                                    {pub.url && pub.code && (
+                                        <span aria-hidden="true" className="text-neutral-300 dark:text-neutral-600">/</span>
+                                    )}
+                                    {pub.code && (
+                                        <a
+                                            href={pub.code}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-accent hover:text-accent-dark hover:underline underline-offset-2 transition-colors"
+                                        >
+                                            Code
+                                        </a>
+                                    )}
+                                </div>
+                            )}
                         </motion.div>
                     );
                 })}

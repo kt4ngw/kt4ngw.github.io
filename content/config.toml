@@ -1,12 +1,12 @@
 [site]
-title = "Jian Tang's HomePage"
+title = "Jian Tang"
 description = "Jian Tang is a PhD student at RMIT University researching federated learning, edge intelligence, privacy protection, and network and system security."
 url = "https://kt4ngw.github.io"
 favicon = "/rmit.svg"
 
 [author]
 name = "Jian Tang"
-title = "PhD student"
+title = "PhD Student"
 institution = "RMIT University, Melbourne, Australia"
 email = "kt4ngw@gmail.com"
 avatar = "/bio-dsc02200-640.jpg"
