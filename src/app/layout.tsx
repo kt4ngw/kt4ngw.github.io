@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(config.site.url),
     title: {
-      default: `${config.author.name} | Federated Learning & Edge Intelligence`,
+      default: config.author.name,
       template: `%s | ${config.author.name}`
     },
     description: config.site.description,
