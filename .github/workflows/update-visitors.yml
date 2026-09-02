@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - .github/workflows/update-visitors.yml
+      - scripts/update-visitor-stats.mjs
   schedule:
     - cron: '15 * * * *'
 

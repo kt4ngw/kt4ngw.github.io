@@ -33,23 +33,46 @@ const [countryReport] = await client.runReport({
   limit: 250,
 });
 
-const visitors = Number(userReport.rows?.[0]?.metricValues?.[0]?.value || 0);
-const countries = (countryReport.rows || [])
+const normalizeCountries = (items) => items
   .map((row) => ({
-    name: row.dimensionValues?.[0]?.value || '',
-    value: Number(row.metricValues?.[0]?.value || 0),
+    name: row.name ?? row.dimensionValues?.[0]?.value ?? '',
+    value: Number(row.value ?? row.metricValues?.[0]?.value ?? 0),
   }))
-  .filter((country) => country.name && country.name !== '(not set)' && country.value > 0);
+  .filter((country) => country.name && country.name !== '(not set)' && country.value > 0)
+  .sort((a, b) => b.value - a.value || a.name.localeCompare(b.name));
 
-const stats = {
+const visitors = Number(userReport.rows?.[0]?.metricValues?.[0]?.value || 0);
+const countries = normalizeCountries(countryReport.rows || []);
+
+const nextStats = {
   visitors,
   countries,
   startDate,
   endDate,
-  updatedAt: new Date().toISOString(),
 };
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const outputPath = path.resolve(scriptDirectory, '..', 'public', 'visitor-stats.json');
+
+if (fs.existsSync(outputPath)) {
+  const currentStats = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+  const currentComparableStats = {
+    visitors: Number(currentStats.visitors || 0),
+    countries: normalizeCountries(Array.isArray(currentStats.countries) ? currentStats.countries : []),
+    startDate: currentStats.startDate,
+    endDate: currentStats.endDate,
+  };
+
+  if (JSON.stringify(currentComparableStats) === JSON.stringify(nextStats)) {
+    console.log(`Visitor statistics unchanged: ${visitors} visitors across ${countries.length} countries.`);
+    process.exit(0);
+  }
+}
+
+const stats = {
+  ...nextStats,
+  updatedAt: new Date().toISOString(),
+};
+
 fs.writeFileSync(outputPath, `${JSON.stringify(stats, null, 2)}\n`);
 console.log(`Updated visitor statistics: ${visitors} visitors across ${countries.length} countries.`);
