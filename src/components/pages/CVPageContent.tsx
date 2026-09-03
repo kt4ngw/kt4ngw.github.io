@@ -9,11 +9,11 @@ export default function CVPageContent() {
 
             <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
               <div className="md:max-w-[48%]">
-                <h1 className="mt-1 text-2xl font-semibold tracking-tight text-slate-900 sm:text-[28px] lg:text-[32px]">
+                <h1 className="mt-1 text-[26px] font-semibold tracking-tight text-slate-900 sm:text-[30px] lg:text-[34px]">
                   Curriculum Vitae
                 </h1>
 
-                <p className="mt-3 text-sm leading-6 text-slate-600">
+                <p className="mt-3 text-base leading-7 text-slate-600">
                   A complete record of education, research, publications, honors,
                   teaching, and professional service.
                 </p>
@@ -24,7 +24,7 @@ export default function CVPageContent() {
                   href="/cv.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-xs font-semibold text-white transition hover:bg-slate-800"
+                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
                 >
                   Open PDF
                 </a>
@@ -32,7 +32,7 @@ export default function CVPageContent() {
                 <a
                   href="/cv.pdf"
                   download
-                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
                 >
                   Download CV
                 </a>
@@ -46,14 +46,14 @@ export default function CVPageContent() {
             <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.10)]">
               <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-4 py-3">
                 <div>
-                  <p className="text-xs font-medium text-slate-800">CV Preview</p>
-                  <p className="text-[11px] text-slate-500">PDF document preview</p>
+                  <p className="text-sm font-medium text-slate-800">CV Preview</p>
+                  <p className="text-xs text-slate-500">PDF document preview</p>
                 </div>
                 <a
                   href="/cv.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-medium text-slate-600 transition hover:text-slate-900"
+                  className="text-sm font-medium text-slate-600 transition hover:text-slate-900"
                 >
                   Open in new tab
                 </a>
