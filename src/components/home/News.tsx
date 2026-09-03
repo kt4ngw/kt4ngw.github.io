@@ -67,8 +67,8 @@ export default function News({ items, title = 'News' }: NewsProps) {
                     .slice()
                     .sort((a, b) => b.date.localeCompare(a.date))
                     .map((item, index) => (
-                        <div key={index} className="flex items-start space-x-3 sm:space-x-4">
-                            <span className="mt-1 w-20 flex-shrink-0 text-sm text-neutral-500">
+                        <div key={index} className="grid grid-cols-[max-content_minmax(0,1fr)] items-start gap-x-3 sm:gap-x-4">
+                            <span className="mt-1 text-sm text-neutral-500">
                                 {item.date}
                             </span>
 
