@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function CVPageContent() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-stone-50 via-white to-slate-50">
@@ -41,13 +43,13 @@ export default function CVPageContent() {
           </div>
         </section>
 
-        <section className="hidden rounded-3xl border border-slate-200/70 bg-white p-5 shadow-[0_18px_50px_rgba(15,23,42,0.08)] md:block">
+        <section className="rounded-3xl border border-slate-200/70 bg-white p-3 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-5">
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 sm:p-5">
             <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.10)]">
               <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-4 py-3">
                 <div>
                   <p className="text-sm font-medium text-slate-800">CV Preview</p>
-                  <p className="text-xs text-slate-500">Embedded PDF viewer</p>
+                  <p className="text-xs text-slate-500">PDF document preview</p>
                 </div>
                 <a
                   href="/cv.pdf"
@@ -59,10 +61,27 @@ export default function CVPageContent() {
                 </a>
               </div>
 
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open the full CV PDF"
+                className="block bg-white md:hidden"
+              >
+                <Image
+                  src="/cv-preview.jpg"
+                  alt="Preview of Jian Tang's curriculum vitae"
+                  width={1191}
+                  height={1684}
+                  sizes="(max-width: 767px) calc(100vw - 3.5rem), 0px"
+                  className="h-auto w-full"
+                />
+              </a>
+
               <iframe
                 src="/cv.pdf"
                 title="CV PDF"
-                className="block h-[78vh] min-h-[700px] w-full bg-white"
+                className="hidden h-[78vh] min-h-[700px] w-full bg-white md:block"
               />
             </div>
           </div>
