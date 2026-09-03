@@ -41,7 +41,7 @@ export default function CVPageContent() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-slate-200/70 bg-white p-3 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-5">
+        <section className="hidden rounded-3xl border border-slate-200/70 bg-white p-5 shadow-[0_18px_50px_rgba(15,23,42,0.08)] md:block">
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 sm:p-5">
             <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.10)]">
               <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-4 py-3">
