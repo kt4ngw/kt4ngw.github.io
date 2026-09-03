@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function CVPageContent() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-stone-50 via-white to-slate-50">
@@ -61,27 +59,10 @@ export default function CVPageContent() {
                 </a>
               </div>
 
-              <a
-                href="/cv.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open the full CV PDF"
-                className="block bg-white md:hidden"
-              >
-                <Image
-                  src="/cv-preview.jpg"
-                  alt="Preview of Jian Tang's curriculum vitae"
-                  width={1191}
-                  height={1684}
-                  sizes="(max-width: 767px) calc(100vw - 3.5rem), 0px"
-                  className="h-auto w-full"
-                />
-              </a>
-
               <iframe
-                src="/cv.pdf"
+                src="/cv.pdf#view=FitH"
                 title="CV PDF"
-                className="hidden h-[78vh] min-h-[700px] w-full bg-white md:block"
+                className="block h-[78vh] min-h-[700px] w-full bg-white"
               />
             </div>
           </div>
