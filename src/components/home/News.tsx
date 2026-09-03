@@ -62,17 +62,17 @@ export default function News({ items, title = 'News' }: NewsProps) {
         >
             <h2 className="text-2xl font-serif font-bold text-primary mb-4">{title}</h2>
 
-            <div className="max-h-60 overflow-y-auto rounded-lg border border-neutral-200 p-4 pr-2 space-y-3">
+            <div className="max-h-60 overflow-y-auto rounded-lg border border-neutral-200 p-4 pr-3 space-y-4">
                 {items
                     .slice()
                     .sort((a, b) => b.date.localeCompare(a.date))
                     .map((item, index) => (
-                        <div key={index} className="flex items-start space-x-3">
-                            <span className="text-xs text-neutral-500 mt-1 w-16 flex-shrink-0">
+                        <div key={index} className="flex items-start space-x-3 sm:space-x-4">
+                            <span className="mt-1 w-20 flex-shrink-0 text-sm text-neutral-500">
                                 {item.date}
                             </span>
 
-                            <div className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                            <div className="text-base leading-relaxed text-neutral-700 dark:text-neutral-300 xl:text-[17px]">
                                 <ReactMarkdown
                                     rehypePlugins={[rehypeRaw]}
                                     components={{

@@ -18,18 +18,18 @@ export default function SelectedPublications({ publications, title = 'Selected P
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
         >
-            <div className="flex items-center justify-between mb-3">
-                <h2 className="text-xl font-serif font-bold text-primary">{title}</h2>
+            <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-2xl font-serif font-bold text-primary">{title}</h2>
                 <Link
                     href={enableOnePageMode ? "/#publications" : "/publications"}
                     prefetch={true}
-                    className="text-accent hover:text-accent-dark text-sm font-medium transition-all duration-200 rounded hover:bg-accent/10 hover:shadow-sm"
+                    className="rounded text-base font-medium text-accent transition-all duration-200 hover:bg-accent/10 hover:text-accent-dark hover:shadow-sm"
                 >
                     View All →
                 </Link>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
                 {publications.map((pub, index) => {
                     const rawVenue = pub.journal || pub.conference || '';
                     const displayVenue = venueMap[rawVenue] || rawVenue;
@@ -40,13 +40,13 @@ export default function SelectedPublications({ publications, title = 'Selected P
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 * index }}
-                            className="bg-neutral-50 dark:bg-neutral-800 px-3 py-2 rounded-lg shadow-sm border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] transition-all duration-200"
+                            className="rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 shadow-sm transition-all duration-200 dark:border-[rgba(148,163,184,0.24)] dark:bg-neutral-800"
                         >
-                            <h3 className="text-sm font-medium text-primary mb-1 leading-snug">
+                            <h3 className="mb-1.5 text-base font-medium leading-snug text-primary xl:text-lg">
                                 {pub.title}
                             </h3>
 
-                            <p className="text-xs text-neutral-600 dark:text-neutral-500 mb-0.5 leading-relaxed">
+                            <p className="mb-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-500 xl:text-base">
                                 {pub.authors.map((author, idx) => (
                                     <span key={idx}>
                                         <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
@@ -63,18 +63,18 @@ export default function SelectedPublications({ publications, title = 'Selected P
                                 ))}
                             </p>
 
-                            <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-1">
+                            <p className="mb-1 text-sm text-neutral-500 dark:text-neutral-500 xl:text-base">
                                 <span className="italic">{displayVenue}</span> · {pub.year}
                             </p>
 
                             {pub.description && (
-                                <p className="text-xs text-neutral-500 dark:text-neutral-500 line-clamp-1 leading-relaxed">
+                                <p className="line-clamp-1 text-sm leading-relaxed text-neutral-500 dark:text-neutral-500 xl:text-base">
                                     {pub.description}
                                 </p>
                             )}
 
                             {(pub.url || pub.code) && (
-                                <div className="mt-1.5 flex items-center gap-2 text-xs font-medium">
+                                <div className="mt-2 flex items-center gap-2 text-sm font-medium xl:text-base">
                                     {pub.url && (
                                         <a
                                             href={pub.url}
