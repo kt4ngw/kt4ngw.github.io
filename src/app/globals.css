@@ -175,10 +175,10 @@ body {
 }
 
 /* Scale the full rem-based layout gradually on ultra-wide displays.
-   1920px stays unchanged; 2560px reaches 18px; 4K is capped at 20px. */
+   1920px stays unchanged; larger displays are capped at an 18px root size. */
 @media (min-width: 1920px) {
   html {
-    font-size: clamp(16px, calc(0.3125vw + 10px), 20px);
+    font-size: clamp(16px, calc(0.3125vw + 10px), 18px);
   }
 }
 
