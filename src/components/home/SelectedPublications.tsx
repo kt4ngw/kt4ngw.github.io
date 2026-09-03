@@ -23,7 +23,7 @@ export default function SelectedPublications({ publications, title = 'Selected P
                 <Link
                     href={enableOnePageMode ? "/#publications" : "/publications"}
                     prefetch={true}
-                    className="rounded text-base font-medium text-accent transition-all duration-200 hover:bg-accent/10 hover:text-accent-dark hover:shadow-sm"
+                    className="rounded text-sm font-medium text-accent transition-all duration-200 hover:bg-accent/10 hover:text-accent-dark hover:shadow-sm"
                 >
                     View All →
                 </Link>
@@ -42,11 +42,11 @@ export default function SelectedPublications({ publications, title = 'Selected P
                             transition={{ duration: 0.4, delay: 0.1 * index }}
                             className="rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 shadow-sm transition-all duration-200 dark:border-[rgba(148,163,184,0.24)] dark:bg-neutral-800"
                         >
-                            <h3 className="mb-1.5 text-base font-medium leading-snug text-primary xl:text-lg">
+                            <h3 className="mb-1.5 text-base font-medium leading-snug text-primary">
                                 {pub.title}
                             </h3>
 
-                            <p className="mb-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-500 xl:text-base">
+                            <p className="mb-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-500">
                                 {pub.authors.map((author, idx) => (
                                     <span key={idx}>
                                         <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
@@ -63,42 +63,42 @@ export default function SelectedPublications({ publications, title = 'Selected P
                                 ))}
                             </p>
 
-                            <p className="mb-1 text-sm text-neutral-500 dark:text-neutral-500 xl:text-base">
+                            <p className="mb-1 text-sm text-neutral-500 dark:text-neutral-500">
                                 <span className="italic">{displayVenue}</span> · {pub.year}
+                                {(pub.url || pub.code) && (
+                                    <>
+                                        <span aria-hidden="true"> · </span>
+                                        {pub.url && (
+                                            <a
+                                                href={pub.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="font-medium text-accent transition-colors hover:text-accent-dark hover:underline underline-offset-2"
+                                            >
+                                                Paper
+                                            </a>
+                                        )}
+                                        {pub.url && pub.code && (
+                                            <span aria-hidden="true" className="text-neutral-300 dark:text-neutral-600"> / </span>
+                                        )}
+                                        {pub.code && (
+                                            <a
+                                                href={pub.code}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="font-medium text-accent transition-colors hover:text-accent-dark hover:underline underline-offset-2"
+                                            >
+                                                Code
+                                            </a>
+                                        )}
+                                    </>
+                                )}
                             </p>
 
                             {pub.description && (
-                                <p className="line-clamp-1 text-sm leading-relaxed text-neutral-500 dark:text-neutral-500 xl:text-base">
+                                <p className="line-clamp-1 text-sm leading-relaxed text-neutral-500 dark:text-neutral-500">
                                     {pub.description}
                                 </p>
-                            )}
-
-                            {(pub.url || pub.code) && (
-                                <div className="mt-2 flex items-center gap-2 text-sm font-medium xl:text-base">
-                                    {pub.url && (
-                                        <a
-                                            href={pub.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-accent hover:text-accent-dark hover:underline underline-offset-2 transition-colors"
-                                        >
-                                            Paper
-                                        </a>
-                                    )}
-                                    {pub.url && pub.code && (
-                                        <span aria-hidden="true" className="text-neutral-300 dark:text-neutral-600">/</span>
-                                    )}
-                                    {pub.code && (
-                                        <a
-                                            href={pub.code}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-accent hover:text-accent-dark hover:underline underline-offset-2 transition-colors"
-                                        >
-                                            Code
-                                        </a>
-                                    )}
-                                </div>
                             )}
                         </motion.div>
                     );

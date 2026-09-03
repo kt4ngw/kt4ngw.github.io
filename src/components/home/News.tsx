@@ -72,7 +72,7 @@ export default function News({ items, title = 'News' }: NewsProps) {
                                 {item.date}
                             </span>
 
-                            <div className="text-base leading-relaxed text-neutral-700 dark:text-neutral-300 xl:text-[17px]">
+                            <div className="text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
                                 <ReactMarkdown
                                     rehypePlugins={[rehypeRaw]}
                                     components={{
