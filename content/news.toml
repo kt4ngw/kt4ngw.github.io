@@ -1,6 +1,6 @@
 [[news]]
 date = "2026-07"
-content = "Our paper about federated learning under client dropout has been accepted by <span class='text-accent font-medium'>IEEE TMC</span>."
+content = "Our paper, “Accelerating Federated Learning under Client Dropout via Joint Bandwidth Allocation and Prototype Fine-Tuning in Mobile Edge Computing Networks,” has been accepted for publication in <span class='text-accent font-medium'>IEEE Transactions on Mobile Computing (IEEE TMC)</span>."
 
 [[news]]
 date = "2026-07"
@@ -16,14 +16,14 @@ content = "I have received an offer of admission to the PhD program and the RMIT
 
 [[news]]
 date = "2025-09"
-content = "Our paper about client sampling for federated learning has been accepted by <span class='text-accent font-medium'>IEEE TMC</span>."
+content = "Our paper, “Group-based Federated Learning with Cost-efficient Sampling Mechanism in Mobile Edge Computing Networks,” has been accepted for publication in <span class='text-accent font-medium'>IEEE Transactions on Mobile Computing (IEEE TMC)</span>."
 [[news]]
 date = "2025-06"
 content = "I have received my master’s degree from Chongqing University."
 
 [[news]]
 date = "2025-01"
-content = "Our paper about client selection and bandwidth allocation for federated learning has been accepted by <span class='text-accent font-medium'>IEEE TMC</span>."
+content = "Our paper, “Joint Class-Balanced Client Selection and Bandwidth Allocation for Cost-Efficient Federated Learning in Mobile Edge Computing Networks,” has been accepted for publication in <span class='text-accent font-medium'>IEEE Transactions on Mobile Computing (IEEE TMC)</span>."
 
 [[news]]
 date = "2024-01"
