@@ -4,22 +4,22 @@ content = "Our paper about federated learning under client dropout has been acce
 
 [[news]]
 date = "2026-07"
-content = "I received funding from the AWS RMAS Program."
+content = "I have received funding from the AWS RMAS Program."
 
 [[news]]
 date = "2026-04"
-content = "Honored to be invited to serve as a reviewer for <span class='text-accent font-medium'>IEEE TMC</span>. I like this journal very much and am excited to contribute to the community."
+content = "I have been invited to serve as a reviewer for <span class='text-accent font-medium'>IEEE TMC</span>. I am honored and excited to contribute to the community."
 
 [[news]]
 date = "2025-11"
-content = "Thrilled to receive an offer of admission to the PhD program and the RMIT Research Stipend Scholarship from RMIT University. Many thanks to <span class='text-primary font-medium'>Dr. Xia</span> for the support."
+content = "I have received an offer of admission to the PhD program and the RMIT Research Stipend Scholarship from RMIT University. Many thanks to <span class='text-primary font-medium'>Dr. Xia</span> for the support."
 
 [[news]]
 date = "2025-09"
 content = "Our paper about client sampling for federated learning has been accepted by <span class='text-accent font-medium'>IEEE TMC</span>."
 [[news]]
 date = "2025-06"
-content = "Happy to have received my master’s degree from Chongqing University."
+content = "I have received my master’s degree from Chongqing University."
 
 [[news]]
 date = "2025-01"
@@ -27,4 +27,4 @@ content = "Our paper about client selection and bandwidth allocation for federat
 
 [[news]]
 date = "2024-01"
-content = "Our paper about client sampling for federated learning was accepted at <span class='text-accent font-medium'>IEEE ICC 2024</span>."
+content = "Our paper, “Energy-Efficient Client Sampling for Federated Learning in Heterogeneous Mobile Edge Computing Networks,” has been accepted for presentation at <span class='text-accent font-medium'>IEEE ICC 2024</span>."
