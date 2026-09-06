@@ -1,5 +1,5 @@
 {
-  "visitors": 12,
+  "visitors": 13,
   "countries": [
     {
       "name": "Australia",
@@ -15,10 +15,10 @@
     },
     {
       "name": "Singapore",
-      "value": 1
+      "value": 2
     }
   ],
   "startDate": "2020-10-14",
   "endDate": "today",
-  "updatedAt": "2026-09-04T16:22:13.339Z"
+  "updatedAt": "2026-09-06T13:41:14.767Z"
 }
