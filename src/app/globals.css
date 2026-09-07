@@ -14,9 +14,9 @@
   --primary: #1e293b;
   --primary-light: #334155;
   --primary-dark: #0f172a;
-  --accent: #d4a562;
-  --accent-light: #e4b976;
-  --accent-dark: #b8914d;
+  --accent: #a17632;
+  --accent-light: #c99b58;
+  --accent-dark: #855d26;
   
   /* Neutral colors */
   --neutral-50: #f8fafc;
@@ -239,6 +239,53 @@ body {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: var(--neutral-500);
+}
+
+/* News keeps its scroll hint only while more content is below the viewport. */
+.news-scroll-frame::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0.5rem;
+  height: 1.75rem;
+  background: linear-gradient(to bottom, transparent, var(--background));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.news-scroll-frame[data-can-scroll="true"]::after {
+  opacity: 1;
+}
+
+.news-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neutral-300) transparent;
+  scroll-padding-block: 1.25rem;
+}
+
+.news-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.news-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.news-scroll::-webkit-scrollbar-thumb {
+  background: var(--neutral-300);
+  border-radius: 999px;
+}
+
+.news-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-400);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-scroll-frame::after {
+    transition: none;
+  }
 }
 
 /* Card background utility */
