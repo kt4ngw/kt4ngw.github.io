@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "build:visitor-map": "node scripts/build-visitor-map.mjs",
+    "build:visitor-flags": "node scripts/build-visitor-flags.mjs",
     "update:visitors": "node scripts/update-visitor-stats.mjs",
     "start": "next start",
     "lint": "eslint ."
@@ -37,6 +38,7 @@
     "eslint": "^9",
     "eslint-config-next": "^15.5.25",
     "lightningcss": "^1",
+    "sharp": "0.34.5",
     "svg2ico": "^1.0.35",
     "tailwindcss": "^4",
     "topojson-client": "^3.1.0",

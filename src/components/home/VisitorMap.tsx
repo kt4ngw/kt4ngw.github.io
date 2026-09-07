@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Image from 'next/image';
 
 type MapPoint = [number, number, string];
 
@@ -40,15 +41,6 @@ function simplifyCountryName(name: string) {
 function bubbleRadius(value: number, max: number) {
   if (max <= 0) return MIN_RADIUS;
   return MIN_RADIUS + (MAX_RADIUS - MIN_RADIUS) * Math.sqrt(value / max);
-}
-
-function flagEmoji(code?: string) {
-  if (!code || !/^[a-z]{2}$/i.test(code)) return '·';
-  return code
-    .toUpperCase()
-    .split('')
-    .map((character) => String.fromCodePoint(127397 + character.charCodeAt(0)))
-    .join('');
 }
 
 export default function VisitorMap() {
@@ -161,6 +153,8 @@ export default function VisitorMap() {
           {countries.slice(0, 10).map((country) => {
             const active = activeCountry === country.name;
             const share = max > 0 ? Math.max(2, Math.round((country.value / max) * 100)) : 0;
+            const code = country.point?.[2];
+            const flagSrc = code && /^[a-z]{2}$/i.test(code) ? `/flags/${code.toLowerCase()}.png` : null;
             return (
               <li
                 key={country.name}
@@ -172,7 +166,15 @@ export default function VisitorMap() {
                 onBlur={() => setActiveCountry(null)}
               >
                 <span className="visitor-map-flag" aria-hidden="true">
-                  {flagEmoji(country.point?.[2])}
+                  {flagSrc && (
+                    <Image
+                      src={flagSrc}
+                      alt=""
+                      width={20}
+                      height={15}
+                      unoptimized
+                    />
+                  )}
                 </span>
                 <span className="visitor-map-country" title={country.name}>{country.name}</span>
                 <span className="visitor-map-value">{country.value.toLocaleString()}</span>
