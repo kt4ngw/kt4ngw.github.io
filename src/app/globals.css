@@ -81,7 +81,9 @@
   --font-serif: 'Crimson Text', Georgia, serif;
   --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace; */
   --font-sans: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  /* Keep headings in an explicit Times-style face instead of a browser's
+     customizable generic serif default. Body typography stays unchanged. */
+  --font-serif: 'Times New Roman', Times, 'Liberation Serif', 'Noto Serif SC', 'Source Han Serif SC', serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 
   /* Font sizes */
