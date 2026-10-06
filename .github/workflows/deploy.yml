@@ -5,11 +5,7 @@ on:
     branches:
       - main
       - ci
-  workflow_run:
-    workflows:
-      - Update visitor map
-    types:
-      - completed
+  # Also dispatched by update-visitors.yml when the visitor statistics change.
   workflow_dispatch:
 
 permissions:
@@ -19,14 +15,14 @@ permissions:
 
 jobs:
   build:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_run' && 'main' || github.ref }}
+          # Full history so the "Last updated" date can skip visitor-statistics commits.
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

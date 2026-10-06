@@ -9,10 +9,11 @@ on:
       - .github/workflows/update-visitors.yml
       - scripts/update-visitor-stats.mjs
   schedule:
-    - cron: '15 * * * *'
+    - cron: '15 */6 * * *'
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: update-visitor-map
@@ -59,6 +60,7 @@ jobs:
           GA_END_DATE: today
 
       - name: Commit refreshed statistics
+        id: commit
         if: steps.ga.outputs.configured == 'true'
         run: |
           if git diff --quiet -- public/visitor-stats.json; then
@@ -70,3 +72,13 @@ jobs:
           git add public/visitor-stats.json
           git commit -m "Update visitor statistics"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Pushes made with GITHUB_TOKEN do not trigger the push-based deploy, but a
+      # workflow_dispatch does. Redeploy only when the statistics actually changed.
+      - name: Deploy refreshed statistics
+        if: steps.commit.outputs.changed == 'true'
+        run: gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}

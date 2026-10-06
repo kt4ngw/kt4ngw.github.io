@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { getLastModified } from '@/lib/lastUpdated';
 
 const SITE_URL = 'https://kt4ngw.github.io';
 
@@ -17,9 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/cv/', changeFrequency: 'monthly', priority: 0.8 },
   ];
 
+  const lastModified = getLastModified();
+
   return pages.map(({ path, changeFrequency, priority }) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
+    lastModified,
     changeFrequency,
     priority,
   }));

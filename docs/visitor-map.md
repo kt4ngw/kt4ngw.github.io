@@ -10,7 +10,8 @@ Configure these GitHub repository secrets:
 - `GA_CREDENTIALS`: the complete JSON key for a Google service account that has
   Viewer access to the GA4 property.
 
-The scheduled workflow updates the public aggregate once a day. By default it
+The scheduled workflow updates the public aggregate every six hours and
+redeploys the site only when the numbers have changed. By default it
 queries from GA4's launch date (`2020-10-14`), so the map is cumulative for the
 full lifetime of this GA4 property. To change the reporting window, create the
 repository variable `GA_START_DATE`. It accepts a GA4 relative value such as
