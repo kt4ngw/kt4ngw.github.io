@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getBibtexContent } from '@/lib/content';
 import { parseBibTeX } from '@/lib/bibtexParser';
@@ -5,6 +6,14 @@ import { venueMap } from '@/lib/venueMap';
 import {
     DocumentTextIcon,
 } from '@heroicons/react/24/outline';
+
+export const metadata: Metadata = {
+  title: 'Publications (Compact)',
+  description: 'Compact publication list of Jian Tang, PhD student at RMIT University.',
+  alternates: {
+    canonical: '/publications/',
+  },
+};
 
 function renderAuthors(
   authors: Array<{
