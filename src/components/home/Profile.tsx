@@ -74,12 +74,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
     ];
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="contents lg:sticky lg:top-8 lg:col-span-1 lg:block lg:self-start"
-        >
+        <div className="fade-in-up contents lg:sticky lg:top-8 lg:col-span-1 lg:block lg:self-start">
             <div className="order-1 lg:order-none">
             {/* Profile Image */}
             <div className="w-64 h-64 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
@@ -295,6 +290,6 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
                 <VisitorMap />
             </div>
 
-        </motion.div>
+        </div>
     );
 }

@@ -62,11 +62,7 @@ export default function PublicationsList({ config, publications, embedded = fals
     }, [publications, searchQuery, selectedYear, selectedType]);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-        >
+        <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                     <h1 className={`${embedded ? 'text-2xl' : 'text-4xl'} font-serif font-bold text-primary mb-4`}>
@@ -227,12 +223,10 @@ export default function PublicationsList({ config, publications, embedded = fals
                         const displayVenue = venueMap[rawVenue] || rawVenue;
 
                         return (
-                            <motion.div
+                            <div
                                 key={pub.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: 0.1 * index }}
-                                className="bg-white dark:bg-neutral-900 p-4 rounded-xl shadow-sm border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-all duration-200"
+                                style={{ animationDuration: '0.4s', animationDelay: `${0.1 * index}s` }}
+                                className="fade-in-up bg-white dark:bg-neutral-900 p-4 rounded-xl shadow-sm border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-all duration-200"
                             >
                                 <div className="flex flex-col md:flex-row gap-3">
                                     {pub.preview && (
@@ -401,11 +395,11 @@ export default function PublicationsList({ config, publications, embedded = fals
                                         </AnimatePresence>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         );
                     })
                 )}
             </div>
-        </motion.div>
+        </div>
     );
 }

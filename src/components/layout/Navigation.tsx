@@ -82,12 +82,9 @@ export default function Navigation({ items, siteTitle, enableOnePageMode }: Navi
     <Disclosure as="nav" className="fixed top-0 left-0 right-0 z-50">
       {({ open }) => (
         <>
-          <motion.div
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
             className={cn(
-              'transition-all duration-300 ease-out',
+              'slide-in-down transition-all duration-300 ease-out',
               scrolled
                 ? 'bg-background/80 backdrop-blur-xl border-b border-neutral-200/50 shadow-lg'
                 : 'bg-transparent'
@@ -177,7 +174,7 @@ export default function Navigation({ items, siteTitle, enableOnePageMode }: Navi
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Mobile Navigation Menu */}
           <AnimatePresence>

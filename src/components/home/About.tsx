@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 
 interface AboutProps {
@@ -10,11 +9,7 @@ interface AboutProps {
 
 export default function About({ content, title = 'About' }: AboutProps) {
     return (
-        <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <section className="fade-in-up" style={{ animationDelay: '0.2s' }}>
             {title && (
                 <h2 className="text-2xl font-serif font-bold text-primary mb-4">{title}</h2>
             )}
@@ -48,6 +43,6 @@ export default function About({ content, title = 'About' }: AboutProps) {
                     {content}
                 </ReactMarkdown>
             </div>
-        </motion.section>
+        </section>
     );
 }

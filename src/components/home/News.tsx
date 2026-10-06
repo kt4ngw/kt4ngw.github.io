@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
@@ -42,11 +41,7 @@ export default function News({ items, title = 'News' }: NewsProps) {
     }, [items]);
 
     return (
-        <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-        >
+        <section className="fade-in-up" style={{ animationDelay: '0.5s' }}>
             <h2 className="text-2xl font-serif font-bold text-primary mb-4">{title}</h2>
 
             <div
@@ -106,6 +101,6 @@ export default function News({ items, title = 'News' }: NewsProps) {
                     </div>
                 </div>
             </div>
-        </motion.section>
+        </section>
     );
 }

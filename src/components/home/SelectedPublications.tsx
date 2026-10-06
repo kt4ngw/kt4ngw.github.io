@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Publication } from '@/types/publication';
 import { venueMap } from '@/lib/venueMap';
@@ -13,11 +12,7 @@ interface SelectedPublicationsProps {
 
 export default function SelectedPublications({ publications, title = 'Selected Publications', enableOnePageMode = false }: SelectedPublicationsProps) {
     return (
-        <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-        >
+        <section className="fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-2xl font-serif font-bold text-primary">{title}</h2>
                 <Link
@@ -35,12 +30,10 @@ export default function SelectedPublications({ publications, title = 'Selected P
                     const displayVenue = venueMap[rawVenue] || rawVenue;
 
                     return (
-                        <motion.div
+                        <div
                             key={pub.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, delay: 0.1 * index }}
-                            className="rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 shadow-sm transition-all duration-200 dark:border-[rgba(148,163,184,0.24)] dark:bg-neutral-800"
+                            style={{ animationDuration: '0.4s', animationDelay: `${0.1 * index}s` }}
+                            className="fade-in-up rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 shadow-sm transition-all duration-200 dark:border-[rgba(148,163,184,0.24)] dark:bg-neutral-800"
                         >
                             <h3 className="mb-2 text-base font-semibold leading-snug text-primary">
                                 {pub.title}
@@ -104,10 +97,10 @@ export default function SelectedPublications({ publications, title = 'Selected P
                                     {pub.description}
                                 </p>
                             )}
-                        </motion.div>
+                        </div>
                     );
                 })}
             </div>
-        </motion.section>
+        </section>
     );
 }
