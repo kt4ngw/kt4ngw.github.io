@@ -1,29 +1,18 @@
 import type { MetadataRoute } from 'next';
+import { getConfig } from '@/lib/config';
 import { getLastModified } from '@/lib/lastUpdated';
-
-const SITE_URL = 'https://kt4ngw.github.io';
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages: Array<{
-    path: string;
-    changeFrequency: 'weekly' | 'monthly';
-    priority: number;
-  }> = [
-    { path: '/', changeFrequency: 'weekly', priority: 1 },
-    { path: '/publications/', changeFrequency: 'monthly', priority: 0.9 },
-    { path: '/services/', changeFrequency: 'monthly', priority: 0.6 },
-    { path: '/awards/', changeFrequency: 'monthly', priority: 0.6 },
-    { path: '/cv/', changeFrequency: 'monthly', priority: 0.8 },
-  ];
-
+  const config = getConfig();
   const lastModified = getLastModified();
 
-  return pages.map(({ path, changeFrequency, priority }) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }));
+  return config.navigation
+    .filter((item) => item.type === 'page')
+    .map((item) => ({
+      // Pages are exported with trailing slashes, matching their canonical URLs.
+      url: `${config.site.url}${item.href.endsWith('/') ? item.href : `${item.href}/`}`,
+      lastModified,
+    }));
 }

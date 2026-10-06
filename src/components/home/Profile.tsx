@@ -100,7 +100,12 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
                     {author.institution}
                 </p>
                 <p className="text-neutral-600 mb-2">
-                    {author.email.replace('@', '[at]')}
+                    <a
+                        href={`mailto:${author.email}`}
+                        className="transition-colors duration-200 hover:text-accent"
+                    >
+                        {author.email}
+                    </a>
                 </p>
             </div>
 

@@ -1,16 +1,17 @@
 import type { MetadataRoute } from 'next';
-
-const SITE_URL = 'https://kt4ngw.github.io';
+import { getConfig } from '@/lib/config';
 
 export const dynamic = 'force-static';
 
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = getConfig().site.url;
+
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }
