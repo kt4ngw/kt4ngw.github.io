@@ -11,6 +11,10 @@ date = "2026-04"
 content = "I have been invited to serve as a reviewer for <span class='text-accent font-medium'>IEEE TMC</span>. I am honored and excited to contribute to the community."
 
 [[news]]
+date = "2026-03"
+content = "I started my PhD at RMIT University."
+
+[[news]]
 date = "2025-11"
 content = "I have received an offer of admission to the PhD program and the RMIT Research Stipend Scholarship from RMIT University. Many thanks to <span class='text-primary font-medium'>Dr. Xia</span> for the support."
 
