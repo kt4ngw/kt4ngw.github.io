@@ -112,7 +112,10 @@ export default function VisitorMap() {
   return (
     <div className="visitor-map-shell">
       <div className="visitor-map-summary">
-        <strong>{stats.visitors.toLocaleString()} visitors</strong>
+        <span>
+          <strong>{stats.visitors.toLocaleString()} visitors</strong>
+          {` from ${countries.length} ${countries.length === 1 ? 'country/region' : 'countries/regions'}`}
+        </span>
       </div>
 
       <svg
@@ -149,7 +152,7 @@ export default function VisitorMap() {
       </svg>
 
       {countries.length > 0 && (
-        <ol className="visitor-map-ranking" aria-label="Top visitor countries">
+        <ol className="visitor-map-ranking" aria-label="Top visitor countries/regions">
           {countries.slice(0, 10).map((country) => {
             const active = activeCountry === country.name;
             const share = max > 0 ? Math.max(2, Math.round((country.value / max) * 100)) : 0;
