@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(config.site.url),
     title: {
-      default: config.author.name,
+      default: config.site.home_title ?? config.author.name,
       template: `%s | ${config.author.name}`
     },
     description: config.site.description,

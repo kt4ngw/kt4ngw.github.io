@@ -1,5 +1,7 @@
 [site]
 title = "Jian Tang"
+# Homepage title in browser tabs and search results; `title` is shown in the navigation bar.
+home_title = "Jian Tang (唐健) | PhD Student, RMIT University"
 description = "Jian Tang is a PhD student at RMIT University researching federated learning, edge intelligence, privacy protection, and network and system security."
 url = "https://kt4ngw.github.io"
 favicon = "/rmit.svg"
