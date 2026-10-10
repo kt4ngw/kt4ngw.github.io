@@ -77,7 +77,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
         <div className="fade-in-up contents lg:sticky lg:top-8 lg:col-span-1 lg:block lg:self-start">
             <div className="order-1 lg:order-none">
             {/* Profile Image */}
-            <div className="w-64 h-64 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+            <div className="w-40 h-40 sm:w-64 sm:h-64 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
                 <Image
                     src={author.avatar}
                     alt={author.name}
@@ -110,7 +110,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             </div>
 
             {/* Contact Links */}
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-6 relative px-2">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 lg:mb-6 relative px-2">
                 {socialLinks.map((link) => {
                     const IconComponent = link.icon;
                     if (link.isLocation) {
