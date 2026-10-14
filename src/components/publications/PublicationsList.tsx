@@ -19,13 +19,12 @@ import { cn } from '@/lib/utils';
 interface PublicationsListProps {
     config: PublicationPageConfig;
     publications: Publication[];
-    embedded?: boolean;
 }
 import Link from 'next/link';
 import { venueMap } from '@/lib/venueMap';
 
 
-export default function PublicationsList({ config, publications, embedded = false }: PublicationsListProps) {
+export default function PublicationsList({ config, publications }: PublicationsListProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedYear, setSelectedYear] = useState<number | 'all'>('all');
     const [selectedType, setSelectedType] = useState<string | 'all'>('all');
@@ -65,12 +64,12 @@ export default function PublicationsList({ config, publications, embedded = fals
         <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                    <h1 className={`${embedded ? 'text-2xl' : 'text-4xl'} font-serif font-bold text-primary mb-4`}>
+                    <h1 className="text-4xl font-serif font-bold text-primary mb-4">
                         {config.title}
                     </h1>
 
                     {config.description && (
-                        <p className={`${embedded ? 'text-base' : 'text-lg'} text-neutral-600 dark:text-neutral-500 max-w-2xl`}>
+                        <p className="text-lg text-neutral-600 dark:text-neutral-500 max-w-2xl">
                             {config.description}
                         </p>
                     )}
@@ -244,7 +243,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                     )}
 
                                     <div className="flex-grow">
-                                        <h3 className={`${embedded ? 'text-sm' : 'text-base'} font-medium text-primary mb-1.5 leading-snug`}>
+                                        <h3 className="text-base font-medium text-primary mb-1.5 leading-snug">
                                             {pub.url ? (
                                                 <a
                                                     href={pub.url}
@@ -259,7 +258,7 @@ export default function PublicationsList({ config, publications, embedded = fals
                                             )}
                                         </h3>
 
-                                        <p className={`${embedded ? 'text-xs' : 'text-sm'} text-neutral-600 dark:text-neutral-400 mb-1 leading-relaxed`}>
+                                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1 leading-relaxed">
                                             {pub.authors.map((author, idx) => (
                                                 <span key={idx}>
                                                     <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>

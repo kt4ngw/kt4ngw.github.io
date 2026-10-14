@@ -4,7 +4,7 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { getConfig } from "@/lib/config";
-import { getLastUpdated } from "@/lib/lastUpdated"; // 20250408: Add last updated import
+import { getLastUpdated } from "@/lib/lastUpdated";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 
@@ -104,12 +104,11 @@ export default function RootLayout({
           <Navigation
             items={config.navigation}
             siteTitle={config.site.title}
-            enableOnePageMode={config.features.enable_one_page_mode}
           />
           <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
             {children}
           </main>
-          <Footer lastUpdated={getLastUpdated()} />
+          <Footer lastUpdated={getLastUpdated()} owner={config.author.name} />
         </ThemeProvider>
         <GoogleAnalytics />
       </body>

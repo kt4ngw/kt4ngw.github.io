@@ -1,4 +1,4 @@
-import { Publication, PublicationType, ResearchArea } from '@/types/publication';
+import { Publication, PublicationType } from '@/types/publication';
 import { getConfig } from './config';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -53,9 +53,6 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
     // Determine type
     const type = typeMapping[entry.entryType.toLowerCase()] || 'journal';
 
-    // Parse tags/keywords
-    const keywords = tags.keywords?.split(',').map((k: string) => k.trim()) || [];
-
     // Parse selected field (convert string to boolean)
     const selected = tags.selected === 'true' || tags.selected === 'yes';
 
@@ -70,10 +67,6 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
       year,
       month: monthMapping[tags.month?.toLowerCase()] ? String(month) : tags.month,
       type,
-      status: 'published',
-      tags: keywords,
-      keywords,
-      researchArea: detectResearchArea(tags.title, keywords),
 
       // Optional fields
       journal: cleanBibTeXString(tags.journal),
@@ -205,31 +198,6 @@ function cleanBibTeXString(str?: string): string {
   cleaned = cleaned.replace(/\s+/g, ' ').trim();
 
   return cleaned;
-}
-
-function detectResearchArea(title: string, keywords: string[]): ResearchArea {
-  const text = (title + ' ' + keywords.join(' ')).toLowerCase();
-
-  if (text.includes('healthcare') || text.includes('medical') || text.includes('health')) {
-    return 'ai-healthcare';
-  }
-  if (text.includes('signal') || text.includes('processing')) {
-    return 'signal-processing';
-  }
-  if (text.includes('reliability') || text.includes('fault') || text.includes('diagnosis')) {
-    return 'reliability-engineering';
-  }
-  if (text.includes('quantum')) {
-    return 'quantum-computing';
-  }
-  if (text.includes('neural') || text.includes('spiking')) {
-    return 'neural-networks';
-  }
-  if (text.includes('transformer') || text.includes('attention')) {
-    return 'transformer-architectures';
-  }
-
-  return 'machine-learning';
 }
 
 function reconstructBibTeX(entry: { entryType: string; citationKey: string; entryTags: Record<string, string> }, excludeFields: string[] = []): string {

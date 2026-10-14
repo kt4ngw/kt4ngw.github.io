@@ -1,4 +1,3 @@
-type = "text"
+type = "cv"
 title = "Curriculum Vitae"
 description = "Curriculum vitae of Jian Tang, PhD student at RMIT University."
-source = "cv.md"

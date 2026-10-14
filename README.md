@@ -1,8 +1,8 @@
 # kt4ngw.github.io
 
 Source of Jian Tang's academic homepage, <https://kt4ngw.github.io>. It is a
-statically exported Next.js site built on the [PRISM](https://github.com/xyjoey/PRISM)
-template.
+statically exported Next.js site, originally based on the
+[PRISM](https://github.com/xyjoey/PRISM) template.
 
 ## Editing content
 
@@ -45,4 +45,4 @@ The visitor map is refreshed from Google Analytics by
 
 ## License
 
-The code is based on PRISM and released under the MIT License; see [LICENSE](LICENSE).
+The code started from PRISM and is released under the MIT License; see [LICENSE](LICENSE).

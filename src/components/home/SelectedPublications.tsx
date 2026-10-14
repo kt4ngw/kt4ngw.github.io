@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Publication } from '@/types/publication';
 import { venueMap } from '@/lib/venueMap';
@@ -7,16 +5,15 @@ import { venueMap } from '@/lib/venueMap';
 interface SelectedPublicationsProps {
     publications: Publication[];
     title?: string;
-    enableOnePageMode?: boolean;
 }
 
-export default function SelectedPublications({ publications, title = 'Selected Publications', enableOnePageMode = false }: SelectedPublicationsProps) {
+export default function SelectedPublications({ publications, title = 'Selected Publications' }: SelectedPublicationsProps) {
     return (
         <section className="fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-2xl font-serif font-bold text-primary">{title}</h2>
                 <Link
-                    href={enableOnePageMode ? "/#publications" : "/publications"}
+                    href="/publications"
                     prefetch={true}
                     className="rounded text-sm font-medium text-accent transition-all duration-200 hover:bg-accent/10 hover:text-accent-dark hover:shadow-sm"
                 >

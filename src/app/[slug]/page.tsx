@@ -4,13 +4,11 @@ import { getConfig } from '@/lib/config';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
-import CardPage from '@/components/pages/CardPage';
 import CVPageContent from '@/components/pages/CVPageContent';
 import {
     BasePageConfig,
     PublicationPageConfig,
-    TextPageConfig,
-    CardPageConfig
+    TextPageConfig
 } from '@/types/page';
 
 import { Metadata } from 'next';
@@ -18,7 +16,7 @@ import { Metadata } from 'next';
 export function generateStaticParams() {
     const config = getConfig();
     return config.navigation
-        .filter(nav => nav.type === 'page' && nav.target !== 'about') // 'about' is handled by root page  // && nav.target !== 'cv'
+        .filter(nav => nav.type === 'page' && nav.target !== 'about') // 'about' is handled by root page
         .map(nav => ({
             slug: nav.target,
         }));
@@ -49,7 +47,7 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
         notFound();
     }
 
-    if (slug === 'cv') {
+    if (pageConfig.type === 'cv') {
         return <CVPageContent />;
     }
 
@@ -60,9 +58,6 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
             )}
             {pageConfig.type === 'text' && (
                 <TextPageWrapper config={pageConfig as TextPageConfig} />
-            )}
-            {pageConfig.type === 'card' && (
-                <CardPage config={pageConfig as CardPageConfig} />
             )}
         </div>
     );

@@ -14,19 +14,10 @@ email = "kt4ngw@gmail.com"
 avatar = "/bio-dsc02200-640.jpg"
 
 [social]
-# Contact information (leave blank or delete to hide)
-
-# email = "kt4ngw@gmail.com"
-# location = "Melbourne, Australia"
-# location_url = "https://maps.google.com"
-# location_details = ["City campus, 124 La Trobe St, Melbourne VIC, Australia"]
+# Profile icon links: google_scholar, orcid, github, linkedin (delete a line to hide it)
 google_scholar = "https://scholar.google.com/citations?user=9eH0NZgAAAAJ&hl=en"
 github = "https://github.com/kt4ngw"
 linkedin = "https://www.linkedin.com/in/kt4ngw/"
-
-[features]
-# Display all subpages on a single page
-enable_one_page_mode = false
 
 [[navigation]]
 title = "About"

@@ -9,7 +9,6 @@ export interface SiteConfig {
         description: string;
         url: string;
         favicon: string;
-        last_updated?: string;
     };
     author: {
         name: string;
@@ -19,32 +18,16 @@ export interface SiteConfig {
         email: string;
     };
     social: {
-        // email?: string;
-        location?: string;
-        location_url?: string;
-        location_details?: string[];
         google_scholar?: string;
         orcid?: string;
         github?: string;
         linkedin?: string;
-        [key: string]: string | string[] | undefined;
-    };
-    features: {
-        enable_one_page_mode?: boolean;
     };
     navigation: Array<{
         title: string;
         type: 'section' | 'page' | 'link';
         target: string;
         href: string;
-    }>;
-    sections: Array<{
-        id: string;
-        type: 'markdown' | 'publications' | 'list' | 'cards';
-        source?: string;
-        title?: string;
-        filter?: string;
-        limit?: number;
     }>;
 }
 

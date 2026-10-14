@@ -1,10 +1,9 @@
-name: Deploy PRISM to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
-      - ci
   # Also dispatched by update-visitors.yml when the visitor statistics change.
   workflow_dispatch:
 
