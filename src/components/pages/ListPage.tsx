@@ -21,13 +21,10 @@ export default function ListPage({ config }: { config: ListPageConfig }) {
             <div className="space-y-10">
                 {config.sections.map((section, sectionIndex) => (
                     <section key={section.title ?? sectionIndex}>
-                        {section.title ? (
+                        {section.title && (
                             <h2 className="mb-4 border-b border-neutral-200 pb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
                                 {section.title}
                             </h2>
-                        ) : (
-                            // Untitled sections still get the rule, so every list page opens the same way.
-                            <div className="mb-4 border-b border-neutral-200" />
                         )}
                         <ul className="space-y-3">
                             {section.items

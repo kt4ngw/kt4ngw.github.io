@@ -47,7 +47,11 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
     ];
 
     return (
-        <div className="fade-in-up contents lg:sticky lg:top-8 lg:col-span-1 lg:block lg:self-start">
+        // On desktop the sidebar is narrower than its grid column and sits against the main column,
+        // so the sections below keep close to the centered photo instead of running to the page edge.
+        // It sticks where it starts (top-28 = the 5rem fixed nav plus the 2rem page padding), so the
+        // photo stays clear of the nav while the sidebar is held in place.
+        <div className="fade-in-up contents lg:sticky lg:top-28 lg:col-span-1 lg:ml-auto lg:block lg:w-72 lg:self-start">
             <div className="order-1 lg:order-none">
             {/* Profile Image */}
             <div className="w-36 h-36 sm:w-48 sm:h-48 mx-auto mb-5 rounded-full overflow-hidden bg-neutral-100">
