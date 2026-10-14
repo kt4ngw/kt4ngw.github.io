@@ -40,7 +40,10 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
   const entries = bibtexParse.toJSON(bibtexContent);
 
   return entries.map((entry: { entryType: string; citationKey: string; entryTags: Record<string, string> }, index: number) => {
-    const tags = entry.entryTags;
+    // Field names are case-insensitive in BibTeX (archivePrefix, Journal, ...).
+    const tags: Record<string, string> = Object.fromEntries(
+      Object.entries(entry.entryTags).map(([key, value]) => [key.toLowerCase(), value])
+    );
 
     // Parse authors
     const authors = parseAuthors(tags.author || '', authorName);
@@ -50,8 +53,10 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
     const monthStr = tags.month?.toLowerCase() || '';
     const month = monthMapping[monthStr] || (parseInt(monthStr) || undefined);
 
-    // Determine type
-    const type = typeMapping[entry.entryType.toLowerCase()] || 'journal';
+    // Determine type. arXiv papers exported from Google Scholar are @article entries whose
+    // journal reads "arXiv preprint …", so they are detected explicitly.
+    const isArxiv = /arxiv/i.test([tags.journal, tags.howpublished, tags.archiveprefix].join(' ')) || Boolean(tags.eprint);
+    const type = isArxiv ? 'preprint' : typeMapping[entry.entryType.toLowerCase()] || 'journal';
 
     // Parse selected field (convert string to boolean)
     const selected = tags.selected === 'true' || tags.selected === 'yes';
@@ -69,7 +74,7 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
       type,
 
       // Optional fields
-      journal: cleanBibTeXString(tags.journal),
+      journal: cleanBibTeXString(tags.journal || tags.howpublished || (tags.eprint ? `arXiv:${tags.eprint}` : '')),
       conference: cleanBibTeXString(tags.booktitle),
       volume: tags.volume,
       issue: tags.number,

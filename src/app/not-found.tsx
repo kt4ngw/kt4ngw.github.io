@@ -15,10 +15,10 @@ export default function NotFound() {
   return (
     <div className="flex min-h-[calc(100vh-12rem)] items-center justify-center px-4 py-16">
       <div className="mx-auto max-w-xl text-center">
-        <p className="font-serif text-7xl font-bold tracking-tight text-accent sm:text-8xl">
+        <p className="text-7xl font-semibold tracking-tight text-accent sm:text-8xl">
           404
         </p>
-        <h1 className="mt-5 font-serif text-3xl font-bold text-primary sm:text-4xl">
+        <h1 className="mt-5 text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
           Page not found
         </h1>
         <p className="mt-4 text-base leading-7 text-neutral-600">
@@ -28,14 +28,14 @@ export default function NotFound() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-light"
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-background transition-colors hover:bg-accent-dark"
           >
             <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
             Return to homepage
           </Link>
           <Link
             href="/publications/"
-            className="inline-flex items-center justify-center rounded-full border border-neutral-300 bg-background px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-100"
+            className="inline-flex items-center justify-center rounded-md border border-neutral-300 bg-background px-4 py-2.5 text-sm font-medium text-neutral-700 transition-colors hover:border-accent hover:text-accent"
           >
             View publications
           </Link>

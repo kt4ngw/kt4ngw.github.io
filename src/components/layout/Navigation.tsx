@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { cn } from '@/lib/utils';
@@ -21,8 +21,7 @@ export default function Navigation({ items, siteTitle }: NavigationProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -37,83 +36,65 @@ export default function Navigation({ items, siteTitle }: NavigationProps) {
         <>
           <div
             className={cn(
-              'slide-in-down transition-all duration-300 ease-out',
-              scrolled
-                ? 'bg-background/80 backdrop-blur-xl border-b border-neutral-200/50 shadow-lg'
-                : 'bg-transparent'
+              'border-b transition-colors duration-300',
+              scrolled || open
+                ? 'bg-background/90 backdrop-blur border-neutral-200'
+                : 'bg-transparent border-transparent'
             )}
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center h-16 lg:h-20">
-                {/* Logo/Name */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-shrink-0"
+                <Link
+                  href="/"
+                  className="text-lg lg:text-xl font-semibold tracking-tight text-primary hover:text-accent transition-colors duration-200"
                 >
-                  <Link
-                    href="/"
-                    className="text-xl lg:text-2xl font-serif font-semibold text-primary hover:text-accent transition-colors duration-200"
-                  >
-                    {siteTitle}
-                  </Link>
-                </motion.div>
+                  {siteTitle}
+                </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden lg:block">
-                  <div className="ml-10 flex items-center space-x-8">
-                    <div className="flex items-baseline space-x-8">
-                      {items.map((item) => {
-                        const isActive = isCurrent(item.href);
+                <div className="hidden lg:flex items-center gap-8">
+                  <div className="flex items-center gap-7">
+                    {items.map((item) => {
+                      const isActive = isCurrent(item.href);
 
-                        return (
-                          <Link
-                            key={item.title}
-                            href={item.href}
-                            prefetch={true}
-                            className={cn(
-                              'relative px-3 py-2 text-sm font-medium transition-all duration-200 rounded hover:bg-accent/10 hover:shadow-sm',
-                              isActive
-                                ? 'text-primary'
-                                : 'text-neutral-600 hover:text-primary'
-                            )}
-                          >
-                            <span className="relative z-10">{item.title}</span>
-                            {isActive && (
-                              <motion.div
-                                layoutId="activeTab"
-                                className="absolute inset-0 bg-accent/10 rounded-lg"
-                                initial={false}
-                                transition={{
-                                  type: 'spring',
-                                  stiffness: 500,
-                                  damping: 30
-                                }}
-                              />
-                            )}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                    <ThemeToggle />
+                      return (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          prefetch={true}
+                          aria-current={isActive ? 'page' : undefined}
+                          className={cn(
+                            'relative py-2 text-sm font-medium transition-colors duration-200',
+                            isActive ? 'text-primary' : 'text-neutral-500 hover:text-primary'
+                          )}
+                        >
+                          {item.title}
+                          {isActive && (
+                            // Shared layoutId slides the underline to the newly active item on navigation.
+                            <motion.span
+                              layoutId="nav-underline"
+                              className="absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-accent"
+                              initial={false}
+                              transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                            />
+                          )}
+                        </Link>
+                      );
+                    })}
                   </div>
+                  <ThemeToggle />
                 </div>
 
                 {/* Mobile menu button and theme toggle */}
-                <div className="lg:hidden flex items-center space-x-2">
+                <div className="lg:hidden flex items-center gap-2">
                   <ThemeToggle />
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-neutral-600 hover:text-primary hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent transition-colors duration-200">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-neutral-500 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors duration-200">
                     <span className="sr-only">Open main menu</span>
-                    <motion.div
-                      animate={{ rotate: open ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {open ? (
-                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                      ) : (
-                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                      )}
-                    </motion.div>
+                    {open ? (
+                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                    ) : (
+                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                    )}
                   </Disclosure.Button>
                 </div>
               </div>
@@ -121,48 +102,31 @@ export default function Navigation({ items, siteTitle }: NavigationProps) {
           </div>
 
           {/* Mobile Navigation Menu */}
-          <AnimatePresence>
-            {open && (
-              <Disclosure.Panel static>
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="lg:hidden bg-background/95 backdrop-blur-xl border-b border-neutral-200/50 shadow-lg"
-                >
-                  <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    {items.map((item, index) => {
-                      const isActive = isCurrent(item.href);
+          <Disclosure.Panel className="lg:hidden bg-background border-b border-neutral-200">
+            <div className="max-w-6xl mx-auto px-4 py-2 space-y-1 sm:px-6">
+              {items.map((item) => {
+                const isActive = isCurrent(item.href);
 
-                      return (
-                        <motion.div
-                          key={item.title}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
-                          <Disclosure.Button
-                            as={Link}
-                            href={item.href}
-                            prefetch={true}
-                            className={cn(
-                              'block px-3 py-2 rounded-md text-base font-medium transition-all duration-200',
-                              isActive
-                                ? 'text-primary bg-accent/10 border-l-4 border-accent'
-                                : 'text-neutral-600 hover:text-primary hover:bg-neutral-50'
-                            )}
-                          >
-                            {item.title}
-                          </Disclosure.Button>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              </Disclosure.Panel>
-            )}
-          </AnimatePresence>
+                return (
+                  <Disclosure.Button
+                    key={item.title}
+                    as={Link}
+                    href={item.href}
+                    prefetch={true}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={cn(
+                      'block border-l-2 py-2 pl-3 text-base font-medium transition-colors duration-200',
+                      isActive
+                        ? 'border-accent text-primary'
+                        : 'border-transparent text-neutral-500 hover:text-primary'
+                    )}
+                  >
+                    {item.title}
+                  </Disclosure.Button>
+                );
+              })}
+            </div>
+          </Disclosure.Panel>
         </>
       )}
     </Disclosure>

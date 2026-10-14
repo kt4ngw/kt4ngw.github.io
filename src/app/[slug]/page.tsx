@@ -4,11 +4,13 @@ import { getConfig } from '@/lib/config';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
+import ListPage from '@/components/pages/ListPage';
 import CVPageContent from '@/components/pages/CVPageContent';
 import {
     BasePageConfig,
     PublicationPageConfig,
-    TextPageConfig
+    TextPageConfig,
+    ListPageConfig
 } from '@/types/page';
 
 import { Metadata } from 'next';
@@ -58,6 +60,9 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
             )}
             {pageConfig.type === 'text' && (
                 <TextPageWrapper config={pageConfig as TextPageConfig} />
+            )}
+            {pageConfig.type === 'list' && (
+                <ListPage config={pageConfig as ListPageConfig} />
             )}
         </div>
     );

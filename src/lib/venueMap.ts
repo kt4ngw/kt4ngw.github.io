@@ -8,3 +8,12 @@ export const venueMap: Record<string, string> = {
   'Proc. IEEE ICC': 'IEEE International Conference on Communications',
   'Proc. ACM MobiCom': 'ACM International Conference on Mobile Computing and Networking',
 };
+
+// Short venue labels for the homepage publication badges (e.g. "TMC 2026").
+export const venueShort: Record<string, string> = {
+  'IEEE Trans. Mobile Comput.': 'TMC',
+  'IEEE Trans. Pattern Anal. Mach. Intell.': 'TPAMI',
+  'IEEE J. Sel. Areas Commun.': 'JSAC',
+  'Proc. IEEE ICC': 'ICC',
+  'Proc. ACM MobiCom': 'MobiCom',
+};

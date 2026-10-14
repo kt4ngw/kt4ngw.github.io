@@ -22,7 +22,13 @@ export async function generateMetadata(): Promise<Metadata> {
     creator: config.author.name,
     publisher: config.author.name,
     icons: {
-      icon: config.site.favicon,
+      // PNG copies of the SVG favicon for browsers without SVG favicon support and for
+      // iOS home-screen bookmarks, which only use apple-touch-icon.
+      icon: [
+        { url: config.site.favicon, type: 'image/svg+xml' },
+        { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      ],
+      apple: '/apple-touch-icon.png',
     },
     alternates: {
       canonical: '/',
@@ -65,7 +71,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href={config.site.favicon} type="image/svg+xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

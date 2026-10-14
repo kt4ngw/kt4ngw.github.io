@@ -50,7 +50,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
         <div className="fade-in-up contents lg:sticky lg:top-8 lg:col-span-1 lg:block lg:self-start">
             <div className="order-1 lg:order-none">
             {/* Profile Image */}
-            <div className="w-40 h-40 sm:w-64 sm:h-64 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+            <div className="w-36 h-36 sm:w-48 sm:h-48 mx-auto mb-5 rounded-full overflow-hidden bg-neutral-100">
                 <Image
                     src={author.avatar}
                     alt={author.name}
@@ -62,17 +62,17 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             </div>
 
             {/* Name and Title */}
-            <div className="text-center mb-6">
-                <h1 className="text-3xl font-serif font-bold text-primary mb-2">
+            <div className="text-center mb-4">
+                <h1 className="text-2xl font-semibold tracking-tight text-primary mb-1">
                     {author.name}
                 </h1>
-                <p className="text-lg text-accent font-medium mb-1">
+                <p className="font-medium text-neutral-700 mb-1">
                     {author.title}
                 </p>
-                <p className="text-neutral-600 mb-2">
+                <p className="text-sm text-neutral-500 mb-1">
                     {author.institution}
                 </p>
-                <p className="text-neutral-600 mb-2">
+                <p className="text-sm text-neutral-500">
                     <a
                         href={`mailto:${author.email}`}
                         className="transition-colors duration-200 hover:text-accent"
@@ -83,7 +83,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             </div>
 
             {/* Contact Links */}
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 lg:mb-6 relative px-2">
+            <div className="flex flex-wrap justify-center gap-3 lg:mb-8 px-2">
                 {socialLinks.map((link) => {
                     const IconComponent = link.icon;
                     return (
@@ -92,10 +92,17 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 sm:p-2 text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors duration-200"
+                            className="group relative p-2 text-neutral-500 hover:text-accent transition-colors duration-200"
                             aria-label={link.name}
                         >
                             <IconComponent className="h-5 w-5" />
+                            {/* Shows immediately on hover or keyboard focus; the native title tooltip is slow and unreliable over SVGs. */}
+                            <span
+                                aria-hidden="true"
+                                className="pointer-events-none absolute left-1/2 top-full z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded bg-primary px-2 py-1 text-xs font-medium text-background opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
+                            >
+                                {link.name}
+                            </span>
                         </a>
                     );
                 })}
@@ -104,19 +111,23 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
 
             {/* Research Interests */}
             {researchInterests && researchInterests.length > 0 && (
-                <div className="order-2 rounded-lg bg-neutral-100 p-4 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg dark:bg-neutral-800 lg:order-none lg:mb-6">
-                    <h3 className="font-semibold text-primary mb-3">Research Interests</h3>
-                    <div className="space-y-2 text-sm text-neutral-700 dark:text-neutral-500">
+                <div className="order-2 lg:order-none lg:mb-8">
+                    <h3 className="mb-3 border-b border-neutral-200 pb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                        Research Interests
+                    </h3>
+                    <ul className="space-y-1.5 text-sm text-neutral-700">
                         {researchInterests.map((interest, index) => (
-                            <div key={index}>{interest}</div>
+                            <li key={index}>{interest}</li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             )}
 
             {/* Visitor map */}
-            <div className="order-4 rounded-lg bg-neutral-100 p-4 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg dark:bg-neutral-800 lg:order-none lg:mb-6">
-                <h3 className="font-semibold text-primary mb-3">Visitors</h3>
+            <div className="order-4 transition-transform duration-200 hover:scale-[1.02] lg:order-none lg:mb-8">
+                <h3 className="mb-3 border-b border-neutral-200 pb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                    Visitors
+                </h3>
                 <VisitorMap />
             </div>
 

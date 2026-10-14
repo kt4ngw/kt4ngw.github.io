@@ -26,9 +26,3 @@ type = "publications"
 title = "Selected Publications"
 filter = "selected"
 limit = 2
-
-[[sections]]
-id = "contact"
-type = "markdown"
-title = "Contact"
-source = "contact.md"

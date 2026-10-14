@@ -7,28 +7,28 @@
 :root,
 .light {
   /* Light theme colors */
-  --background: #fefffe;
-  --foreground: #0f172a;
+  --background: #ffffff;
+  --foreground: #111827;
   
-  /* Brand colors - Deep Navy & Gold */
-  --primary: #1e293b;
-  --primary-light: #334155;
-  --primary-dark: #0f172a;
-  --accent: #a17632;
-  --accent-light: #c99b58;
-  --accent-dark: #855d26;
+  /* Brand colors - near-black text with a teal accent */
+  --primary: #111827;
+  --primary-light: #374151;
+  --primary-dark: #030712;
+  --accent: #0f766e;
+  --accent-light: #14b8a6;
+  --accent-dark: #115e59;
   
-  /* Neutral colors */
-  --neutral-50: #f8fafc;
-  --neutral-100: #f1f5f9;
-  --neutral-200: #e2e8f0;
-  --neutral-300: #cbd5e1;
-  --neutral-400: #94a3b8;
-  --neutral-500: #64748b;
-  --neutral-600: #475569;
-  --neutral-700: #334155;
-  --neutral-800: #1e293b;
-  --neutral-900: #0f172a;
+  /* Neutral colors (warm-free gray) */
+  --neutral-50: #f9fafb;
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
   
   /* Semantic colors */
   --success: #10b981;
@@ -66,14 +66,8 @@
   --color-error: var(--error);
   --color-info: var(--info);
   
-  /* Typography */
-  /* --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Crimson Text', Georgia, serif;
-  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace; */
-  --font-sans: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  /* Keep headings in an explicit Times-style face instead of a browser's
-     customizable generic serif default. Body typography stays unchanged. */
-  --font-serif: 'Times New Roman', Times, 'Liberation Serif', 'Noto Serif SC', 'Source Han Serif SC', serif;
+  /* Typography: the platform's own UI font, so nothing is downloaded */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
 
   /* Font sizes */
@@ -119,28 +113,28 @@
 
 /* Dark mode styles */
 .dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
+  --background: #101214;
+  --foreground: #e5e7eb;
   
   /* Adjust colors for dark mode */
-  --primary: #f8fafc;
-  --primary-light: #e2e8f0;
-  --primary-dark: #cbd5e1;
-  --accent: #e4b976;
-  --accent-light: #f0c674;
-  --accent-dark: #d4a562;
+  --primary: #f3f4f6;
+  --primary-light: #e5e7eb;
+  --primary-dark: #d1d5db;
+  --accent: #2dd4bf;
+  --accent-light: #5eead4;
+  --accent-dark: #14b8a6;
   
-  /* Neutral colors for dark mode - properly inverted */
-  --neutral-50: #0f172a;
-  --neutral-100: #1e293b;
-  --neutral-200: #334155;
-  --neutral-300: #475569;
-  --neutral-400: #64748b;
-  --neutral-500: #94a3b8;
-  --neutral-600: #cbd5e1;
-  --neutral-700: #e2e8f0;
-  --neutral-800: #1e293b;
-  --neutral-900: #0f172a;
+  /* Neutral colors for dark mode - inverted, except 800/900 which stay dark surfaces */
+  --neutral-50: #16181b;
+  --neutral-100: #1c1f23;
+  --neutral-200: #2a2e34;
+  --neutral-300: #3a3f46;
+  --neutral-400: #5b616b;
+  --neutral-500: #8b929c;
+  --neutral-600: #b4bac3;
+  --neutral-700: #d6dae0;
+  --neutral-800: #1c1f23;
+  --neutral-900: #101214;
 }
 
 
@@ -173,23 +167,12 @@ body {
   }
 }
 
-@keyframes slide-in-down {
-  from {
-    transform: translateY(-100px);
-  }
-}
-
 .fade-in-up {
   animation: fade-in-up 0.6s ease-out backwards;
 }
 
-.slide-in-down {
-  animation: slide-in-down 0.6s ease-out backwards;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .fade-in-up,
-  .slide-in-down {
+  .fade-in-up {
     animation: none;
   }
 }
@@ -223,53 +206,6 @@ body {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: var(--neutral-500);
-}
-
-/* News keeps its scroll hint only while more content is below the viewport. */
-.news-scroll-frame::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0.5rem;
-  height: 1.75rem;
-  background: linear-gradient(to bottom, transparent, var(--background));
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 150ms ease;
-}
-
-.news-scroll-frame[data-can-scroll="true"]::after {
-  opacity: 1;
-}
-
-.news-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: var(--neutral-300) transparent;
-  scroll-padding-block: 1.25rem;
-}
-
-.news-scroll::-webkit-scrollbar {
-  width: 5px;
-}
-
-.news-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.news-scroll::-webkit-scrollbar-thumb {
-  background: var(--neutral-300);
-  border-radius: 999px;
-}
-
-.news-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--neutral-400);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .news-scroll-frame::after {
-    transition: none;
-  }
 }
 
 /* Self-hosted visitor map */

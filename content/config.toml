@@ -16,6 +16,7 @@ avatar = "/bio-dsc02200-640.jpg"
 [social]
 # Profile icon links: google_scholar, orcid, github, linkedin (delete a line to hide it)
 google_scholar = "https://scholar.google.com/citations?user=9eH0NZgAAAAJ&hl=en"
+orcid = "https://orcid.org/0009-0002-9821-5191"
 github = "https://github.com/kt4ngw"
 linkedin = "https://www.linkedin.com/in/kt4ngw/"
 

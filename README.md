@@ -12,10 +12,10 @@ Everything shown on the site lives in `content/`:
 | --- | --- |
 | `config.toml` | Site URL, profile details, social links, navigation |
 | `about.toml` | Homepage sections and research interests |
-| `bio.md`, `contact.md` | Homepage text |
+| `bio.md` | Homepage introduction |
 | `news.toml` | News items (sorted by date automatically) |
 | `publications.bib` | Publications; `selected={true}` features a paper on the homepage, `preview` names its image in `public/papers/` |
-| `services.md`, `awards.md` | Services and Awards pages |
+| `services.toml`, `awards.toml` | Services and Awards pages (dated entries, like `news.toml`) |
 
 The CV page embeds `public/cv.pdf`; replace that file to update it.
 
@@ -24,6 +24,10 @@ Paper preview images are WebP. To add one (`cwebp` comes with `brew install webp
 ```bash
 cwebp -near_lossless 60 -z 9 figure.png -o public/papers/NAME.webp
 ```
+
+The site icon is `public/favicon.svg`; `public/favicon-32.png` and
+`public/apple-touch-icon.png` are PNG copies of it for older browsers and iOS home
+screens, so regenerate them if the icon changes.
 
 ## Local development
 

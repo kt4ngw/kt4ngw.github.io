@@ -5,12 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import {
     MagnifyingGlassIcon,
-    FunnelIcon,
-    CalendarIcon,
-    BookOpenIcon,
     ClipboardDocumentIcon,
-    DocumentTextIcon,
-    AcademicCapIcon,
 } from '@heroicons/react/24/outline';
 import { Publication } from '@/types/publication';
 import { PublicationPageConfig } from '@/types/page';
@@ -24,11 +19,47 @@ import Link from 'next/link';
 import { venueMap } from '@/lib/venueMap';
 
 
+interface FilterOption<T> {
+    value: T;
+    label: string;
+}
+
+// A row of text options; the selected one gets the same accent underline as the navigation.
+function FilterGroup<T extends string | number>({ label, options, value, onChange }: {
+    label: string;
+    options: FilterOption<T>[];
+    value: T;
+    onChange: (value: T) => void;
+}) {
+    return (
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1" role="group" aria-label={label}>
+            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">{label}</span>
+            {options.map((option) => {
+                const active = option.value === value;
+                return (
+                    <button
+                        key={String(option.value)}
+                        type="button"
+                        onClick={() => onChange(option.value)}
+                        aria-pressed={active}
+                        className={cn(
+                            'relative pb-0.5 transition-colors',
+                            active ? 'text-primary' : 'text-neutral-500 hover:text-primary'
+                        )}
+                    >
+                        {option.label}
+                        {active && <span className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-accent" />}
+                    </button>
+                );
+            })}
+        </div>
+    );
+}
+
 export default function PublicationsList({ config, publications }: PublicationsListProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedYear, setSelectedYear] = useState<number | 'all'>('all');
     const [selectedType, setSelectedType] = useState<string | 'all'>('all');
-    const [showFilters, setShowFilters] = useState(false);
     const [expandedBibtexId, setExpandedBibtexId] = useState<string | null>(null);
     const [expandedAbstractId, setExpandedAbstractId] = useState<string | null>(null);
 
@@ -64,29 +95,24 @@ export default function PublicationsList({ config, publications }: PublicationsL
         <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                    <h1 className="text-4xl font-serif font-bold text-primary mb-4">
+                    <h1 className="text-3xl font-semibold tracking-tight text-primary mb-3">
                         {config.title}
                     </h1>
 
                     {config.description && (
-                        <p className="text-lg text-neutral-600 dark:text-neutral-500 max-w-2xl">
+                        <p className="text-lg text-neutral-600 max-w-2xl">
                             {config.description}
                         </p>
                     )}
 
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-2">
+                    <p className="text-sm text-neutral-500 mt-2">
                         † Equal contribution. * Corresponding author(s).
                     </p>
                 </div>
 
-                <div className="flex items-center gap-4 self-start whitespace-nowrap">
-                    <Link
-                        href="/publications/simple"
-                        className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
-                        aria-label="Open compact publications page"
-                    >
-                        <DocumentTextIcon className="h-5 w-5 mr-2" />
-                        Compact-View
+                <div className="flex items-center gap-5 self-start whitespace-nowrap text-sm font-medium">
+                    <Link href="/publications/simple" className="text-accent underline-offset-2 hover:underline">
+                        Compact view <span aria-hidden="true">→</span>
                     </Link>
 
                     {config.scholarUrl && (
@@ -94,121 +120,53 @@ export default function PublicationsList({ config, publications }: PublicationsL
                             href={config.scholarUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:border-accent hover:text-accent transition-colors"
-                            aria-label="Open Google Scholar profile"
+                            className="text-accent underline-offset-2 hover:underline"
                         >
-                            <AcademicCapIcon className="h-5 w-5 mr-2" />
-                            Google Scholar
+                            Google Scholar <span aria-hidden="true">↗</span>
                         </a>
                     )}
                 </div>
             </div>
 
             <div className="mb-8 space-y-4">
-                <div className="flex flex-col sm:flex-row gap-4">
-                    <div className="relative flex-grow">
-                        <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400" />
-                        <input
-                            type="text"
-                            placeholder="Search publications..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200"
-                        />
-                    </div>
-
-                    <button
-                        onClick={() => setShowFilters(!showFilters)}
-                        className={cn(
-                            'flex items-center justify-center px-4 py-2 rounded-lg border transition-all duration-200',
-                            showFilters
-                                ? 'bg-accent text-white border-accent'
-                                : 'bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-neutral-600 hover:border-accent hover:text-accent'
-                        )}
-                    >
-                        <FunnelIcon className="h-5 w-5 mr-2" />
-                        Filters
-                    </button>
+                <div className="relative">
+                    <MagnifyingGlassIcon className="pointer-events-none absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+                    <input
+                        type="text"
+                        placeholder="Search by title, author, or venue"
+                        aria-label="Search publications"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full border-0 border-b border-neutral-200 bg-transparent py-2 pl-6 pr-2 text-sm text-primary placeholder:text-neutral-400 transition-colors focus:border-accent focus:outline-none"
+                    />
                 </div>
 
-                <AnimatePresence>
-                    {showFilters && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="overflow-hidden"
-                        >
-                            <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-lg border border-neutral-200 dark:border-neutral-800 flex flex-wrap gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-neutral-700 dark:text-neutral-300 flex items-center">
-                                        <CalendarIcon className="h-4 w-4 mr-1" /> Year
-                                    </label>
-                                    <div className="flex flex-wrap gap-2">
-                                        <button
-                                            onClick={() => setSelectedYear('all')}
-                                            className={cn(
-                                                'px-3 py-1 text-xs rounded-full transition-colors',
-                                                selectedYear === 'all'
-                                                    ? 'bg-accent text-white'
-                                                    : 'bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700'
-                                            )}
-                                        >
-                                            All
-                                        </button>
-                                        {years.map(year => (
-                                            <button
-                                                key={year}
-                                                onClick={() => setSelectedYear(year)}
-                                                className={cn(
-                                                    'px-3 py-1 text-xs rounded-full transition-colors',
-                                                    selectedYear === year
-                                                        ? 'bg-accent text-white'
-                                                        : 'bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700'
-                                                )}
-                                            >
-                                                {year}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-neutral-700 dark:text-neutral-300 flex items-center">
-                                        <BookOpenIcon className="h-4 w-4 mr-1" /> Type
-                                    </label>
-                                    <div className="flex flex-wrap gap-2">
-                                        <button
-                                            onClick={() => setSelectedType('all')}
-                                            className={cn(
-                                                'px-3 py-1 text-xs rounded-full transition-colors',
-                                                selectedType === 'all'
-                                                    ? 'bg-accent text-white'
-                                                    : 'bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700'
-                                            )}
-                                        >
-                                            All
-                                        </button>
-                                        {types.map(type => (
-                                            <button
-                                                key={type}
-                                                onClick={() => setSelectedType(type)}
-                                                className={cn(
-                                                    'px-3 py-1 text-xs rounded-full capitalize transition-colors',
-                                                    selectedType === type
-                                                        ? 'bg-accent text-white'
-                                                        : 'bg-white dark:bg-neutral-800 text-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700'
-                                                )}
-                                            >
-                                                {type.replace('-', ' ')}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                <div className="flex flex-wrap items-baseline gap-x-8 gap-y-3 text-sm">
+                    <FilterGroup
+                        label="Type"
+                        value={selectedType}
+                        onChange={setSelectedType}
+                        options={[
+                            { value: 'all', label: 'All' },
+                            ...types.map((type) => ({
+                                value: type,
+                                label: type.charAt(0).toUpperCase() + type.slice(1).replace('-', ' '),
+                            })),
+                        ]}
+                    />
+                    <FilterGroup
+                        label="Year"
+                        value={selectedYear}
+                        onChange={setSelectedYear}
+                        options={[
+                            { value: 'all', label: 'All' },
+                            ...years.map((year) => ({ value: year, label: String(year) })),
+                        ]}
+                    />
+                    <span className="ml-auto text-xs tabular-nums text-neutral-500">
+                        {filteredPublications.length} of {publications.length}
+                    </span>
+                </div>
             </div>
 
             <div className="space-y-6">
@@ -225,12 +183,12 @@ export default function PublicationsList({ config, publications }: PublicationsL
                             <div
                                 key={pub.id}
                                 style={{ animationDuration: '0.4s', animationDelay: `${0.1 * index}s` }}
-                                className="fade-in-up bg-white dark:bg-neutral-900 p-4 rounded-xl shadow-sm border border-neutral-200 dark:border-neutral-800 hover:shadow-md transition-all duration-200"
+                                className="fade-in-up"
                             >
-                                <div className="flex flex-col md:flex-row gap-3">
+                                <div className="flex flex-col md:flex-row gap-4">
                                     {pub.preview && (
                                         <div className="w-full md:w-40 flex-shrink-0">
-                                            <div className="aspect-video md:aspect-[4/3] relative rounded-lg overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+                                            <div className="aspect-video md:aspect-[4/3] relative rounded-md overflow-hidden border border-neutral-200 bg-neutral-50">
                                                 <Image
                                                     src={`/papers/${pub.preview}`}
                                                     alt={pub.title}
@@ -258,14 +216,14 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                             )}
                                         </h3>
 
-                                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1 leading-relaxed">
+                                        <p className="text-sm text-neutral-600 mb-1 leading-relaxed">
                                             {pub.authors.map((author, idx) => (
                                                 <span key={idx}>
                                                     <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
                                                         {author.name}
                                                     </span>
                                                     {(author.isCoAuthor || author.isCorresponding) && (
-                                                        <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600 dark:text-neutral-400'}`}>
+                                                        <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600'}`}>
                                                             {author.isCoAuthor && '†'}
                                                             {author.isCorresponding && '*'}
                                                         </sup>
@@ -275,36 +233,25 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                             ))}
                                         </p>
 
-                                        <p className="text-xs text-neutral-600 dark:text-neutral-500 mb-2">
-                                            <span className="italic">{displayVenue}</span> · {pub.year}
+                                        <p className="text-xs text-neutral-600 mb-2">
+                                            {displayVenue && (<><span className="italic">{displayVenue}</span> · </>)}{pub.year}
                                         </p>
 
                                         {pub.description && (
-                                            <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-4 line-clamp-3">
+                                            <p className="text-sm text-neutral-600 mb-4 line-clamp-3">
                                                 {pub.description}
                                             </p>
                                         )}
 
-                                        <div className="flex flex-wrap gap-1.5 mt-auto">
+                                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
                                             {pub.doi && (
                                                 <a
                                                     href={`https://doi.org/${pub.doi}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
+                                                    className="font-medium text-accent underline-offset-2 hover:underline"
                                                 >
                                                     DOI
-                                                </a>
-                                            )}
-
-                                            {pub.url && (
-                                                <a
-                                                    href={pub.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
-                                                >
-                                                    Paper Link
                                                 </a>
                                             )}
 
@@ -313,9 +260,9 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                     href={pub.code}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white transition-colors"
+                                                    className="font-medium text-accent underline-offset-2 hover:underline"
                                                 >
-                                                    Code Link
+                                                    Code
                                                 </a>
                                             )}
 
@@ -323,13 +270,10 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                 <button
                                                     onClick={() => setExpandedAbstractId(expandedAbstractId === pub.id ? null : pub.id)}
                                                     className={cn(
-                                                        'inline-flex items-center px-3 py-1 rounded-md text-xs font-medium transition-colors',
-                                                        expandedAbstractId === pub.id
-                                                            ? 'bg-accent text-white'
-                                                            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white'
+                                                        'font-medium underline-offset-2 hover:underline',
+                                                        expandedAbstractId === pub.id ? 'text-primary underline' : 'text-accent'
                                                     )}
                                                 >
-                                                    <DocumentTextIcon className="h-3 w-3 mr-1.5" />
                                                     Abstract
                                                 </button>
                                             )}
@@ -338,13 +282,10 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                 <button
                                                     onClick={() => setExpandedBibtexId(expandedBibtexId === pub.id ? null : pub.id)}
                                                     className={cn(
-                                                        'inline-flex items-center px-3 py-1 rounded-md text-xs font-medium transition-colors',
-                                                        expandedBibtexId === pub.id
-                                                            ? 'bg-accent text-white'
-                                                            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-accent hover:text-white'
+                                                        'font-medium underline-offset-2 hover:underline',
+                                                        expandedBibtexId === pub.id ? 'text-primary underline' : 'text-accent'
                                                     )}
                                                 >
-                                                    <BookOpenIcon className="h-3 w-3 mr-1.5" />
                                                     BibTeX
                                                 </button>
                                             )}
@@ -359,8 +300,8 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                     exit={{ opacity: 0, height: 0 }}
                                                     className="overflow-hidden mt-4"
                                                 >
-                                                    <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-                                                        <p className="text-sm text-neutral-600 dark:text-neutral-500 leading-relaxed">
+                                                    <div className="bg-neutral-50 rounded-md p-4 border border-neutral-200">
+                                                        <p className="text-sm text-neutral-600 leading-relaxed">
                                                             {pub.abstract}
                                                         </p>
                                                     </div>
@@ -375,15 +316,15 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                     exit={{ opacity: 0, height: 0 }}
                                                     className="overflow-hidden mt-4"
                                                 >
-                                                    <div className="relative bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 border border-neutral-200 dark:border-neutral-700">
-                                                        <pre className="text-xs text-neutral-600 dark:text-neutral-500 overflow-x-auto whitespace-pre-wrap font-mono">
+                                                    <div className="relative bg-neutral-50 rounded-md p-4 border border-neutral-200">
+                                                        <pre className="text-xs text-neutral-600 overflow-x-auto whitespace-pre-wrap font-mono">
                                                             {pub.bibtex}
                                                         </pre>
                                                         <button
                                                             onClick={() => {
                                                                 navigator.clipboard.writeText(pub.bibtex || '');
                                                             }}
-                                                            className="absolute top-2 right-2 p-1.5 rounded-md bg-white dark:bg-neutral-700 text-neutral-500 hover:text-accent shadow-sm border border-neutral-200 dark:border-neutral-600 transition-colors"
+                                                            className="absolute top-2 right-2 p-1.5 rounded-md bg-background text-neutral-500 hover:text-accent border border-neutral-200 transition-colors"
                                                             title="Copy to clipboard"
                                                         >
                                                             <ClipboardDocumentIcon className="h-4 w-4" />
