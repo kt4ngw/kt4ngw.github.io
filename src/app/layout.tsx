@@ -62,10 +62,13 @@ export default function RootLayout({
     },
     sameAs,
     knowsAbout: [
+      'Large Language Models',
+      'Parameter-Efficient Fine-Tuning',
+      'Low-Rank Adaptation (LoRA)',
+      'Differential Privacy',
       'Federated Learning',
       'Edge Intelligence',
-      'Privacy Protection',
-      'Network and System Security',
+      'System Security',
     ],
   };
   return (
