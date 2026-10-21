@@ -1,4 +1,8 @@
 [[news]]
+date = "2026-10"
+content = "Our paper, “Accelerating Hierarchical Federated Learning under Mobility via Model Migration in Cloud-Edge-End Collaborative Networks,” has been accepted for publication in <span class='text-accent font-medium'>IEEE TMC</span>."
+
+[[news]]
 date = "2026-07"
 content = "Our paper, “Accelerating Federated Learning under Client Dropout via Joint Bandwidth Allocation and Prototype Fine-Tuning in Mobile Edge Computing Networks,” has been accepted for publication in <span class='text-accent font-medium'>IEEE TMC</span>."
 
