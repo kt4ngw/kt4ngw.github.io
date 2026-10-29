@@ -7,5 +7,6 @@ title = "Journal Reviewer"
 items = [
   { date = "2026", content = "IEEE Transactions on Mobile Computing (TMC)" },
   { date = "2026", content = "IEEE Transactions on Dependable and Secure Computing (TDSC)" },
+  { date = "2026", content = "IEEE Internet of Things Journal (IoT-J)" },
   { date = "2026", content = "Computer Communications" },
 ]
