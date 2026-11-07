@@ -16,6 +16,7 @@ export interface SiteConfig {
         institution: string;
         avatar: string;
         email: string;
+        motto?: string;
     };
     social: {
         google_scholar?: string;

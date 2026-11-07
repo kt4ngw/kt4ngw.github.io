@@ -84,6 +84,11 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
                         {author.email}
                     </a>
                 </p>
+                {author.motto && (
+                    <p className="mt-3 text-sm italic text-neutral-600">
+                        {author.motto}
+                    </p>
+                )}
             </div>
 
             {/* Contact Links */}

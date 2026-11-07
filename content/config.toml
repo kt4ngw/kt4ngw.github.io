@@ -12,6 +12,8 @@ title = "PhD Student"
 institution = "RMIT University, Melbourne, Australia"
 email = "kt4ngw@gmail.com"
 avatar = "/bio-dsc02200-640.jpg"
+# Short line shown under the contact details in the sidebar (delete to hide)
+motto = "Hope for the best, but prepare for the worst."
 
 [social]
 # Profile icon links: google_scholar, orcid, github, linkedin (delete a line to hide it)
