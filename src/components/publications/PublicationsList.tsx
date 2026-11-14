@@ -244,6 +244,17 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                         )}
 
                                         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+                                            {pub.url && (
+                                                <a
+                                                    href={pub.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="font-medium text-accent underline-offset-2 hover:underline"
+                                                >
+                                                    Paper
+                                                </a>
+                                            )}
+
                                             {pub.doi && (
                                                 <a
                                                     href={`https://doi.org/${pub.doi}`}

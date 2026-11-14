@@ -76,20 +76,25 @@ export default function SelectedPublications({ publications, title = 'Selected P
 
                             <p className="mb-1 text-sm leading-relaxed text-neutral-500">
                                 <span className="italic">{displayVenue}</span>
-                                {pub.code && (
-                                    <>
-                                        {/* Non-breaking space keeps the dot on the venue's line when the link wraps. */}
-                                        {displayVenue && <span aria-hidden="true">{'\u00a0·'}</span>}{' '}
-                                        <a
-                                            href={pub.code}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="font-medium text-accent transition-colors hover:text-accent-dark hover:underline underline-offset-2"
-                                        >
-                                            Code
-                                        </a>
-                                    </>
-                                )}
+                                {[
+                                    { label: 'Paper', href: pub.url },
+                                    { label: 'Code', href: pub.code },
+                                ]
+                                    .filter((link) => link.href)
+                                    .map((link, i) => (
+                                        <span key={link.label}>
+                                            {/* Non-breaking space keeps the dot on the previous item's line when a link wraps. */}
+                                            {(i > 0 || displayVenue) && <span aria-hidden="true">{'\u00a0·'}</span>}{' '}
+                                            <a
+                                                href={link.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="font-medium text-accent transition-colors hover:text-accent-dark hover:underline underline-offset-2"
+                                            >
+                                                {link.label}
+                                            </a>
+                                        </span>
+                                    ))}
                             </p>
 
                             {pub.description && (

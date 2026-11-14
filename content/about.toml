@@ -3,9 +3,9 @@ title = "About"
 
 [profile]
 research_interests = [
-  "Federated Learning",
-  "Edge Intelligence",
-  "System Security"
+  "LLM Fine-Tuning (LoRA)",
+  "Resource-Constrained Devices",
+  "Privacy & Security of Fine-Tuning"
 ]
 
 [[sections]]
