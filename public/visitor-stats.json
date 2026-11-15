@@ -1,5 +1,5 @@
 {
-  "visitors": 96,
+  "visitors": 97,
   "countries": [
     {
       "name": "United States",
@@ -40,9 +40,17 @@
     {
       "name": "Japan",
       "value": 1
+    },
+    {
+      "name": "South Africa",
+      "value": 1
+    },
+    {
+      "name": "Vietnam",
+      "value": 1
     }
   ],
   "startDate": "2020-10-14",
   "endDate": "today",
-  "updatedAt": "2026-11-15T06:32:16.356Z"
+  "updatedAt": "2026-11-15T18:51:41.957Z"
 }
