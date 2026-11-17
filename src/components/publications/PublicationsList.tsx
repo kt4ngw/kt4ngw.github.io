@@ -70,6 +70,19 @@ function groupInfo(type: string) {
     };
 }
 
+const MONTHS = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
+
+// IEEE-style details after the venue: "vol. 25, no. 11, pp. 20443–20460, Nov. 2026".
+function citationDetails(pub: Publication) {
+    const parts: string[] = [];
+    if (pub.volume) parts.push(`vol. ${pub.volume}`);
+    if (pub.issue) parts.push(`no. ${pub.issue}`);
+    if (pub.pages) parts.push(`pp. ${pub.pages.replace(/-+/g, '–')}`);
+    const month = pub.month && /^\d+$/.test(pub.month) ? MONTHS[Number(pub.month) - 1] : pub.month;
+    parts.push(month ? `${month} ${pub.year}` : String(pub.year));
+    return parts.join(', ');
+}
+
 // Link and toggle buttons under each entry; `active` marks an open Abstract/BibTeX panel.
 function pillClass(active: boolean) {
     return cn(
@@ -256,7 +269,7 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                     {', '}
                                                     <span className="font-medium text-primary">&ldquo;{pub.title},&rdquo;</span>{' '}
                                                     {displayVenue && <><span className="italic">{displayVenue}</span>, </>}
-                                                    {pub.year}.
+                                                    {citationDetails(pub)}.
                                                 </p>
 
                                                 <div className="mt-2 flex flex-wrap gap-2">
