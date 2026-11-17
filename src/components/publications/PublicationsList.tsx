@@ -152,7 +152,7 @@ export default function PublicationsList({ config, publications }: PublicationsL
 
     return (
         <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div className="mb-2 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                     <h1 className="text-3xl font-semibold tracking-tight text-primary mb-1">
                         {config.title}
