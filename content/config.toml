@@ -35,8 +35,9 @@ target = "publications"
 href = "/publications"
 
 
-[[navigation]]
-title = "CV"
-type = "page"
-target = "cv"
-href = "/cv"
+# CV page hidden for now; to bring it back, restore this entry:
+# [[navigation]]
+# title = "CV"
+# type = "page"
+# target = "cv"
+# href = "/cv"
