@@ -46,9 +46,11 @@ interface ProfileProps {
     author: SiteConfig['author'];
     social: SiteConfig['social'];
     researchInterests?: string[];
+    // Card with only the photo, contact details and links, shown beside other pages on desktop.
+    compact?: boolean;
 }
 
-export default function Profile({ author, social, researchInterests }: ProfileProps) {
+export default function Profile({ author, social, researchInterests, compact = false }: ProfileProps) {
     const socialLinks = [
         ...(social.google_scholar ? [{
             name: 'Google Scholar',
@@ -77,7 +79,9 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
         // the rest of the page width. On mobile each part is its own card.
         // It sticks where it starts (top-28 = the 5rem fixed nav plus the 2rem page padding), so the
         // photo stays clear of the nav while the sidebar is held in place.
-        <div className="fade-in-up contents lg:sticky lg:top-28 lg:block lg:self-start lg:rounded-2xl lg:border lg:border-neutral-200 lg:bg-surface lg:px-5 lg:py-6 lg:shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]">
+        <div className={compact
+            ? 'fade-in-up hidden lg:sticky lg:top-28 lg:block lg:self-start lg:rounded-2xl lg:border lg:border-neutral-200 lg:bg-surface lg:px-5 lg:py-6 lg:shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]'
+            : 'fade-in-up contents lg:sticky lg:top-28 lg:block lg:self-start lg:rounded-2xl lg:border lg:border-neutral-200 lg:bg-surface lg:px-5 lg:py-6 lg:shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]'}>
             <div className="order-1 rounded-2xl border border-neutral-200 bg-surface p-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:order-none">
             {/* Profile Image */}
             <div className="w-36 h-36 sm:w-48 sm:h-48 mx-auto mb-5 rounded-full overflow-hidden bg-neutral-100">
@@ -118,7 +122,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             </div>
 
             {/* Contact Links */}
-            <div className="flex flex-wrap justify-center gap-3 lg:mb-8 px-2">
+            <div className={`flex flex-wrap justify-center gap-3 px-2 ${compact ? '' : 'lg:mb-8'}`}>
                 {socialLinks.map((link) => {
                     const IconComponent = link.icon;
                     return (
@@ -145,7 +149,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             </div>
 
             {/* Research Interests */}
-            {researchInterests && researchInterests.length > 0 && (
+            {!compact && researchInterests && researchInterests.length > 0 && (
                 <div className="order-2 rounded-2xl border border-neutral-200 bg-surface p-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:order-none lg:mb-8">
                     <h3 className="mb-3 border-b border-neutral-200 pb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
                         Research Interests
@@ -159,12 +163,14 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             )}
 
             {/* Visitor map */}
+            {!compact && (
             <div className="order-4 rounded-2xl border border-neutral-200 bg-surface p-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 transition-transform duration-200 hover:scale-[1.02] lg:order-none">
                 <h3 className="mb-3 border-b border-neutral-200 pb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
                     Visitors
                 </h3>
                 <VisitorMap />
             </div>
+            )}
 
         </div>
     );

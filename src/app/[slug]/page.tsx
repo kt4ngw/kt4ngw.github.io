@@ -6,6 +6,7 @@ import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
 import ListPage from '@/components/pages/ListPage';
 import CVPageContent from '@/components/pages/CVPageContent';
+import Profile from '@/components/home/Profile';
 import {
     BasePageConfig,
     PublicationPageConfig,
@@ -53,11 +54,23 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
         return <CVPageContent />;
     }
 
+    // Publications sit beside a compact profile card on desktop, like the homepage sidebar.
+    if (pageConfig.type === 'publication') {
+        const config = getConfig();
+        return (
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-10">
+                    <Profile author={config.author} social={config.social} compact />
+                    <div>
+                        <PublicationPage config={pageConfig as PublicationPageConfig} />
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            {pageConfig.type === 'publication' && (
-                <PublicationPage config={pageConfig as PublicationPageConfig} />
-            )}
             {pageConfig.type === 'text' && (
                 <TextPageWrapper config={pageConfig as TextPageConfig} />
             )}
