@@ -154,18 +154,14 @@ export default function PublicationsList({ config, publications }: PublicationsL
         <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                    <h1 className="text-3xl font-semibold tracking-tight text-primary mb-3">
+                    <h1 className="text-3xl font-semibold tracking-tight text-primary mb-2">
                         {config.title}
                     </h1>
 
-                    {config.description && (
-                        <p className="text-lg text-neutral-600 max-w-2xl">
-                            {config.description}
-                        </p>
-                    )}
-
-                    <p className="text-sm text-neutral-500 mt-2">
-                        † Equal contribution. * Corresponding author(s).
+                    {/* Description and author-mark legend on one line. */}
+                    <p className="text-sm text-neutral-500">
+                        {config.description && <span className="text-neutral-600">{config.description} </span>}
+                        († Equal contribution; * Corresponding author(s))
                     </p>
                 </div>
 
