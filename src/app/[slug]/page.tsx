@@ -54,7 +54,7 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             {pageConfig.type === 'publication' && (
                 <PublicationPage config={pageConfig as PublicationPageConfig} />
             )}
