@@ -152,9 +152,9 @@ export default function PublicationsList({ config, publications }: PublicationsL
 
     return (
         <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                    <h1 className="text-3xl font-semibold tracking-tight text-primary mb-2">
+                    <h1 className="text-3xl font-semibold tracking-tight text-primary mb-1">
                         {config.title}
                     </h1>
 
@@ -179,7 +179,7 @@ export default function PublicationsList({ config, publications }: PublicationsL
                 </div>
             </div>
 
-            <div className="mb-8 space-y-4">
+            <div className="mb-6 space-y-3">
                 <div className="relative">
                     <MagnifyingGlassIcon className="pointer-events-none absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
                     <input
