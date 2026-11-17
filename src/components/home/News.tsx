@@ -23,7 +23,7 @@ export default function News({ items, title = 'News' }: NewsProps) {
     const visible = showAll ? sorted : sorted.slice(0, INITIAL_COUNT);
 
     return (
-        <section className="fade-in-up" style={{ animationDelay: '0.5s' }}>
+        <section className="card fade-in-up" style={{ animationDelay: '0.5s' }}>
             <div className="mb-4 flex items-baseline justify-between border-b border-neutral-200 pb-2">
                 <h2 className="text-xl font-semibold tracking-tight text-primary">{title}</h2>
                 {sorted.length > INITIAL_COUNT && (

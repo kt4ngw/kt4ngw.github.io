@@ -7,7 +7,7 @@ interface AboutProps {
 
 export default function About({ content, title = 'About' }: AboutProps) {
     return (
-        <section className="fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <section className="card fade-in-up" style={{ animationDelay: '0.2s' }}>
             {title && (
                 <h2 className="text-xl font-semibold tracking-tight text-primary mb-4 pb-2 border-b border-neutral-200">{title}</h2>
             )}

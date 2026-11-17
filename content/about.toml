@@ -32,3 +32,9 @@ id = "services"
 type = "services"
 title = "Services"
 source = "services.toml"
+
+[[sections]]
+id = "awards"
+type = "awards"
+title = "Awards"
+source = "awards.toml"

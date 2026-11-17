@@ -73,12 +73,12 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
     ];
 
     return (
-        // On desktop the sidebar is narrower than its grid column and sits against the main column,
-        // so the sections below keep close to the centered photo instead of running to the page edge.
+        // On desktop the sidebar is one card, narrower than its grid column and against the main column,
+        // so the sections below keep close to the centered photo. On mobile each part is its own card.
         // It sticks where it starts (top-28 = the 5rem fixed nav plus the 2rem page padding), so the
         // photo stays clear of the nav while the sidebar is held in place.
-        <div className="fade-in-up contents lg:sticky lg:top-28 lg:col-span-1 lg:ml-auto lg:block lg:w-72 lg:self-start">
-            <div className="order-1 lg:order-none">
+        <div className="fade-in-up contents lg:sticky lg:top-28 lg:col-span-1 lg:ml-auto lg:block lg:w-full xl:w-80 lg:self-start lg:rounded-2xl lg:border lg:border-neutral-200 lg:bg-surface lg:px-5 lg:py-6 lg:shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]">
+            <div className="order-1 rounded-2xl border border-neutral-200 bg-surface p-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:order-none">
             {/* Profile Image */}
             <div className="w-36 h-36 sm:w-48 sm:h-48 mx-auto mb-5 rounded-full overflow-hidden bg-neutral-100">
                 <Image
@@ -111,7 +111,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
                     </a>
                 </p>
                 {author.motto && (
-                    <p className="mt-3 text-sm italic text-neutral-600">
+                    <p className="mt-3 text-balance text-sm italic text-neutral-600">
                         {author.motto}
                     </p>
                 )}
@@ -146,7 +146,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
 
             {/* Research Interests */}
             {researchInterests && researchInterests.length > 0 && (
-                <div className="order-2 lg:order-none lg:mb-8">
+                <div className="order-2 rounded-2xl border border-neutral-200 bg-surface p-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:order-none lg:mb-8">
                     <h3 className="mb-3 border-b border-neutral-200 pb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
                         Research Interests
                     </h3>
@@ -159,7 +159,7 @@ export default function Profile({ author, social, researchInterests }: ProfilePr
             )}
 
             {/* Visitor map */}
-            <div className="order-4 transition-transform duration-200 hover:scale-[1.02] lg:order-none lg:mb-8">
+            <div className="order-4 rounded-2xl border border-neutral-200 bg-surface p-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 transition-transform duration-200 hover:scale-[1.02] lg:order-none">
                 <h3 className="mb-3 border-b border-neutral-200 pb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
                     Visitors
                 </h3>

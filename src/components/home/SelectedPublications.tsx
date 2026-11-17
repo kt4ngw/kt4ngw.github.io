@@ -9,7 +9,7 @@ interface SelectedPublicationsProps {
 
 export default function SelectedPublications({ publications, title = 'Selected Publications' }: SelectedPublicationsProps) {
     return (
-        <section className="fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <section className="card fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="mb-4 flex items-baseline justify-between border-b border-neutral-200 pb-2">
                 <h2 className="text-xl font-semibold tracking-tight text-primary">{title}</h2>
                 <Link

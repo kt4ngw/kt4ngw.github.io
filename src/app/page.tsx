@@ -6,10 +6,11 @@ import About from '@/components/home/About';
 import SelectedPublications from '@/components/home/SelectedPublications';
 import News, { NewsItem } from '@/components/home/News';
 import Services, { ServiceGroup } from '@/components/home/Services';
+import Awards, { AwardItem } from '@/components/home/Awards';
 
 interface SectionConfig {
   id: string;
-  type: 'markdown' | 'publications' | 'list' | 'services';
+  type: 'markdown' | 'publications' | 'list' | 'services' | 'awards';
   title?: string;
   source?: string;
   filter?: string;
@@ -64,6 +65,16 @@ function renderSection(section: SectionConfig) {
         />
       );
     }
+    case 'awards': {
+      const awardsData = section.source ? getTomlContent<{ sections?: { items?: AwardItem[] }[] }>(section.source) : null;
+      return (
+        <Awards
+          key={section.id}
+          items={(awardsData?.sections || []).flatMap((group) => group.items || [])}
+          title={section.title}
+        />
+      );
+    }
     default:
       return null;
   }
@@ -74,8 +85,8 @@ export default function Home() {
   const aboutConfig = getPageConfig<AboutConfig>('about');
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-background min-h-screen">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
 
         {/* Profile becomes two ordered grid items on mobile and one sticky column on desktop. */}
         <Profile
@@ -84,8 +95,8 @@ export default function Home() {
           researchInterests={aboutConfig?.profile?.research_interests}
         />
 
-        <div className="order-3 space-y-8 lg:order-none lg:col-span-2">
-          <section id="about" className="scroll-mt-24 space-y-8">
+        <div className="order-3 space-y-6 lg:order-none lg:col-span-2">
+          <section id="about" className="scroll-mt-24 space-y-6">
             {(aboutConfig?.sections || []).map(renderSection)}
           </section>
         </div>
