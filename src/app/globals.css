@@ -7,7 +7,7 @@
 :root,
 .light {
   /* Light theme colors: a soft gray page with white cards on top */
-  --background: #f4f5f7;
+  --background: #f1f5f4;
   --surface: #ffffff;
   --foreground: #111827;
   
@@ -115,7 +115,7 @@
 
 /* Dark mode styles */
 .dark {
-  --background: #0b0d0f;
+  --background: #0a0e0d;
   --surface: #15181b;
   --foreground: #e5e7eb;
   

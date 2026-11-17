@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
 import { Publication } from '@/types/publication';
 import { venueMap, venueShort } from '@/lib/venueMap';
 
@@ -33,15 +35,24 @@ export default function SelectedPublications({ publications, title = 'Selected P
                         <div
                             key={pub.id}
                             style={{ animationDuration: '0.4s', animationDelay: `${0.1 * index}s` }}
-                            className="fade-in-up sm:grid sm:grid-cols-[4.75rem_minmax(0,1fr)] sm:gap-3"
+                            className={cn('fade-in-up', pub.preview && 'sm:grid sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-4')}
                         >
-                            <div className="mb-1.5 sm:mb-0 sm:pt-0.5">
-                                <span className="inline-block whitespace-nowrap rounded bg-accent/10 px-1.5 py-0.5 text-xs font-medium text-accent-dark">
-                                    {badge}
-                                </span>
-                            </div>
+                            {pub.preview && (
+                                <div className="relative mb-3 aspect-[16/9] overflow-hidden rounded-md border border-neutral-200 bg-white sm:mb-0">
+                                    <Image
+                                        src={`/papers/${pub.preview}`}
+                                        alt=""
+                                        fill
+                                        sizes="(max-width: 640px) 100vw, 176px"
+                                        className="object-contain"
+                                    />
+                                </div>
+                            )}
 
                             <div>
+                            <span className="mb-1 inline-block whitespace-nowrap rounded bg-accent/10 px-1.5 py-0.5 text-xs font-medium text-accent-dark">
+                                {badge}
+                            </span>
                             <h3 className="mb-1 text-base font-medium leading-snug text-primary">
                                 {pub.url ? (
                                     <a

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import { BookOpen, Code, FileText, Quote } from 'lucide-react';
 import {
     MagnifyingGlassIcon,
     ClipboardDocumentIcon,
@@ -15,7 +15,6 @@ interface PublicationsListProps {
     config: PublicationPageConfig;
     publications: Publication[];
 }
-import Link from 'next/link';
 import { venueMap } from '@/lib/venueMap';
 
 
@@ -56,6 +55,31 @@ function FilterGroup<T extends string | number>({ label, options, value, onChang
     );
 }
 
+// Groups appear in this order; any other type follows, titled from its name.
+const GROUPS: Array<{ type: string; title: string; prefix: string }> = [
+    { type: 'journal', title: 'Journal Articles', prefix: 'J' },
+    { type: 'conference', title: 'Conference Papers', prefix: 'C' },
+    { type: 'preprint', title: 'Preprints', prefix: 'P' },
+];
+
+function groupInfo(type: string) {
+    return GROUPS.find((group) => group.type === type) ?? {
+        type,
+        title: type.charAt(0).toUpperCase() + type.slice(1).replace('-', ' '),
+        prefix: type.charAt(0).toUpperCase(),
+    };
+}
+
+// Link and toggle buttons under each entry; `active` marks an open Abstract/BibTeX panel.
+function pillClass(active: boolean) {
+    return cn(
+        'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors',
+        active
+            ? 'border-accent bg-accent/10 text-accent-dark'
+            : 'border-neutral-200 text-accent hover:border-accent hover:bg-accent/5'
+    );
+}
+
 export default function PublicationsList({ config, publications }: PublicationsListProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedYear, setSelectedYear] = useState<number | 'all'>('all');
@@ -91,6 +115,28 @@ export default function PublicationsList({ config, publications }: PublicationsL
         });
     }, [publications, searchQuery, selectedYear, selectedType]);
 
+    // Numbers such as [J4] count each type oldest-first over the whole list, so filtering never renumbers.
+    const labels = useMemo(() => {
+        const map = new Map<string, string>();
+        const counts = new Map<string, number>();
+        [...publications]
+            .map((pub, order) => ({ pub, order }))
+            .sort((a, b) => a.pub.year - b.pub.year || b.order - a.order)
+            .forEach(({ pub }) => {
+                const next = (counts.get(pub.type) ?? 0) + 1;
+                counts.set(pub.type, next);
+                map.set(pub.id, `${groupInfo(pub.type).prefix}${next}`);
+            });
+        return map;
+    }, [publications]);
+
+    const groups = useMemo(() => {
+        const order = [...GROUPS.map((group) => group.type), ...types.filter((type) => !GROUPS.some((g) => g.type === type))];
+        return order
+            .map((type) => ({ ...groupInfo(type), items: filteredPublications.filter((pub) => pub.type === type) }))
+            .filter((group) => group.items.length > 0);
+    }, [filteredPublications, types]);
+
     return (
         <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -111,10 +157,6 @@ export default function PublicationsList({ config, publications }: PublicationsL
                 </div>
 
                 <div className="flex items-center gap-5 self-start whitespace-nowrap text-sm font-medium">
-                    <Link href="/publications/simple" className="text-accent underline-offset-2 hover:underline">
-                        Compact view <span aria-hidden="true">→</span>
-                    </Link>
-
                     {config.scholarUrl && (
                         <a
                             href={config.scholarUrl}
@@ -169,188 +211,141 @@ export default function PublicationsList({ config, publications }: PublicationsL
                 </div>
             </div>
 
-            <div className="space-y-6">
-                {filteredPublications.length === 0 ? (
-                    <div className="text-center py-12 text-neutral-500">
-                        No publications found matching your criteria.
-                    </div>
-                ) : (
-                    filteredPublications.map((pub, index) => {
-                        const rawVenue = pub.journal || pub.conference || '';
-                        const displayVenue = venueMap[rawVenue] || rawVenue;
-
-                        return (
-                            <div
-                                key={pub.id}
-                                style={{ animationDuration: '0.4s', animationDelay: `${0.1 * index}s` }}
-                                className="fade-in-up"
-                            >
-                                <div className="flex flex-col md:flex-row gap-4">
-                                    {pub.preview && (
-                                        <div className="w-full md:w-40 flex-shrink-0">
-                                            <div className="aspect-video md:aspect-[4/3] relative rounded-md overflow-hidden border border-neutral-200 bg-neutral-50">
-                                                <Image
-                                                    src={`/papers/${pub.preview}`}
-                                                    alt={pub.title}
-                                                    fill
-                                                    className="object-cover"
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                />
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    <div className="flex-grow">
-                                        <h3 className="text-base font-medium text-primary mb-1.5 leading-snug">
-                                            {pub.url ? (
-                                                <a
-                                                    href={pub.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="hover:text-accent hover:underline underline-offset-4 transition-colors"
-                                                >
-                                                    {pub.title}
-                                                </a>
-                                            ) : (
-                                                pub.title
-                                            )}
-                                        </h3>
-
-                                        <p className="text-sm text-neutral-600 mb-1 leading-relaxed">
-                                            {pub.authors.map((author, idx) => (
-                                                <span key={idx}>
-                                                    <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
-                                                        {author.name}
-                                                    </span>
-                                                    {(author.isCoAuthor || author.isCorresponding) && (
-                                                        <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600'}`}>
-                                                            {author.isCoAuthor && '†'}
-                                                            {author.isCorresponding && '*'}
-                                                        </sup>
-                                                    )}
-                                                    {idx < pub.authors.length - 1 && ', '}
-                                                </span>
-                                            ))}
-                                        </p>
-
-                                        <p className="text-xs text-neutral-600 mb-2">
-                                            {displayVenue && (<><span className="italic">{displayVenue}</span> · </>)}{pub.year}
-                                        </p>
-
-                                        {pub.description && (
-                                            <p className="text-sm text-neutral-600 mb-4 line-clamp-3">
-                                                {pub.description}
-                                            </p>
-                                        )}
-
-                                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-                                            {pub.url && (
-                                                <a
-                                                    href={pub.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="font-medium text-accent underline-offset-2 hover:underline"
-                                                >
-                                                    Paper
-                                                </a>
-                                            )}
-
-                                            {pub.doi && (
-                                                <a
-                                                    href={`https://doi.org/${pub.doi}`}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="font-medium text-accent underline-offset-2 hover:underline"
-                                                >
-                                                    DOI
-                                                </a>
-                                            )}
-
-                                            {pub.code && (
-                                                <a
-                                                    href={pub.code}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="font-medium text-accent underline-offset-2 hover:underline"
-                                                >
-                                                    Code
-                                                </a>
-                                            )}
-
-                                            {pub.abstract && (
-                                                <button
-                                                    onClick={() => setExpandedAbstractId(expandedAbstractId === pub.id ? null : pub.id)}
-                                                    className={cn(
-                                                        'font-medium underline-offset-2 hover:underline',
-                                                        expandedAbstractId === pub.id ? 'text-primary underline' : 'text-accent'
-                                                    )}
-                                                >
-                                                    Abstract
-                                                </button>
-                                            )}
-
-                                            {pub.bibtex && (
-                                                <button
-                                                    onClick={() => setExpandedBibtexId(expandedBibtexId === pub.id ? null : pub.id)}
-                                                    className={cn(
-                                                        'font-medium underline-offset-2 hover:underline',
-                                                        expandedBibtexId === pub.id ? 'text-primary underline' : 'text-accent'
-                                                    )}
-                                                >
-                                                    BibTeX
-                                                </button>
-                                            )}
-                                        </div>
-
-                                        <AnimatePresence>
-                                            {expandedAbstractId === pub.id && pub.abstract ? (
-                                                <motion.div
-                                                    key="abstract"
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    className="overflow-hidden mt-4"
-                                                >
-                                                    <div className="bg-neutral-50 rounded-md p-4 border border-neutral-200">
-                                                        <p className="text-sm text-neutral-600 leading-relaxed">
-                                                            {pub.abstract}
-                                                        </p>
-                                                    </div>
-                                                </motion.div>
-                                            ) : null}
-
-                                            {expandedBibtexId === pub.id && pub.bibtex ? (
-                                                <motion.div
-                                                    key="bibtex"
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    className="overflow-hidden mt-4"
-                                                >
-                                                    <div className="relative bg-neutral-50 rounded-md p-4 border border-neutral-200">
-                                                        <pre className="text-xs text-neutral-600 overflow-x-auto whitespace-pre-wrap font-mono">
-                                                            {pub.bibtex}
-                                                        </pre>
-                                                        <button
-                                                            onClick={() => {
-                                                                navigator.clipboard.writeText(pub.bibtex || '');
-                                                            }}
-                                                            className="absolute top-2 right-2 p-1.5 rounded-md bg-background text-neutral-500 hover:text-accent border border-neutral-200 transition-colors"
-                                                            title="Copy to clipboard"
-                                                        >
-                                                            <ClipboardDocumentIcon className="h-4 w-4" />
-                                                        </button>
-                                                    </div>
-                                                </motion.div>
-                                            ) : null}
-                                        </AnimatePresence>
-                                    </div>
-                                </div>
+            {filteredPublications.length === 0 ? (
+                <div className="card py-12 text-center text-neutral-500">
+                    No publications found matching your criteria.
+                </div>
+            ) : (
+                <div className="space-y-6">
+                    {groups.map((group) => (
+                        <section key={group.type} className="card">
+                            <div className="mb-4 flex items-baseline justify-between border-b border-neutral-200 pb-2">
+                                <h2 className="text-xl font-semibold tracking-tight text-primary">{group.title}</h2>
+                                <span className="text-xs tabular-nums text-neutral-500">{group.items.length}</span>
                             </div>
-                        );
-                    })
-                )}
-            </div>
+
+                            <ol className="space-y-5">
+                                {group.items.map((pub) => {
+                                    const rawVenue = pub.journal || pub.conference || '';
+                                    const displayVenue = venueMap[rawVenue] || rawVenue;
+                                    const abstractOpen = expandedAbstractId === pub.id;
+                                    const bibtexOpen = expandedBibtexId === pub.id;
+
+                                    return (
+                                        <li key={pub.id} className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-2 sm:gap-x-3">
+                                            <span className="pt-0.5 text-sm font-medium tabular-nums text-accent">
+                                                [{labels.get(pub.id)}]
+                                            </span>
+
+                                            <div>
+                                                <p className="text-[0.95rem] leading-relaxed text-neutral-600">
+                                                    {pub.authors.map((author, idx) => (
+                                                        <span key={idx}>
+                                                            <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
+                                                                {author.name}
+                                                            </span>
+                                                            {(author.isCoAuthor || author.isCorresponding) && (
+                                                                <sup className={author.isHighlighted ? 'text-accent' : 'text-neutral-600'}>
+                                                                    {author.isCoAuthor && '†'}
+                                                                    {author.isCorresponding && '*'}
+                                                                </sup>
+                                                            )}
+                                                            {idx < pub.authors.length - 1 && ', '}
+                                                        </span>
+                                                    ))}
+                                                    {', '}
+                                                    <span className="font-medium text-primary">&ldquo;{pub.title},&rdquo;</span>{' '}
+                                                    {displayVenue && <><span className="italic">{displayVenue}</span>, </>}
+                                                    {pub.year}.
+                                                </p>
+
+                                                <div className="mt-2 flex flex-wrap gap-2">
+                                                    {pub.url && (
+                                                        <a href={pub.url} target="_blank" rel="noopener noreferrer" className={pillClass(false)}>
+                                                            <FileText className="h-3.5 w-3.5" aria-hidden="true" /> Paper
+                                                        </a>
+                                                    )}
+                                                    {pub.doi && (
+                                                        <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" className={pillClass(false)}>
+                                                            DOI
+                                                        </a>
+                                                    )}
+                                                    {pub.code && (
+                                                        <a href={pub.code} target="_blank" rel="noopener noreferrer" className={pillClass(false)}>
+                                                            <Code className="h-3.5 w-3.5" aria-hidden="true" /> Code
+                                                        </a>
+                                                    )}
+                                                    {pub.abstract && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setExpandedAbstractId(abstractOpen ? null : pub.id)}
+                                                            aria-expanded={abstractOpen}
+                                                            className={pillClass(abstractOpen)}
+                                                        >
+                                                            <BookOpen className="h-3.5 w-3.5" aria-hidden="true" /> Abstract
+                                                        </button>
+                                                    )}
+                                                    {pub.bibtex && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setExpandedBibtexId(bibtexOpen ? null : pub.id)}
+                                                            aria-expanded={bibtexOpen}
+                                                            className={pillClass(bibtexOpen)}
+                                                        >
+                                                            <Quote className="h-3.5 w-3.5" aria-hidden="true" /> BibTeX
+                                                        </button>
+                                                    )}
+                                                </div>
+
+                                                <AnimatePresence>
+                                                    {abstractOpen && pub.abstract ? (
+                                                        <motion.div
+                                                            key="abstract"
+                                                            initial={{ opacity: 0, height: 0 }}
+                                                            animate={{ opacity: 1, height: 'auto' }}
+                                                            exit={{ opacity: 0, height: 0 }}
+                                                            className="mt-3 overflow-hidden"
+                                                        >
+                                                            <div className="rounded-md border border-neutral-200 bg-neutral-50 p-4">
+                                                                <p className="text-sm leading-relaxed text-neutral-600">{pub.abstract}</p>
+                                                            </div>
+                                                        </motion.div>
+                                                    ) : null}
+
+                                                    {bibtexOpen && pub.bibtex ? (
+                                                        <motion.div
+                                                            key="bibtex"
+                                                            initial={{ opacity: 0, height: 0 }}
+                                                            animate={{ opacity: 1, height: 'auto' }}
+                                                            exit={{ opacity: 0, height: 0 }}
+                                                            className="mt-3 overflow-hidden"
+                                                        >
+                                                            <div className="relative rounded-md border border-neutral-200 bg-neutral-50 p-4">
+                                                                <pre className="overflow-x-auto whitespace-pre-wrap font-mono text-xs text-neutral-600">
+                                                                    {pub.bibtex}
+                                                                </pre>
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => navigator.clipboard.writeText(pub.bibtex || '')}
+                                                                    className="absolute right-2 top-2 rounded-md border border-neutral-200 bg-surface p-1.5 text-neutral-500 transition-colors hover:text-accent"
+                                                                    title="Copy to clipboard"
+                                                                    aria-label="Copy BibTeX"
+                                                                >
+                                                                    <ClipboardDocumentIcon className="h-4 w-4" />
+                                                                </button>
+                                                            </div>
+                                                        </motion.div>
+                                                    ) : null}
+                                                </AnimatePresence>
+                                            </div>
+                                        </li>
+                                    );
+                                })}
+                            </ol>
+                        </section>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
