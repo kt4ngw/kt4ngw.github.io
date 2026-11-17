@@ -5,10 +5,11 @@ import Profile from '@/components/home/Profile';
 import About from '@/components/home/About';
 import SelectedPublications from '@/components/home/SelectedPublications';
 import News, { NewsItem } from '@/components/home/News';
+import Services, { ServiceGroup } from '@/components/home/Services';
 
 interface SectionConfig {
   id: string;
-  type: 'markdown' | 'publications' | 'list';
+  type: 'markdown' | 'publications' | 'list' | 'services';
   title?: string;
   source?: string;
   filter?: string;
@@ -49,6 +50,16 @@ function renderSection(section: SectionConfig) {
         <News
           key={section.id}
           items={newsData?.news || []}
+          title={section.title}
+        />
+      );
+    }
+    case 'services': {
+      const servicesData = section.source ? getTomlContent<{ sections?: ServiceGroup[] }>(section.source) : null;
+      return (
+        <Services
+          key={section.id}
+          groups={servicesData?.sections || []}
           title={section.title}
         />
       );

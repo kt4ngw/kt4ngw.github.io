@@ -1,12 +1,13 @@
 type = "list"
 title = "Services"
 description = "Peer review and academic service."
+# The homepage shows `short` (full name on hover); `content` is the full venue name.
 
 [[sections]]
 title = "Journal Reviewer"
 items = [
-  { date = "2026", content = "IEEE Transactions on Mobile Computing (TMC)" },
-  { date = "2026", content = "IEEE Transactions on Dependable and Secure Computing (TDSC)" },
-  { date = "2026", content = "IEEE Internet of Things Journal (IoT-J)" },
-  { date = "2026", content = "Computer Communications" },
+  { date = "2026", content = "IEEE Transactions on Mobile Computing (TMC)", short = "IEEE TMC" },
+  { date = "2026", content = "IEEE Transactions on Dependable and Secure Computing (TDSC)", short = "IEEE TDSC" },
+  { date = "2026", content = "IEEE Internet of Things Journal (IoT-J)", short = "IEEE IoT-J" },
+  { date = "2026", content = "Computer Communications", short = "Computer Communications" },
 ]
