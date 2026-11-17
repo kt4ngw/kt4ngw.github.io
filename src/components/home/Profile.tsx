@@ -77,11 +77,11 @@ export default function Profile({ author, social, researchInterests, compact = f
     return (
         // On desktop the sidebar is one card filling its fixed 20rem column, so the main column takes
         // the rest of the page width. On mobile each part is its own card.
-        // It sticks where it starts (top-28 = the 5rem fixed nav plus the 2rem page padding), so the
+        // It sticks where it starts (top-26 = the 5rem fixed nav plus the 1.5rem page padding), so the
         // photo stays clear of the nav while the sidebar is held in place.
         <div className={compact
-            ? 'fade-in-up hidden lg:sticky lg:top-28 lg:block lg:self-start lg:rounded-2xl lg:border lg:border-neutral-200 lg:bg-surface lg:px-5 lg:py-6 lg:shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]'
-            : 'fade-in-up contents lg:sticky lg:top-28 lg:block lg:self-start lg:rounded-2xl lg:border lg:border-neutral-200 lg:bg-surface lg:px-5 lg:py-6 lg:shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]'}>
+            ? 'fade-in-up hidden lg:sticky lg:top-26 lg:block lg:self-start lg:rounded-2xl lg:border lg:border-neutral-200 lg:bg-surface lg:px-5 lg:py-6 lg:shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]'
+            : 'fade-in-up contents lg:sticky lg:top-26 lg:block lg:self-start lg:rounded-2xl lg:border lg:border-neutral-200 lg:bg-surface lg:px-5 lg:py-6 lg:shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]'}>
             <div className="order-1 rounded-2xl border border-neutral-200 bg-surface p-5 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:order-none">
             {/* Profile Image */}
             <div className="w-36 h-36 sm:w-48 sm:h-48 mx-auto mb-5 rounded-full overflow-hidden bg-neutral-100">
