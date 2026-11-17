@@ -1,6 +1,6 @@
 export default function CVPageContent() {
   return (
-    <div className="fade-in-up mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="fade-in-up mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-8 flex flex-col gap-4 border-b border-neutral-200 pb-6 md:flex-row md:items-end md:justify-between">
         <div className="md:max-w-[60%]">
           <h1 className="text-3xl font-semibold tracking-tight text-primary">

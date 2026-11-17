@@ -85,17 +85,17 @@ export default function Home() {
   const aboutConfig = getPageConfig<AboutConfig>('about');
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-[20rem_minmax(0,1fr)] gap-6 lg:gap-10">
 
-        {/* Profile becomes two ordered grid items on mobile and one sticky column on desktop. */}
+        {/* Profile becomes ordered grid items on mobile and one sticky 20rem column on desktop. */}
         <Profile
           author={config.author}
           social={config.social}
           researchInterests={aboutConfig?.profile?.research_interests}
         />
 
-        <div className="order-3 space-y-6 lg:order-none lg:col-span-2">
+        <div className="order-3 space-y-6 lg:order-none">
           <section id="about" className="scroll-mt-24 space-y-6">
             {(aboutConfig?.sections || []).map(renderSection)}
           </section>
