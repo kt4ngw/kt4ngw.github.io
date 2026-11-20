@@ -242,7 +242,7 @@ export default function PublicationsList({ config, publications }: PublicationsL
 
                                     return (
                                         <li key={pub.id} className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-2 sm:gap-x-3">
-                                            <span className="pt-0.5 text-sm font-medium tabular-nums text-accent">
+                                            <span className="pt-0.5 text-sm font-medium tabular-nums text-neutral-500">
                                                 [{labels.get(pub.id)}]
                                             </span>
 
@@ -250,11 +250,11 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                 <p className="text-[0.95rem] leading-relaxed text-neutral-600">
                                                     {pub.authors.map((author, idx) => (
                                                         <span key={idx}>
-                                                            <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
+                                                            <span className={author.isHighlighted ? 'font-semibold text-primary' : ''}>
                                                                 {author.name}
                                                             </span>
                                                             {(author.isCoAuthor || author.isCorresponding) && (
-                                                                <sup className={author.isHighlighted ? 'text-accent' : 'text-neutral-600'}>
+                                                                <sup className={author.isHighlighted ? 'text-primary' : 'text-neutral-600'}>
                                                                     {author.isCoAuthor && '†'}
                                                                     {author.isCorresponding && '*'}
                                                                 </sup>

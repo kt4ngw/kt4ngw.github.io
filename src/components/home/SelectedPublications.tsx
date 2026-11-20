@@ -50,7 +50,7 @@ export default function SelectedPublications({ publications, title = 'Selected P
                             )}
 
                             <div>
-                            <span className="mb-1 inline-block whitespace-nowrap rounded bg-accent/10 px-1.5 py-0.5 text-xs font-medium text-accent-dark">
+                            <span className="mb-1 inline-block whitespace-nowrap rounded bg-highlight/10 px-1.5 py-0.5 text-xs font-medium text-highlight">
                                 {badge}
                             </span>
                             <h3 className="mb-1 text-base font-medium leading-snug text-primary">
@@ -71,11 +71,11 @@ export default function SelectedPublications({ publications, title = 'Selected P
                             <p className="mb-1 text-sm leading-relaxed text-neutral-600">
                                 {pub.authors.map((author, idx) => (
                                     <span key={idx}>
-                                        <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
+                                        <span className={author.isHighlighted ? 'font-semibold text-primary' : ''}>
                                             {author.name}
                                         </span>
                                         {(author.isCoAuthor || author.isCorresponding) && (
-                                            <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600'}`}>
+                                            <sup className={`ml-0 ${author.isHighlighted ? 'text-primary' : 'text-neutral-600'}`}>
                                                 {author.isCoAuthor && '†'}
                                                 {author.isCorresponding && '*'}
                                             </sup>
