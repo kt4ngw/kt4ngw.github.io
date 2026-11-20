@@ -11,10 +11,6 @@ date = "2026-07"
 content = "I have received funding from the AWS RMAS Program."
 
 [[news]]
-date = "2026-04"
-content = "I have been invited to serve as a reviewer for <span class='text-highlight font-medium'>TMC</span>."
-
-[[news]]
 date = "2026-03"
 content = "I started my PhD at RMIT University."
 
