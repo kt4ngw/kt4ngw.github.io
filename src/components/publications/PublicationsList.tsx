@@ -15,7 +15,7 @@ interface PublicationsListProps {
     config: PublicationPageConfig;
     publications: Publication[];
 }
-import { venueMap } from '@/lib/venueMap';
+import { venueMap, venueShort } from '@/lib/venueMap';
 
 
 interface FilterOption<T> {
@@ -237,11 +237,13 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                 {group.items.map((pub) => {
                                     const rawVenue = pub.journal || pub.conference || '';
                                     const displayVenue = venueMap[rawVenue] || rawVenue;
+                                    // Amber venue badge ("TMC 2026") leading the button row, as on the homepage.
+                                    const badge = venueShort[rawVenue] ? `${venueShort[rawVenue]} ${pub.year}` : '';
                                     const abstractOpen = expandedAbstractId === pub.id;
                                     const bibtexOpen = expandedBibtexId === pub.id;
 
                                     return (
-                                        <li key={pub.id} className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-2 sm:gap-x-3">
+                                        <li key={pub.id} className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-2">
                                             <span className="pt-0.5 text-sm font-medium tabular-nums text-neutral-500">
                                                 [{labels.get(pub.id)}]
                                             </span>
@@ -269,6 +271,11 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                 </p>
 
                                                 <div className="mt-2 flex flex-wrap gap-2">
+                                                    {badge && (
+                                                        <span className="inline-flex items-center whitespace-nowrap rounded-full bg-highlight/10 px-2.5 py-0.5 text-xs font-semibold text-highlight">
+                                                            {badge}
+                                                        </span>
+                                                    )}
                                                     {pub.url && (
                                                         <a href={pub.url} target="_blank" rel="noopener noreferrer" className={pillClass(false)}>
                                                             <FileText className="h-3.5 w-3.5" aria-hidden="true" /> Paper
