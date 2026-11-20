@@ -7,17 +7,17 @@
 :root,
 .light {
   /* Light theme colors: a soft gray page with white cards on top */
-  --background: #f1f5f4;
+  --background: #f4f6f9;
   --surface: #ffffff;
   --foreground: #111827;
   
-  /* Brand colors - near-black text with a teal accent */
+  /* Brand colors - near-black text with a blue accent */
   --primary: #111827;
   --primary-light: #374151;
   --primary-dark: #030712;
-  --accent: #0f766e;
-  --accent-light: #14b8a6;
-  --accent-dark: #115e59;
+  --accent: #2563eb;
+  --accent-light: #60a5fa;
+  --accent-dark: #1d4ed8;
   
   /* Neutral colors (warm-free gray) */
   --neutral-50: #f9fafb;
@@ -115,7 +115,7 @@
 
 /* Dark mode styles */
 .dark {
-  --background: #0a0e0d;
+  --background: #0b0d12;
   --surface: #15181b;
   --foreground: #e5e7eb;
   
@@ -123,9 +123,9 @@
   --primary: #f3f4f6;
   --primary-light: #e5e7eb;
   --primary-dark: #d1d5db;
-  --accent: #2dd4bf;
-  --accent-light: #5eead4;
-  --accent-dark: #14b8a6;
+  --accent: #60a5fa;
+  --accent-light: #93c5fd;
+  --accent-dark: #3b82f6;
   
   /* Neutral colors for dark mode - inverted, except 800/900 which stay dark surfaces */
   --neutral-50: #16181b;
