@@ -227,7 +227,7 @@ export default function PublicationsList({ config, publications }: PublicationsL
             ) : (
                 <div className="space-y-6">
                     {groups.map((group) => (
-                        <section key={group.type} className="card sm:px-5!">
+                        <section key={group.type} className="card">
                             <div className="mb-4 flex items-baseline justify-between border-b border-neutral-200 pb-2">
                                 <h2 className="text-xl font-semibold tracking-tight text-primary">{group.title}</h2>
                                 <span className="text-xs tabular-nums text-neutral-500">{group.items.length}</span>
@@ -241,7 +241,7 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                     const bibtexOpen = expandedBibtexId === pub.id;
 
                                     return (
-                                        <li key={pub.id} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-x-1.5">
+                                        <li key={pub.id} className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-2 sm:gap-x-3">
                                             <span className="pt-0.5 text-sm font-medium tabular-nums text-neutral-500">
                                                 [{labels.get(pub.id)}]
                                             </span>
