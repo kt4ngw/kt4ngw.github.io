@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Code, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Publication } from '@/types/publication';
 import { venueMap, venueShort } from '@/lib/venueMap';
@@ -9,6 +10,11 @@ interface SelectedPublicationsProps {
     title?: string;
 }
 
+// Same pill buttons as the Publications page.
+const pillClass =
+    'inline-flex items-center gap-1 rounded-full border border-neutral-200 px-2.5 py-0.5 text-xs font-medium text-accent transition-colors hover:border-accent hover:bg-accent/5';
+
+// Entries use the Publications page's citation style, with the paper figure on the left.
 export default function SelectedPublications({ publications, title = 'Selected Publications' }: SelectedPublicationsProps) {
     return (
         <section className="card fade-in-up" style={{ animationDelay: '0.4s' }}>
@@ -23,16 +29,15 @@ export default function SelectedPublications({ publications, title = 'Selected P
                 </Link>
             </div>
 
-            <div className="space-y-4">
+            <ol className="space-y-5">
                 {publications.map((pub, index) => {
                     const rawVenue = pub.journal || pub.conference || '';
                     const displayVenue = venueMap[rawVenue] || rawVenue;
-                    const preprintLabel = /arxiv/i.test(rawVenue) ? 'arXiv' : 'Preprint';
-                    const label = venueShort[rawVenue] || (pub.type === 'preprint' ? preprintLabel : '');
-                    const badge = [label, pub.year].filter(Boolean).join(' ');
+                    // Amber venue badge ("TMC 2026") leading the button row; it stands in for the venue and year.
+                    const badge = venueShort[rawVenue] ? `${venueShort[rawVenue]} ${pub.year}` : '';
 
                     return (
-                        <div
+                        <li
                             key={pub.id}
                             style={{ animationDuration: '0.4s', animationDelay: `${0.1 * index}s` }}
                             className={cn('fade-in-up', pub.preview && 'sm:grid sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-4')}
@@ -50,74 +55,57 @@ export default function SelectedPublications({ publications, title = 'Selected P
                             )}
 
                             <div>
-                            <span className="mb-1 inline-block whitespace-nowrap rounded bg-highlight/10 px-1.5 py-0.5 text-xs font-medium text-highlight">
-                                {badge}
-                            </span>
-                            <h3 className="mb-1 text-base font-medium leading-snug text-primary">
-                                {pub.url ? (
-                                    <a
-                                        href={pub.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-colors hover:text-accent hover:underline underline-offset-2"
-                                    >
-                                        {pub.title}
-                                    </a>
-                                ) : (
-                                    pub.title
-                                )}
-                            </h3>
+                                {/* Title first, then the authors; the badge below stands in for venue and year. */}
+                                <h3 className="text-[0.95rem] font-medium leading-relaxed text-primary">
+                                    {pub.title}
+                                </h3>
 
-                            <p className="mb-1 text-sm leading-relaxed text-neutral-600">
-                                {pub.authors.map((author, idx) => (
-                                    <span key={idx}>
-                                        <span className={author.isHighlighted ? 'font-semibold text-primary' : ''}>
-                                            {author.name}
-                                        </span>
-                                        {(author.isCoAuthor || author.isCorresponding) && (
-                                            <sup className={`ml-0 ${author.isHighlighted ? 'text-primary' : 'text-neutral-600'}`}>
-                                                {author.isCoAuthor && '†'}
-                                                {author.isCorresponding && '*'}
-                                            </sup>
-                                        )}
-                                        {idx < pub.authors.length - 1 && ', '}
-                                    </span>
-                                ))}
-                            </p>
-
-                            <p className="mb-1 text-sm leading-relaxed text-neutral-500">
-                                <span className="italic">{displayVenue}</span>
-                                {[
-                                    { label: 'Paper', href: pub.url },
-                                    { label: 'Code', href: pub.code },
-                                ]
-                                    .filter((link) => link.href)
-                                    .map((link, i) => (
-                                        <span key={link.label}>
-                                            {/* Non-breaking space keeps the dot on the previous item's line when a link wraps. */}
-                                            {(i > 0 || displayVenue) && <span aria-hidden="true">{'\u00a0·'}</span>}{' '}
-                                            <a
-                                                href={link.href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="font-medium text-accent transition-colors hover:text-accent-dark hover:underline underline-offset-2"
-                                            >
-                                                {link.label}
-                                            </a>
+                                <p className="text-[0.95rem] leading-relaxed text-neutral-600">
+                                    {pub.authors.map((author, idx) => (
+                                        <span key={idx}>
+                                            <span className={author.isHighlighted ? 'font-semibold text-primary' : ''}>
+                                                {author.name}
+                                            </span>
+                                            {(author.isCoAuthor || author.isCorresponding) && (
+                                                <sup className={author.isHighlighted ? 'text-primary' : 'text-neutral-600'}>
+                                                    {author.isCoAuthor && '†'}
+                                                    {author.isCorresponding && '*'}
+                                                </sup>
+                                            )}
+                                            {idx < pub.authors.length - 1 && ', '}
                                         </span>
                                     ))}
-                            </p>
-
-                            {pub.description && (
-                                <p className="line-clamp-1 text-sm leading-relaxed text-neutral-500">
-                                    {pub.description}
+                                    {!badge && (
+                                        <>
+                                            {'. '}
+                                            {displayVenue && <><span className="italic">{displayVenue}</span>, </>}
+                                            {pub.year}.
+                                        </>
+                                    )}
                                 </p>
-                            )}
+
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                    {badge && (
+                                        <span className="inline-flex items-center whitespace-nowrap rounded-full bg-highlight/10 px-2.5 py-0.5 text-xs font-semibold text-highlight">
+                                            {badge}
+                                        </span>
+                                    )}
+                                    {pub.url && (
+                                        <a href={pub.url} target="_blank" rel="noopener noreferrer" className={pillClass}>
+                                            <FileText className="h-3.5 w-3.5" aria-hidden="true" /> Paper
+                                        </a>
+                                    )}
+                                    {pub.code && (
+                                        <a href={pub.code} target="_blank" rel="noopener noreferrer" className={pillClass}>
+                                            <Code className="h-3.5 w-3.5" aria-hidden="true" /> Code
+                                        </a>
+                                    )}
+                                </div>
                             </div>
-                        </div>
+                        </li>
                     );
                 })}
-            </div>
+            </ol>
         </section>
     );
 }
