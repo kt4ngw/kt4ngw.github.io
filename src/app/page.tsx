@@ -86,7 +86,7 @@ export default function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8 min-h-screen">
-      <div className="grid grid-cols-1 lg:grid-cols-[20rem_minmax(0,1fr)] gap-6 lg:gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-[18rem_minmax(0,1fr)] gap-6 lg:gap-8">
 
         {/* Profile becomes ordered grid items on mobile and one sticky 20rem column on desktop. */}
         <Profile

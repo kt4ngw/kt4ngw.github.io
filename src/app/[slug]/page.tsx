@@ -59,7 +59,7 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
         const config = getConfig();
         return (
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8">
-                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-8">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-8">
                     <Profile author={config.author} social={config.social} compact />
                     <div>
                         <PublicationPage config={pageConfig as PublicationPageConfig} />
