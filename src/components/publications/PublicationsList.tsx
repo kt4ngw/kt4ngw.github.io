@@ -247,6 +247,10 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                             </span>
 
                                             <div>
+                                                {/* Same layout as the homepage list: title, authors, then venue and details. */}
+                                                <h3 className="text-[0.95rem] font-medium leading-relaxed text-primary">
+                                                    {pub.title}
+                                                </h3>
                                                 <p className="text-[0.95rem] leading-relaxed text-neutral-600">
                                                     {pub.authors.map((author, idx) => (
                                                         <span key={idx}>
@@ -262,8 +266,8 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                             {idx < pub.authors.length - 1 && ', '}
                                                         </span>
                                                     ))}
-                                                    {', '}
-                                                    <span className="text-primary">&ldquo;{pub.title},&rdquo;</span>{' '}
+                                                </p>
+                                                <p className="text-[0.95rem] leading-relaxed text-neutral-600">
                                                     {displayVenue && <><span className="italic">{displayVenue}</span>, </>}
                                                     {citationDetails(pub)}.
                                                 </p>
