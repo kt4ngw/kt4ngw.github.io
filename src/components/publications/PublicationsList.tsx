@@ -250,11 +250,11 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                 <p className="text-[0.95rem] leading-relaxed text-neutral-600">
                                                     {pub.authors.map((author, idx) => (
                                                         <span key={idx}>
-                                                            <span className={author.isHighlighted ? 'font-semibold text-primary' : ''}>
+                                                            <span className={author.isHighlighted ? 'font-semibold text-self' : ''}>
                                                                 {author.name}
                                                             </span>
                                                             {(author.isCoAuthor || author.isCorresponding) && (
-                                                                <sup className={author.isHighlighted ? 'text-primary' : 'text-neutral-600'}>
+                                                                <sup className={author.isHighlighted ? 'text-self' : 'text-neutral-600'}>
                                                                     {author.isCoAuthor && '†'}
                                                                     {author.isCorresponding && '*'}
                                                                 </sup>
@@ -263,7 +263,7 @@ export default function PublicationsList({ config, publications }: PublicationsL
                                                         </span>
                                                     ))}
                                                     {', '}
-                                                    <span className="font-medium text-primary">&ldquo;{pub.title},&rdquo;</span>{' '}
+                                                    <span className="text-primary">&ldquo;{pub.title},&rdquo;</span>{' '}
                                                     {displayVenue && <><span className="italic">{displayVenue}</span>, </>}
                                                     {citationDetails(pub)}.
                                                 </p>

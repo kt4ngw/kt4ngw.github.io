@@ -20,6 +20,8 @@
   --accent-dark: #1d4ed8;
   /* Warm highlight for achievements (venue badges, accepted-paper venues); blue stays for links. */
   --highlight: #b45309;
+  /* Muted crimson for the site owner's name in author lists. */
+  --self: #9f1239;
   
   /* Neutral colors (warm-free gray) */
   --neutral-50: #f9fafb;
@@ -52,6 +54,7 @@
   --color-accent-light: var(--accent-light);
   --color-accent-dark: var(--accent-dark);
   --color-highlight: var(--highlight);
+  --color-self: var(--self);
   
   /* Neutral palette */
   --color-neutral-50: var(--neutral-50);
@@ -130,6 +133,7 @@
   --accent-light: #93c5fd;
   --accent-dark: #3b82f6;
   --highlight: #fbbf24;
+  --self: #fda4af;
   
   /* Neutral colors for dark mode - inverted, except 800/900 which stay dark surfaces */
   --neutral-50: #16181b;
