@@ -1,5 +1,5 @@
 {
-  "visitors": 103,
+  "visitors": 104,
   "countries": [
     {
       "name": "United States",
@@ -42,6 +42,10 @@
       "value": 1
     },
     {
+      "name": "Kazakhstan",
+      "value": 1
+    },
+    {
       "name": "South Africa",
       "value": 1
     },
@@ -52,5 +56,5 @@
   ],
   "startDate": "2020-10-14",
   "endDate": "today",
-  "updatedAt": "2026-11-20T20:20:02.532Z"
+  "updatedAt": "2026-11-25T08:34:07.662Z"
 }
